@@ -35,8 +35,9 @@ main {
 }
 .game-board {
   display: flex;
-  flex-
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  align-items: center;
   height: 300px;
   width: 300px;
   background-color: #2D4693;
@@ -44,4 +45,7 @@ main {
 
 .game-board-square {
  border: solid;
+ border-color: #ffffff;
+ height: 30%;
+ width: 30%;
 }
