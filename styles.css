@@ -1,0 +1,51 @@
+
+html {
+height: 100%;
+width: 100%;
+}
+
+body {
+height: 100%;
+width: 100%;
+}
+
+main {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  font-family: fantasy;
+}
+.player-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 25%;
+  background-color: #B78049;
+  color: #ffffff;
+}
+.game-play-box {
+  background-color: #F7EBCF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50%
+}
+.game-board {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  background-color: #2D4693;
+}
+
+.game-board-square {
+ border: solid;
+ border-color: #ffffff;
+ height: 30%;
+ width: 30%;
+}
