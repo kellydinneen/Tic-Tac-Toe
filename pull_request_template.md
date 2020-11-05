@@ -1,4 +1,4 @@
-### Type of change
+#### Type of change
 
 - [ ] Feature 
 - [ ] Bug fix 
@@ -10,7 +10,7 @@
   - [ ] *SRPifying*
   - [ ] *Other:*
 
-### Functionality area
+#### Functionality area
 
 - [ ] styling
 - [ ] html layout
@@ -18,15 +18,16 @@
 - [ ] DOM
 - [ ] data model-DOM interaction
 
-### Description
+#### Description
 
-### Where a reviewer should start
+#### Where a reviewer should start
 
  - file, line numbers, other specifications
  - file, line numbers, other specifications
 
-### How to test this change
+#### How to test this change
 
-### Relevant excerpts/notes from project rubric
+#### Relevant excerpts/notes from project rubric
+https://frontend.turing.io/projects/module-1/tic-tac-toe-solo.html
 
-### Next Steps
+#### Next Steps
