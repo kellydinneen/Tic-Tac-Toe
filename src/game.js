@@ -2,8 +2,8 @@ class Game {
   constructor(playerOne, playerTwo) {
     this.playerOne = playerOne;
     this.playerTwo = playerTwo;
-    this.playerOnesTurn = true;
-    this.playerTwosTurn = false;
+    this.isPlayerOnesTurn = true;
+    this.isPlayerTwosTurn = false;
     this.winner = undefined;
     this.gameBoard = {
       A1: undefined, A2: undefined, A3: undefined,
@@ -34,11 +34,11 @@ updateGameBoard() {
     ]
     for (var i = 0; i < winningScenarios.length; i++) {
       var winningSquares = winningScenarios[i];
-      checkWinningScenario(winningSquares[0], winningSquares[1], winningSquares[2]);
+      this.checkForWinningScenario(winningSquares[0], winningSquares[1], winningSquares[2]);
     }
   };
 
-  checkWinningScenario(squareOne, squareTwo, squareThree) {
+  checkForWinningScenario(squareOne, squareTwo, squareThree) {
       if (squareOne && squareTwo && squareThree) {
         this.winner = this.playerOne;
       } else if (!squareOne && !squareTwo && !squareThree) {
@@ -47,15 +47,12 @@ updateGameBoard() {
     };
 
   checkForDraw() {
-
     };
 
   saveWin() {
-
   }
 
   resetBoard() {
-
   }
 
 };
