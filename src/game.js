@@ -17,12 +17,10 @@ assignPlayers(playerOne, playerTwo) {
   this.playerTwo = playerTwo
 }
 
-updateGameBoard(event, board) {
-  var boardSquares = Object.keys(board);
-  for (var i = 0; i < boardSquares.length; i++) {
-    if(event.target.id === `${boardSquares[i]}`) {
-      board[`${boardSquares[i]}`] = this.isPlayerOnesTurn;
-      console.log(board);
+updateGameBoard(event, board, squares) {
+  for (var i = 0; i < squares.length; i++) {
+    if(event.target.id === `${squares[i]}`) {
+      board[`${squares[i]}`] = this.isPlayerOnesTurn;
     }
    }
  };

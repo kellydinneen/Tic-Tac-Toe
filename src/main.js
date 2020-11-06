@@ -10,30 +10,32 @@ gameBoard.addEventListener('click', makeMove);
 
 //Event Handlers
 function makeMove() {
-  var boardData = game.gameBoard;
-  game.updateGameBoard(event, boardData);
-  // displayUpdatedBoard(boardData);
+  var board = game.gameBoard;
+  var squares = Object.keys(board);
+  game.updateGameBoard(event, board, squares);
+  displayUpdatedBoard(board, squares);
   // game.checkForWinner();
   // game.checkForDraw();
+  //game.toggleTurn();
 };
 
 
 //helpers that update DOM
-function displayUpdatedBoard(boardData) {
-  var board = game.gameBoard;
-  var boardSquares = Object.keys(board);
-  for (var i = 0; i < boardSquares.length; i++) {
-    var squareNumber = boardSquares[i];
-    var square = board.squareKey;
-    var squareDisplay = document.querySelector(`#${squareNumber}`);
-    displayTokenInSquare(square, squareDisplay);
+function displayUpdatedBoard(board, squares) {
+  for (var i = 0; i < squares.length; i++) {
+    var squareKey = squares[i];
+    var squareValue = board[`${squareKey}`];
+    var squareDisplay = document.querySelector(`#${squareKey}`);
+    displayPlayerTokenInSquare(squareValue, squareDisplay);
   }
 };
 
-function displayTokenInSquare(data, display) {
-  if (data) {
+function displayPlayerTokenInSquare(playerOneHasSquare, display) {
+  if (playerOneHasSquare === undefined) {
+    display.innerText = '';
+  } else if (playerOneHasSquare) {
     display.innerText = game.playerOne.token;
-  } else if (!data) {
+  } else if (!playerOneHasSquare) {
     display.innerText = game.playerTwo.token;
   }
 };
