@@ -51,19 +51,20 @@ updateGameBoard() {
       return "You haven't filled in all the spaces!";
   } else if (this.winner === undefined) {
       return "Cat's Game!"
-  }
+  };
 
   gameOver() {
     for (var i = 0; i < gameBoard.length; i++) {
       if(gameBoard.gameBoard.key(i) === undefined) {
         return false;
       }
-  }
+  };
 
   saveWin() {
-  }
+    this.winner.wins.push(this);
+  };
 
   resetBoard() {
-  }
+  };
 
 };
