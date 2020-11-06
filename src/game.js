@@ -47,7 +47,7 @@ updateGameBoard() {
     };
 
   checkForDraw() {
-    if (!gameOver() && this.winner === undefined) {
+    if (!this.gameOver() && this.winner === undefined) {
       return "You haven't filled in all the spaces!";
   } else if (this.winner === undefined) {
       return "Cat's Game!"
