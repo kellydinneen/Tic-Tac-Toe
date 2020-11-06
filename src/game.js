@@ -1,8 +1,8 @@
 class Game {
   constructor(playerOne, playerTwo) {
-    this.playerOne
-    this.playerTwo
-    this.turn = this.playerOne;
+    this.playerOne = playerOne;
+    this.playerTwo = playerTwo;
+    this.turn = playerOne;
     this.winner = undefined;
     this.gameBoard = {
       A1: undefined, A2: undefined, A3: undefined,
@@ -18,9 +18,20 @@ class Game {
 
   // A way to keep track of the data for the game board
 updateGameBoard() {
-//need event listener on board
-//identify target and match to corresponding square A1-C3
+  var boardSquare = event.target.id;
+  for (var i = 0; i < gameBoard.length; i++) {
+    if(boardSquareID === gameBoard.key(i)) {
+
+      //variable assigned to true if playerOne is playing, to false if playerTwo is playing
+      //makes it easier to test for winning conditions if values in gameBoard object are booleans
+      var playerOneIsInSquare = turn === playerOne? true : false;
+
+      //assigns value of key in gameBoard model corresponding to clicked square in DOM to true or false
+      gameBoard.gameBoard.key(i) = playerOneIsInSquare;
+    }
+  }
 }
+
   // A way to keep track of which player’s turn it currently is
   toggleTurn() {
 
