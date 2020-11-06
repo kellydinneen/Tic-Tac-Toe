@@ -10,12 +10,13 @@ class Game {
       B1: undefined, B2: undefined, B3: undefined,
       C1: undefined, C2: undefined, C3: undefined
     };
-
+  }
 updateGameBoard() {
   var squareID = event.target.id;
   for (var i = 0; i < gameBoard.length; i++) {
+    var squareStatus = gameBoard.gameBoard.key(i);
     if(squareID === gameBoard.key(i)) {
-      gameBoard.gameBoard.key(i) = this.playerOnesTurn;
+      squareStatus = this.playerOnesTurn;
     }
   }
 };
@@ -51,13 +52,15 @@ updateGameBoard() {
       return "You haven't filled in all the spaces!";
   } else if (this.winner === undefined) {
       return "Cat's Game!"
-  };
+  }
+};
 
   gameOver() {
     for (var i = 0; i < gameBoard.length; i++) {
       if(gameBoard.gameBoard.key(i) === undefined) {
         return false;
       }
+    }
   };
 
   saveWin() {
@@ -71,5 +74,5 @@ updateGameBoard() {
       C1: undefined, C2: undefined, C3: undefined
     };
   };
-    
+
 };
