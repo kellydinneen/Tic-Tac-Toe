@@ -18,16 +18,14 @@ assignPlayers(playerOne, playerTwo) {
 }
 
 updateGameBoard(event) {
-  var squareID = event.target.id;
   var board = this.gameBoard;
-  var boardSquareKeys = Object.keys(board);
-  for (var i = 0; i < boardSquareKeys.length; i++) {
-    var squareKey = boardSquareKeys[i];
-    if(squareID === `${squareKey}`) {
-      board.squareKey = this.isPlayerOnesTurn;
+  var boardSquares = Object.keys(board);
+  for (var i = 0; i < boardSquares.length; i++) {
+    if(event.target.id === `${boardSquares[i]}`) {
+      board[`${boardSquares[i]}`] = this.isPlayerOnesTurn;
     }
-  }
-};
+   }
+ };
 
   toggleTurn() {
     this.playerOnesTurn = !this.playerOnesTurn;
