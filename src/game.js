@@ -35,9 +35,47 @@ updateGameBoard() {
   // A way to check the Game’s board data for win conditions
   // A way to detect when a game is a draw (no one has won)
   checkForWinner() {
-//winner is playerOne || winner is playerTwo || game is draw || winner is undefined (game incomplete)
-//Option A: Conditional with every possible winning game state based on whole board
-//if((A1 && A2 && A3) || (B1 && B2 && B3) || (C1 && C2 && C3) || (A1 && B2 && C3) || )
+    for (var i = 0; i < gameBoard.length; i++) {
+      var board = gameBoard.gameBoard
+      //assigning vriables to boolean values of every winning board state
+      var oneHasHorizontal = (i === 0 || 3 || 6) && (board.key(i) && board.key(i+1) && board.key(i+2))
+      var twoHasHorizontal = (i === 0 || 3 || 6) && (!board.key(i) && !board.key(i+1) && !board.key(i+2))
+      var oneHasVertical = (board.key(i) && board.key(i+3) && board.key(i+6))
+      var twoHasVertical = (!board.key(i) && !board.key(i+3) && !board.key(i+6))
+      var oneHasDiagnonalL2R = (board.key(i) && board.key(i+4) && board.key(i+8))
+      var twoHasDiagonalL2R = (!board.key(i) && !board.key(i+4) && !board.key(i+8))
+      var oneHasDiagnonalR2L = (i === 2) && (board.key(i) && board.key(i+2) && board.key(i+4))
+      var twoHasDiagonalR2L = (i === 2) && (!board.key(i) && !board.key(i+2) && !board.key(i+4))
+      //
+      if (oneHasHorizontal || oneHasVertical || oneHasDiagnonalL2R || oneHasDiagnonalR2L) {
+        this.winner = this.playerOne;
+      } else if (twoHasHorizontal || twoHasVertical || twoHasDiagnonalL2R || twoHasDiagnonalR2L) {
+        this.winner = this.playerTwo;
+      }
+      //don't need else, can update
+    }
+    //var rowA = board.A1 && board.A2 && board.a
+
+
+    // var board = this.gameBoard;
+    // var playerOneHasRowA = (board.A1 && board.A2 && board.A3)
+    // var playerOneHasRowB = (this.gameBoard.A1 && this.gameBoard.A2 && this.gameBoard.A3)
+    //
+    // var playerTwoThreeVertical =
+    // var playerOneThreeAcross = ((A1 && A2 && A3) || (B1 && B2 && B3) || (C1 && C2 && C3))
+    // var playerTwoThreeAcross = ((!A1 && !A2 && !A3) || (!B1 && !B2 && !B3) || (!C1 && !C2 && !C3))
+    // var playerOneThreeDiagonal =
+    // var playerTwoThreeDiagonal =
+    // if(
+    //     (A1 && A2 && A3) ||
+    //     (B1 && B2 && B3) ||
+    //     (C1 && C2 && C3) ||
+    //     (A1 && B1 && C1) ||
+    //     (A2 && B2 && C2) ||
+    //     (A3 && B3 && C3) ||
+    //     (A1 && B2 && C3) ||
+    //     (C1 && B2 && A3)
+    //   )
 //Option B: Conditional with every
 //if(boardPositions.playerOne.includes
   }
