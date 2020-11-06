@@ -65,6 +65,11 @@ updateGameBoard() {
   };
 
   resetBoard() {
+    this.gameBoard = {
+      A1: undefined, A2: undefined, A3: undefined,
+      B1: undefined, B2: undefined, B3: undefined,
+      C1: undefined, C2: undefined, C3: undefined
+    };
   };
 
 };
