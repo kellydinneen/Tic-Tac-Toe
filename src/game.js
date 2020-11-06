@@ -2,92 +2,68 @@ class Game {
   constructor(playerOne, playerTwo) {
     this.playerOne = playerOne;
     this.playerTwo = playerTwo;
-    this.playerOnesTurn = true;
+    this.isPlayerOnesTurn = true;
+    this.isPlayerTwosTurn = false;
     this.winner = undefined;
     this.gameBoard = {
       A1: undefined, A2: undefined, A3: undefined,
       B1: undefined, B2: undefined, B3: undefined,
       C1: undefined, C2: undefined, C3: undefined
     };
-    //another Option
-    // this.boardPositions = {
-    //   playerOne: [],
-    //   playerTwo: []
-    // }
-  }
 
-  // A way to keep track of the data for the game board
 updateGameBoard() {
-  var boardSquare = event.target.id;
+  var squareID = event.target.id;
   for (var i = 0; i < gameBoard.length; i++) {
-    if(boardSquareID === gameBoard.key(i)) {
-      //assigns value of key in gameBoard model corresponding to clicked square in DOM to true or false
+    if(squareID === gameBoard.key(i)) {
       gameBoard.gameBoard.key(i) = this.playerOnesTurn;
     }
   }
-}
+};
 
-  // A way to keep track of which player’s turn it currently is
   toggleTurn() {
     this.playerOnesTurn = !this.playerOnesTurn;
-  }
+    this.playerTwosTurn = !this.playerTwosTurn;
+  };
 
-  // A way to check the Game’s board data for win conditions
-  // A way to detect when a game is a draw (no one has won)
   checkForWinner() {
-    for (var i = 0; i < gameBoard.length; i++) {
-      var board = gameBoard.gameBoard
-      //assigning vriables to boolean values of every winning board state
-      var oneHasHorizontal = (i === 0 || 3 || 6) && (board.key(i) && board.key(i+1) && board.key(i+2))
-      var twoHasHorizontal = (i === 0 || 3 || 6) && (!board.key(i) && !board.key(i+1) && !board.key(i+2))
-      var oneHasVertical = (board.key(i) && board.key(i+3) && board.key(i+6))
-      var twoHasVertical = (!board.key(i) && !board.key(i+3) && !board.key(i+6))
-      var oneHasDiagnonalL2R = (board.key(i) && board.key(i+4) && board.key(i+8))
-      var twoHasDiagonalL2R = (!board.key(i) && !board.key(i+4) && !board.key(i+8))
-      var oneHasDiagnonalR2L = (i === 2) && (board.key(i) && board.key(i+2) && board.key(i+4))
-      var twoHasDiagonalR2L = (i === 2) && (!board.key(i) && !board.key(i+2) && !board.key(i+4))
-      //
-      if (oneHasHorizontal || oneHasVertical || oneHasDiagnonalL2R || oneHasDiagnonalR2L) {
+    var g = this.gameBoard;
+    var winningScenarios = [
+      [g.A1, g.A2, g.A3], [g.B1, g.B2, g.B3], [g.C1, g.C2, g.C3],
+      [g.A1, g.B1, g.C1], [g.A2, g.B2, g.C2], [g.A3, g.B3, g.C3],
+      [g.A1, g.B2, g.C3], [g.A3, g.B2, g.C1]
+    ]
+    for (var i = 0; i < winningScenarios.length; i++) {
+      var winningSquares = winningScenarios[i];
+      this.checkForWinningScenario(winningSquares[0], winningSquares[1], winningSquares[2]);
+    }
+  };
+
+  checkForWinningScenario(squareOne, squareTwo, squareThree) {
+      if (squareOne && squareTwo && squareThree) {
         this.winner = this.playerOne;
-      } else if (twoHasHorizontal || twoHasVertical || twoHasDiagnonalL2R || twoHasDiagnonalR2L) {
+      } else if (!squareOne && !squareTwo && !squareThree) {
         this.winner = this.playerTwo;
       }
-      //don't need else, can update
-    }
-    //var rowA = board.A1 && board.A2 && board.a
+    };
 
-
-    // var board = this.gameBoard;
-    // var playerOneHasRowA = (board.A1 && board.A2 && board.A3)
-    // var playerOneHasRowB = (this.gameBoard.A1 && this.gameBoard.A2 && this.gameBoard.A3)
-    //
-    // var playerTwoThreeVertical =
-    // var playerOneThreeAcross = ((A1 && A2 && A3) || (B1 && B2 && B3) || (C1 && C2 && C3))
-    // var playerTwoThreeAcross = ((!A1 && !A2 && !A3) || (!B1 && !B2 && !B3) || (!C1 && !C2 && !C3))
-    // var playerOneThreeDiagonal =
-    // var playerTwoThreeDiagonal =
-    // if(
-    //     (A1 && A2 && A3) ||
-    //     (B1 && B2 && B3) ||
-    //     (C1 && C2 && C3) ||
-    //     (A1 && B1 && C1) ||
-    //     (A2 && B2 && C2) ||
-    //     (A3 && B3 && C3) ||
-    //     (A1 && B2 && C3) ||
-    //     (C1 && B2 && A3)
-    //   )
-//Option B: Conditional with every
-//if(boardPositions.playerOne.includes
+  checkForDraw() {
+    if (!gameOver() && this.winner === undefined) {
+      return "You haven't filled in all the spaces!";
+  } else if (this.winner === undefined) {
+      return "Cat's Game!"
   }
 
-  // A way to save a winning Game’s board data to the correct player’s wins array
+  gameOver() {
+    for (var i = 0; i < gameBoard.length; i++) {
+      if(gameBoard.gameBoard.key(i) === undefined) {
+        return false;
+      }
+  }
+
   saveWin() {
-    //push game into winner.wins array
   }
 
-// A way to reset the Game’s board to begin a new game
   resetBoard() {
-
   }
 
-}
+};
