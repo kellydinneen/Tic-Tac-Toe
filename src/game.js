@@ -50,12 +50,10 @@ updateGameBoard() {
 
     };
 
-  // A way to save a winning Game’s board data to the correct player’s wins array
   saveWin() {
-    //push game into winner.wins array
+
   }
 
-// A way to reset the Game’s board to begin a new game
   resetBoard() {
 
   }
