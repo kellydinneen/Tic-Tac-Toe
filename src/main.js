@@ -10,15 +10,16 @@ gameBoard.addEventListener('click', makeMove);
 
 //Event Handlers
 function makeMove() {
-  game.updateGameBoard(event);
-  // displayUpdatedBoard();
+  var boardData = game.gameBoard;
+  game.updateGameBoard(event, boardData);
+  // displayUpdatedBoard(boardData);
   // game.checkForWinner();
   // game.checkForDraw();
 };
 
 
 //helpers that update DOM
-function displayUpdatedBoard() {
+function displayUpdatedBoard(boardData) {
   var board = game.gameBoard;
   var boardSquares = Object.keys(board);
   for (var i = 0; i < boardSquares.length; i++) {
