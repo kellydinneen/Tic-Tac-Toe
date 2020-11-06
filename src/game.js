@@ -1,7 +1,7 @@
 class Game {
-  constructor(playerOne, playerTwo) {
-    this.playerOne = playerOne;
-    this.playerTwo = playerTwo;
+  constructor() {
+    this.playerOne = {};
+    this.playerTwo = {};
     this.isPlayerOnesTurn = true;
     this.isPlayerTwosTurn = false;
     this.winner = undefined;
@@ -11,12 +11,20 @@ class Game {
       C1: undefined, C2: undefined, C3: undefined
     };
   }
-updateGameBoard() {
+
+assignPlayers(playerOne, playerTwo) {
+  this.playerOne = playerOne;
+  this.playerTwo = playerTwo
+}
+
+updateGameBoard(event) {
   var squareID = event.target.id;
-  for (var i = 0; i < gameBoard.length; i++) {
-    var squareStatus = gameBoard.gameBoard.key(i);
-    if(squareID === gameBoard.key(i)) {
-      squareStatus = this.playerOnesTurn;
+  var board = this.gameBoard;
+  var boardSquareKeys = Object.keys(board);
+  for (var i = 0; i < boardSquareKeys.length; i++) {
+    var squareKey = boardSquareKeys[i];
+    if(squareID === `${squareKey}`) {
+      board.squareKey = this.isPlayerOnesTurn;
     }
   }
 };
