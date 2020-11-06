@@ -47,12 +47,29 @@ updateGameBoard() {
     };
 
   checkForDraw() {
-    };
+    if (!this.gameOver() && this.winner === undefined) {
+      return "You haven't filled in all the spaces!";
+  } else if (this.winner === undefined) {
+      return "Cat's Game!"
+  };
+
+  gameOver() {
+    for (var i = 0; i < gameBoard.length; i++) {
+      if(gameBoard.gameBoard.key(i) === undefined) {
+        return false;
+      }
+  };
 
   saveWin() {
-  }
+    this.winner.wins.push(this);
+  };
 
   resetBoard() {
-  }
-
+    this.gameBoard = {
+      A1: undefined, A2: undefined, A3: undefined,
+      B1: undefined, B2: undefined, B3: undefined,
+      C1: undefined, C2: undefined, C3: undefined
+    };
+  };
+    
 };
