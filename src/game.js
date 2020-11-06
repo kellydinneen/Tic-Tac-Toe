@@ -71,5 +71,5 @@ updateGameBoard() {
       C1: undefined, C2: undefined, C3: undefined
     };
   };
-
+    
 };
