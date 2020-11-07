@@ -2,32 +2,36 @@ class Game {
   constructor() {
     this.playerOne = {};
     this.playerTwo = {};
-    this.isPlayerOnesTurn = true;
-    this.isPlayerTwosTurn = false;
+    this.turn = {};
     this.winner = undefined;
+    this.gameOver = false;
     this.gameBoard = {
-      A1: undefined, A2: undefined, A3: undefined,
-      B1: undefined, B2: undefined, B3: undefined,
-      C1: undefined, C2: undefined, C3: undefined
+      A1: '', A2: '', A3: '',
+      B1: '', B2: '', B3: '',
+      C1: '', C2: '', C3: ''
     };
   }
 
 assignPlayers(playerOne, playerTwo) {
   this.playerOne = playerOne;
-  this.playerTwo = playerTwo
+  this.playerTwo = playerTwo;
+  this.turn = this.playerOne;
 }
 
 updateGameBoard(event, board, squares) {
   for (var i = 0; i < squares.length; i++) {
-    if(event.target.id === `${squares[i]}` && board[`${squares[i]}`] === undefined) {
-      board[`${squares[i]}`] = this.isPlayerOnesTurn;
+    if(event.target.id === `${squares[i]}` && board[`${squares[i]}`] === '') {
+      console.log(this.turn);
+      board[`${squares[i]}`] = this.turn.token;
     }
    }
  };
 
   toggleTurn() {
-    this.isPlayerOnesTurn = !this.isPlayerOnesTurn;
-    this.isPlayerTwosTurn = !this.isPlayerTwosTurn;
+    if (this.turn === this.playerOne) {
+      this.turn = this.playerTwo;
+    } else if (this.turn === this.playerTwo)
+      this.turn = this.playerOne;
   };
 
   checkForWinner() {
@@ -37,34 +41,43 @@ updateGameBoard(event, board, squares) {
       [g.A1, g.B1, g.C1], [g.A2, g.B2, g.C2], [g.A3, g.B3, g.C3],
       [g.A1, g.B2, g.C3], [g.A3, g.B2, g.C1]
     ]
+    this.checkAllWinningScenarios(winningScenarios);
+  };
+
+  checkAllWinningScenarios(winningScenarios) {
     for (var i = 0; i < winningScenarios.length; i++) {
       var winningSquares = winningScenarios[i];
-      this.checkForWinningScenario(winningSquares[0], winningSquares[1], winningSquares[2]);
+      this.checkPossibleThreeInARow(winningSquares[0], winningSquares[1], winningSquares[2]);
     }
   };
 
-  checkForWinningScenario(squareOne, squareTwo, squareThree) {
-      if (squareOne && squareTwo && squareThree) {
+  checkPossibleThreeInARow(squareOne, squareTwo, squareThree) {
+      var one = this.playerOne.token;
+      var two = this.playerTwo.token;
+      if (squareOne === one && squareTwo === one && squareThree === one) {
         this.winner = this.playerOne;
-      } else if (!squareOne && !squareTwo && !squareThree) {
+        this.gameOver = true;
+      } else if (squareOne === two && squareTwo === two && squareThree === two) {
         this.winner = this.playerTwo;
+        this.gameOver = true;
       }
     };
 
-  checkForDraw() {
-    if (!this.gameOver() && this.winner === undefined) {
-      return "You haven't filled in all the spaces!";
-  } else if (this.winner === undefined) {
-      return "Cat's Game!"
-  }
-};
+  checkForCatsGame(board, squares) {
+    if (this.checkForGameOver(board, squares)) {
+      this.winner = 'cat';
+      return true;
+    }
+  };
 
-  gameOver() {
-    for (var i = 0; i < gameBoard.length; i++) {
-      if(gameBoard.gameBoard.key(i) === undefined) {
-        return false;
+  checkForGameOver(board, squares) {
+    var emptySquares = 0
+    for (var i = 0; i < squares.length; i++) {
+      if (board[`${squares[i]}`] === '') {
+        emptySquares += 1;
       }
     }
+    return emptySquares < 1 ? true : false;
   };
 
   saveWin() {

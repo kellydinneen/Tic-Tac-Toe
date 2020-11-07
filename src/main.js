@@ -13,29 +13,32 @@ function makeMove() {
   var board = game.gameBoard;
   var squares = Object.keys(board);
   game.updateGameBoard(event, board, squares);
-  displayUpdatedBoard(board, squares);
-  // game.checkForWinner();
-  // game.checkForDraw();
   game.toggleTurn();
+  console.log(board);
+  displayUpdatedBoard(board, squares);
+  //checkGameOutcome(board, squares);
 };
-
 
 //helpers that update DOM
 function displayUpdatedBoard(board, squares) {
   for (var i = 0; i < squares.length; i++) {
-    var squareKey = squares[i];
-    var squareValue = board[`${squareKey}`];
-    var squareDisplay = document.querySelector(`#${squareKey}`);
-    displayPlayerTokenInSquare(squareValue, squareDisplay);
+    var squareDisplay = document.querySelector(`#${squares[i]}`);
+    squareDisplay.innerText = board[`${squares[i]}`];
   }
 };
 
-function displayPlayerTokenInSquare(playerOneHasSquare, display) {
-  if (playerOneHasSquare === undefined) {
-    display.innerText = '';
-  } else if (playerOneHasSquare) {
-    display.innerText = game.playerOne.token;
-  } else if (!playerOneHasSquare) {
-    display.innerText = game.playerTwo.token;
+function checkGameOutcome(board, squares) {
+  console.log(game.checkForWinner());
+  if (game.winner != undefined) {
+    announceWinner(game.winner);
+    game.saveWin();
+  } else if (game.checkForCatsGame(board, squares)) {
+    announceWinner("The CAT");
+  } else {
+    game.toggleTurn();
   }
+};
+
+function announceWinner(winner) {
+  console.log(`Game Over! ${winner} has it.`)
 };
