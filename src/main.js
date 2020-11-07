@@ -1,14 +1,26 @@
-var gameBoard = document.querySelector('.game-board');
+var gameBoard = document.querySelector('#gameboard');
+var newGameButton = document.querySelector(`#new-game`);
 
 var game = new Game();
-var playerOne = new Player(`🍎`);
-var playerTwo = new Player(`🍊`);
-game.assignPlayers(playerOne, playerTwo);
 
 //Event Listeners
+newGameButton.addEventListener('click', startGame);
 gameBoard.addEventListener('click', makeMove);
 
 //Event Handlers
+
+function startGame() {
+  game.resetBoard();
+  var board = game.gameBoard;
+  var squares = Object.keys(board);
+  displayUpdatedBoard(board, squares);
+  var playerOne = new Player(`🍎`);
+  var playerTwo = new Player(`🍊`);
+  game.assignPlayers(playerOne, playerTwo);
+  toggleNewGameButton();
+}
+
+
 function makeMove() {
   var board = game.gameBoard;
   var squares = Object.keys(board);
@@ -28,7 +40,7 @@ function displayUpdatedBoard(board, squares) {
 function checkGameOutcome(board, squares) {
   game.checkForWinner(board);
   if (game.winner != undefined) {
-    announceWinner(game.winner);
+    announceWinner(game.winner.token);
     game.saveWin();
   } else if (game.checkForCatsGame(board, squares)) {
     announceWinner("The CAT");
@@ -39,4 +51,9 @@ function checkGameOutcome(board, squares) {
 
 function announceWinner(winner) {
   console.log(`Game Over! ${winner} has it.`)
+  toggleNewGameButton();
 };
+
+function toggleNewGameButton() {
+  newGameButton.classList.toggle('hidden');
+}

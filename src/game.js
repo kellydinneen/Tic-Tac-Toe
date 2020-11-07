@@ -85,9 +85,9 @@ updateGameBoard(event, board, squares) {
 
   resetBoard() {
     this.gameBoard = {
-      A1: undefined, A2: undefined, A3: undefined,
-      B1: undefined, B2: undefined, B3: undefined,
-      C1: undefined, C2: undefined, C3: undefined
+      A1: '', A2: '', A3: '',
+      B1: '', B2: '', B3: '',
+      C1: '', C2: '', C3: ''
     };
   };
 

@@ -28,12 +28,12 @@ main {
   background-color: #F7EBCF;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
   width: 50%
 }
-.game-board {
+.gameboard {
   display: flex;
   flex-wrap: wrap-reverse;
   justify-content: center;
@@ -46,6 +46,6 @@ main {
 .game-board-square {
  border: solid;
  border-color: #ffffff;
- height: 30%;
- width: 30%;
+ height: 95px;
+ width: 95px;
 }
