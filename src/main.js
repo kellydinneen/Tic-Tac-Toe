@@ -1,6 +1,8 @@
 var gameBoard = document.querySelector('#gameboard');
 var newGameButton = document.querySelector(`#new-game`);
 var gameCommentary = document.querySelector(`#game-commentary`);
+var playerOneWinsTally = document.querySelector(`#player-one-wins`);
+var playerTwoWinsTally = document.querySelector(`#player-two-wins`);
 
 var game = new Game();
 var playerOne = new Player(`🍎`);
@@ -42,8 +44,8 @@ function displayUpdatedBoard(board, squares) {
 function checkGameOutcome(board, squares) {
   game.checkForWinner(board);
   if (game.winner != undefined) {
-    announceWinner(game.winner.token);
     game.saveWin();
+    announceWinner(game.winner.token);
   } else if (game.checkForCatsGame(board, squares)) {
     announceWinner("The CAT");
   } else {
@@ -52,10 +54,13 @@ function checkGameOutcome(board, squares) {
 };
 
 function announceWinner(winner) {
-  gameCommentary.innerText = (`Game Over! ${winner} has it.`)
-  toggleNewGameButton();
+  gameCommentary.innerText = (`Game Over! ${winner} has it.`);
+  playerOneWinsTally.innerText = `Wins: ${game.playerOne.wins.length}`;
+  playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`
+
+  //toggleNewGameButton();
 };
 
-function toggleNewGameButton() {
-  newGameButton.classList.toggle('hidden');
-}
+// function toggleNewGameButton() {
+//   newGameButton.classList.toggle('hidden');
+// }
