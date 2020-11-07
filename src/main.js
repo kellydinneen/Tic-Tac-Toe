@@ -1,7 +1,11 @@
 var gameBoard = document.querySelector('#gameboard');
 var newGameButton = document.querySelector(`#new-game`);
+var gameCommentary = document.querySelector(`#game-commentary`);
 
 var game = new Game();
+var playerOne = new Player(`🍎`);
+var playerTwo = new Player(`🍊`);
+game.assignPlayers(playerOne, playerTwo);
 
 //Event Listeners
 newGameButton.addEventListener('click', startGame);
@@ -11,13 +15,11 @@ gameBoard.addEventListener('click', makeMove);
 
 function startGame() {
   game.resetBoard();
+  gameCommentary.innerText = '';
   var board = game.gameBoard;
   var squares = Object.keys(board);
   displayUpdatedBoard(board, squares);
-  var playerOne = new Player(`🍎`);
-  var playerTwo = new Player(`🍊`);
-  game.assignPlayers(playerOne, playerTwo);
-  toggleNewGameButton();
+  //toggleNewGameButton();
 }
 
 
@@ -50,7 +52,7 @@ function checkGameOutcome(board, squares) {
 };
 
 function announceWinner(winner) {
-  console.log(`Game Over! ${winner} has it.`)
+  gameCommentary.innerText = (`Game Over! ${winner} has it.`)
   toggleNewGameButton();
 };
 
