@@ -19,7 +19,7 @@ assignPlayers(playerOne, playerTwo) {
 
 updateGameBoard(event, board, squares) {
   for (var i = 0; i < squares.length; i++) {
-    if(event.target.id === `${squares[i]}`) {
+    if(event.target.id === `${squares[i]}` && board[`${squares[i]}`] === undefined) {
       board[`${squares[i]}`] = this.isPlayerOnesTurn;
     }
    }
