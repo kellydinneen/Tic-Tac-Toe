@@ -26,8 +26,8 @@ updateGameBoard(event, board, squares) {
  };
 
   toggleTurn() {
-    this.playerOnesTurn = !this.playerOnesTurn;
-    this.playerTwosTurn = !this.playerTwosTurn;
+    this.isPlayerOnesTurn = !this.isPlayerOnesTurn;
+    this.isPlayerTwosTurn = !this.isPlayerTwosTurn;
   };
 
   checkForWinner() {

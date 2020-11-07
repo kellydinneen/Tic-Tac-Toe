@@ -16,7 +16,7 @@ function makeMove() {
   displayUpdatedBoard(board, squares);
   // game.checkForWinner();
   // game.checkForDraw();
-  //game.toggleTurn();
+  game.toggleTurn();
 };
 
 
