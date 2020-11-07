@@ -13,10 +13,8 @@ function makeMove() {
   var board = game.gameBoard;
   var squares = Object.keys(board);
   game.updateGameBoard(event, board, squares);
-  game.toggleTurn();
-  console.log(board);
   displayUpdatedBoard(board, squares);
-  //checkGameOutcome(board, squares);
+  checkGameOutcome(board, squares);
 };
 
 //helpers that update DOM
@@ -28,7 +26,7 @@ function displayUpdatedBoard(board, squares) {
 };
 
 function checkGameOutcome(board, squares) {
-  console.log(game.checkForWinner());
+  game.checkForWinner(board);
   if (game.winner != undefined) {
     announceWinner(game.winner);
     game.saveWin();

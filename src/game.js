@@ -21,7 +21,6 @@ assignPlayers(playerOne, playerTwo) {
 updateGameBoard(event, board, squares) {
   for (var i = 0; i < squares.length; i++) {
     if(event.target.id === `${squares[i]}` && board[`${squares[i]}`] === '') {
-      console.log(this.turn);
       board[`${squares[i]}`] = this.turn.token;
     }
    }
@@ -34,8 +33,7 @@ updateGameBoard(event, board, squares) {
       this.turn = this.playerOne;
   };
 
-  checkForWinner() {
-    var g = this.gameBoard;
+  checkForWinner(g) {
     var winningScenarios = [
       [g.A1, g.A2, g.A3], [g.B1, g.B2, g.B3], [g.C1, g.C2, g.C3],
       [g.A1, g.B1, g.C1], [g.A2, g.B2, g.C2], [g.A3, g.B3, g.C3],
@@ -66,6 +64,7 @@ updateGameBoard(event, board, squares) {
   checkForCatsGame(board, squares) {
     if (this.checkForGameOver(board, squares)) {
       this.winner = 'cat';
+      this.gameOver = true;
       return true;
     }
   };
