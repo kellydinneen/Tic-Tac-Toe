@@ -16,6 +16,7 @@ gameBoard.addEventListener('click', makeMove);
 //Event Handlers
 
 function startGame() {
+  newGameButton.classList.toggle('spin');
   game.resetBoard();
   gameCommentary.innerText = '';
   var board = game.gameBoard;
