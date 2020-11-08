@@ -3,6 +3,7 @@ class Game {
     this.playerOne = {};
     this.playerTwo = {};
     this.turn = {};
+    this.nextPlayer = {};
     this.winner = undefined;
     this.gameOver = false;
     this.gameBoard = {
@@ -16,6 +17,7 @@ assignPlayers(playerOne, playerTwo) {
   this.playerOne = playerOne;
   this.playerTwo = playerTwo;
   this.turn = this.playerOne;
+  this.nextPlayer = this.playerTwo;
 }
 
 updateGameBoard(event, board, squares) {
@@ -29,8 +31,11 @@ updateGameBoard(event, board, squares) {
   toggleTurn() {
     if (this.turn === this.playerOne) {
       this.turn = this.playerTwo;
-    } else if (this.turn === this.playerTwo)
+      this.nextPlayer = this.playerOne;
+    } else if (this.turn === this.playerTwo) {
       this.turn = this.playerOne;
+      this.nextPlayer = this.playerTwo;
+    }
   };
 
   checkForWinner(g) {
@@ -90,6 +95,7 @@ updateGameBoard(event, board, squares) {
       C1: '', C2: '', C3: ''
     };
     this.winner = undefined;
+    this.gameOver = false;
   };
 
 };

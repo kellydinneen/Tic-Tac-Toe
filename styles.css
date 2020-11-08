@@ -13,7 +13,9 @@ main {
   display: flex;
   height: 100%;
   width: 100%;
-  font-family: fantasy;
+  font-family: "JannonWeb","Times","Times New Roman",serif;
+  letter-spacing: 0.025em;
+  font-size: 20px;
 }
 .player-sidebar {
   display: flex;
@@ -21,11 +23,12 @@ main {
   align-items: center;
   height: 100%;
   width: 25%;
-  background-color: #B78049;
-  color: #ffffff;
+  background-color: #FFFAEF;
+  color: #006450;
 }
 .game-play-box {
-  background-color: #F7EBCF;
+  background-color: #FFFAEF;
+  color: #00C08A;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -38,14 +41,90 @@ main {
   flex-wrap: wrap-reverse;
   justify-content: center;
   align-items: center;
-  height: 300px;
-  width: 300px;
-  background-color: #2D4693;
+  height: 450px;
+  width: 450px;
+  background-color: #006450;
 }
 
 .game-board-square {
  border: solid;
- border-color: #ffffff;
- height: 95px;
- width: 95px;
+ border-color: #00C08A;
+ height: 29%;
+ width: 29%;
+ margin: 1%;
+ font-size: 50px;
 }
+
+.playerOneColor:hover {
+  background-color: #EF3E3C;
+}
+
+.playerTwoColor:hover {
+  background-color: #FF9334;
+}
+
+.new-game {
+  background: #00C08A;
+  border-radius: 2% 50%;
+  height: 100px;
+  width: 150px;
+  font-family: "JannonWeb","Times","Times New Roman",serif;
+  font-size: 30px;
+  transition: all 2s;
+  transition-timing: ease-in-out;
+}
+
+.spin {
+   transform: rotate(360deg);
+}
+
+
+
+
+
+
+
+
+
+
+/* space theme */
+
+.player-sidebar-space {
+  /* space */
+  /* background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif'); */
+}
+
+.game-play-box-space {
+  /* space */
+  /* background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif'); */
+/* asteroid */
+/* background-image: url('https://media.giphy.com/media/nQmpFuGsaalUr2CT9X/source.gif'); */
+};
+
+.gameboard {
+background-image: url('https://cdn.pixabay.com/photo/2020/02/28/10/11/texture-4887061_1280.jpg');
+};
+
+/* can't get background image in these squares, or hover */
+.game-board-square:hover {
+
+  /* background-color: #000000; */
+  /* background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif') */
+};
+
+
+/* medieval styles */
+
+.player-sidebar-medieval {
+  /* background-image: url('https://media.giphy.com/media/H4Pxd80TD17KolOfL1/source.gif');
+  background-position: center; */
+  /* background-color: #E9D7B4; */
+}
+
+.game-play-box-medieval {
+  /* medieval skeleton */
+  /* background-image: url('https://media.giphy.com/media/xT0xelf5NTuwuKNb0Y/source.gif'); */
+  /* beige background */
+  /* background-color: #E9D7B4;
+  background-size: 100%; */
+};
