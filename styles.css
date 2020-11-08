@@ -31,7 +31,7 @@ main {
   color: #00C08A;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   height: 100%;
   width: 50%
@@ -43,6 +43,7 @@ main {
   align-items: center;
   height: 450px;
   width: 450px;
+  border-radius: 4%;
   background-color: #006450;
 }
 
@@ -52,6 +53,7 @@ main {
  height: 29%;
  width: 29%;
  margin: 1%;
+ border-radius: 4%;
  font-size: 50px;
  display: flex;
  align-items: center;
@@ -68,6 +70,20 @@ main {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #FF9334;
+}
+
+.get-started {
+  background: #00C08A;
+  border-radius: 50% 50% 50% 50%;
+  height: 250px;
+  width: 400px;
+  animation-name: blinkingbackground infinite;
+  animation-duration: 2s;
+}
+@keyframes fadeInOut{
+  0%		{ background-color: #006450;}
+  40%		{ background-color: #00C08A;}
+  90%	{ background-color: #006450;}
 }
 
 .new-game {
@@ -94,7 +110,7 @@ main {
 
 .spin-button {
   transition-timing-function: ease-in;
-  transition-duration: 5s;
+  transition-duration: 2s;
   transform: rotate(720deg);
 }
 
