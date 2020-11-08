@@ -56,10 +56,14 @@ main {
 }
 
 .playerOneColor:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
   background-color: #EF3E3C;
 }
 
 .playerTwoColor:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
   background-color: #FF9334;
 }
 
@@ -80,13 +84,33 @@ main {
   filter: brightness(125%);
 }
 
+.new-game:disabled {
+  background-color: grey;
+}
 
-.spin {
-  transition-timing: ease-in-out;
-  transition: all 2s;
+
+.spin-button {
+  transition-timing-function: ease-in;
+  transition-duration: 5s;
+  transform: rotate(720deg);
+}
+
+.spin-board {
+  transition-timing-function: linear;
+  transition-duration: 1s;
   transform: rotate(360deg);
 }
 
+.reset-board {
+		animation-name: fadeInOut;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+	}
+	@keyframes fadeInOut{
+		0%		{ background-color: #006450;}
+		40%		{ background-color: #00C08A;}
+		90%	{ background-color: #006450;}
+	}
 
 
 

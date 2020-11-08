@@ -17,7 +17,9 @@ gameBoard.addEventListener('click', makeMove);
 //Event Handlers
 
 function startGame() {
-  newGameButton.classList.toggle('spin');
+  gameBoard.classList.add('reset-board');
+  gameBoard.classList.add('spin-board');
+  newGameButton.classList.toggle('spin-button');
   game.resetBoard();
   gameCommentary.innerText = '';
   var board = game.gameBoard;
@@ -30,10 +32,13 @@ function startGame() {
 function makeMove() {
   var board = game.gameBoard;
   var squares = Object.keys(board);
+  gameBoard.classList.remove('reset-board');
+  gameBoard.classList.remove('spin-board');
   if (checkIfSquareIsAvailable(event)) {
     game.updateGameBoard(event, board, squares);
     checkGameOutcome(board, squares);
     displayUpdatedBoard(board, squares);
+
   }
 };
 
