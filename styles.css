@@ -55,6 +55,10 @@ main {
  font-size: 50px;
 }
 
+.game-board-square:hover {
+  background-color: #FF9334;
+}
+
 .new-game {
   background: #00C08A;
   border-radius: 2% 50%;
@@ -70,7 +74,17 @@ main {
    transform: rotate(360deg);
 }
 
+
+
+
+
+
+
+
+
+
 /* space theme */
+
 .player-sidebar-space {
   /* space */
   /* background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif'); */
@@ -88,7 +102,8 @@ background-image: url('https://cdn.pixabay.com/photo/2020/02/28/10/11/texture-48
 };
 
 /* can't get background image in these squares, or hover */
-.game-board-square: hover {
+.game-board-square:hover {
+
   /* background-color: #000000; */
   /* background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif') */
 };
