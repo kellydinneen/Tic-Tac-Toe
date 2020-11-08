@@ -55,7 +55,11 @@ main {
  font-size: 50px;
 }
 
-.game-board-square:hover {
+.playerOneColor:hover {
+  background-color: #EF3E3C;
+}
+
+.playerTwoColor:hover {
   background-color: #FF9334;
 }
 
