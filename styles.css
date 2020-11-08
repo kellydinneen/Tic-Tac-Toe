@@ -69,13 +69,22 @@ main {
   height: 100px;
   width: 150px;
   font-family: "JannonWeb","Times","Times New Roman",serif;
+  border: 2px solid #65b37a;
+	color: #ffffff;
   font-size: 30px;
-  transition: all 2s;
-  transition-timing: ease-in-out;
 }
 
+.new-game:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.4s;
+  filter: brightness(125%);
+}
+
+
 .spin {
-   transform: rotate(360deg);
+  transition-timing: ease-in-out;
+  transition: all 2s;
+  transform: rotate(360deg);
 }
 
 
@@ -118,13 +127,18 @@ background-image: url('https://cdn.pixabay.com/photo/2020/02/28/10/11/texture-48
 .player-sidebar-medieval {
   /* background-image: url('https://media.giphy.com/media/H4Pxd80TD17KolOfL1/source.gif');
   background-position: center; */
-  /* background-color: #E9D7B4; */
+  background-color: #E9D7B4;
 }
+
+.game-board-square-medieval {
+  border-color: #194679;
+};
+
 
 .game-play-box-medieval {
   /* medieval skeleton */
-  /* background-image: url('https://media.giphy.com/media/xT0xelf5NTuwuKNb0Y/source.gif'); */
+  background-image: url('https://media.giphy.com/media/xT0xelf5NTuwuKNb0Y/source.gif');
+  background-size: 100%;
   /* beige background */
-  /* background-color: #E9D7B4;
-  background-size: 100%; */
+  /* background-color: #E9D7B4;*/
 };
