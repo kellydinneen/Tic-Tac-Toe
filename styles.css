@@ -131,6 +131,38 @@ main {
 		90%	{ background-color: #006450;}
 	}
 
+  .game-customization-form {
+    background-color: #0B032D;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  fieldset {
+    font: 1.5rem 'Fira Sans', sans-serif;
+    color: #FFB997;
+    margin: 10%;
+    display: flex;
+    flex-direction: column;
+    background-color: #843B62;
+
+  }
+
+  legend {
+    background-color: #FFB997;;
+    color: #0B032D;
+    padding: 4px 8px;
+}
+
+.submit-customizations {
+  background-color: #F67E7D;
+  height: 100px;
+  width: 100px;
+  border-radius: 10%;
+  color: #0B032D;
+}
+
 
 
 

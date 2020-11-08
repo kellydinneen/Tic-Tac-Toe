@@ -7,7 +7,7 @@
   </head>
   <body>
     <main>
-      <section class='player-sidebar'>
+      <section class='player-sidebar' hidden>
         <h1 class="player-token">🍎</h1>
         <h2 id='player-one-wins' >Wins: 0</h2>
       </section>
@@ -40,11 +40,34 @@
         <button type='button' id='new-game' class='new-game' hidden>New Game</button>
         <button type='button' id='get-started' class='get-started'>Get Started</button>
       </section>
-      <section class='player-sidebar'>
+      <section class='player-sidebar' hidden>
         <h1 class="player-token">🍊</h1>
         <h2 id='player-two-wins'>Wins: 0</h2>
       </section>
-      <dialog>
+      <dialog id="game-customization-form" class="game-customization-form">
+        <fieldset class="game-type">
+          <legend>Choose Your Game</legend>
+          <input type='radio' name='Classic'></input>
+          <label for='Classic'>Classic Tic-Tac-Toe</label>
+          <input type='radio' name='Misere'></input>
+          <label for='Classic'>Misere (aka Toe-Tac-Tic)</label>
+          <input type='radio' name='Notakto'></input>
+          <label for='Classic'>Notakto (this game doesn't care who's who)</label>
+          <input type='radio' name="Morris"></input>
+          <label for='Classic'>Three Men's Morris 🕺🕺🕺🏻</label>
+        </fieldset>
+        <fieldset class="themes">
+          <legend>Choose Your Theme</legend>
+          <input type='radio' name='fruit-basket'></input>
+          <label for='Classic'>Fruit Basket</label>
+          <input type='radio' name='outerspace'></input>
+          <label for='Classic'>Wormhole</label>
+          <input type='radio' name='medieval-manuscript'></input>
+          <label for='Classic'>Book of Kells</label>
+          <input type='radio' name='custom'></input>
+          <label for='Classic'>Custom</label>
+        </fieldset>
+        <button type='button' class='submit-customizations'>Let's Go!</button>
       </dialog>
     </main>
   </body>

@@ -3,7 +3,10 @@ var newGameButton = document.querySelector(`#new-game`);
 var gameCommentary = document.querySelector(`#game-commentary`);
 var playerOneWinsTally = document.querySelector(`#player-one-wins`);
 var playerTwoWinsTally = document.querySelector(`#player-two-wins`);
+var getStartedButton = document.querySelector(`#get-started`);
+var gameCustomizationForm = document.querySelector(`#game-customization-form`);
 var squares = document.querySelectorAll(`.game-board-square`);
+
 
 var game = new Game();
 var playerOne = new Player(`🍎`, 'playerOne');
@@ -13,8 +16,12 @@ game.assignPlayers(playerOne, playerTwo);
 //Event Listeners
 newGameButton.addEventListener('click', startGame);
 gameBoard.addEventListener('click', makeMove);
+getStartedButton.addEventListener('click', customizePlay);
 
 //Event Handlers
+function customizePlay() {
+  gameCustomizationForm.showModal();
+}
 
 function startGame() {
   gameBoard.classList.add('reset-board');
