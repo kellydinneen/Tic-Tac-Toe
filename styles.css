@@ -23,11 +23,11 @@ main {
   align-items: center;
   height: 100%;
   width: 25%;
-  background-color: #006450;
+  /* background-color: #006450; */
   color: #FFFAEF;
 }
 .game-play-box {
-  background-color: #FFFAEF;
+  /* background-color: #FFFAEF; */
   color: #00C08A;
   display: flex;
   flex-direction: column;
@@ -43,12 +43,36 @@ main {
   align-items: center;
   height: 500px;
   width: 500px;
-  background-color: #006450;
+  /* background-color: #006450; */
 }
 
 .game-board-square {
  border: solid;
+ /* background-image: url('https://media.giphy.com/media/26ufaKwBoqwQItgic/source.gif') */
  border-color: #00C08A;
  height: 150px;
  width: 150px;
+ font-size: 1px;
 }
+
+/* space theme */
+.player-sidebar-space {
+  background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif');
+}
+
+.game-play-box-space {
+  background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif');
+  /* background-image: url('https://media.giphy.com/media/nQmpFuGsaalUr2CT9X/source.gif'); */
+};
+
+.gameboard {
+background-image: url('https://cdn.pixabay.com/photo/2020/02/28/10/11/texture-4887061_1280.jpg');
+};
+
+.game-board-square: hover {
+  background-color: #000000;
+  /* background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif') */
+};
+
+
+g
