@@ -31,7 +31,7 @@ main {
   color: #00C08A;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   height: 100%;
   width: 50%
@@ -43,6 +43,7 @@ main {
   align-items: center;
   height: 450px;
   width: 450px;
+  border-radius: 4%;
   background-color: #006450;
 }
 
@@ -52,15 +53,37 @@ main {
  height: 29%;
  width: 29%;
  margin: 1%;
+ border-radius: 4%;
  font-size: 50px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 
 .playerOneColor:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
   background-color: #EF3E3C;
 }
 
 .playerTwoColor:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
   background-color: #FF9334;
+}
+
+.get-started {
+  background: #00C08A;
+  border-radius: 50% 50% 50% 50%;
+  height: 250px;
+  width: 400px;
+  animation-name: blinkingbackground infinite;
+  animation-duration: 2s;
+}
+@keyframes fadeInOut{
+  0%		{ background-color: #006450;}
+  40%		{ background-color: #00C08A;}
+  90%	{ background-color: #006450;}
 }
 
 .new-game {
@@ -69,15 +92,44 @@ main {
   height: 100px;
   width: 150px;
   font-family: "JannonWeb","Times","Times New Roman",serif;
+  border: 2px solid #65b37a;
+	color: #ffffff;
   font-size: 30px;
-  transition: all 2s;
+}
+
+.new-game:hover {
   transition-timing: ease-in-out;
+  transition: all 0.4s;
+  filter: brightness(125%);
 }
 
-.spin {
-   transform: rotate(360deg);
+.new-game:disabled {
+  background-color: grey;
 }
 
+
+.spin-button {
+  transition-timing-function: ease-in;
+  transition-duration: 2s;
+  transform: rotate(720deg);
+}
+
+.spin-board {
+  transition-timing-function: linear;
+  transition-duration: 1s;
+  transform: rotate(360deg);
+}
+
+.reset-board {
+		animation-name: fadeInOut;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+	}
+	@keyframes fadeInOut{
+		0%		{ background-color: #006450;}
+		40%		{ background-color: #00C08A;}
+		90%	{ background-color: #006450;}
+	}
 
 
 
@@ -118,13 +170,18 @@ background-image: url('https://cdn.pixabay.com/photo/2020/02/28/10/11/texture-48
 .player-sidebar-medieval {
   /* background-image: url('https://media.giphy.com/media/H4Pxd80TD17KolOfL1/source.gif');
   background-position: center; */
-  /* background-color: #E9D7B4; */
+  background-color: #E9D7B4;
 }
+
+.game-board-square-medieval {
+  border-color: #194679;
+};
+
 
 .game-play-box-medieval {
   /* medieval skeleton */
-  /* background-image: url('https://media.giphy.com/media/xT0xelf5NTuwuKNb0Y/source.gif'); */
+  background-image: url('https://media.giphy.com/media/xT0xelf5NTuwuKNb0Y/source.gif');
+  background-size: 100%;
   /* beige background */
-  /* background-color: #E9D7B4;
-  background-size: 100%; */
+  /* background-color: #E9D7B4;*/
 };
