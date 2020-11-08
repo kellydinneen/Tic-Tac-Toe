@@ -23,11 +23,11 @@ main {
   align-items: center;
   height: 100%;
   width: 25%;
-  /* background-color: #006450; */
-  color: #FFFAEF;
+  background-color: #FFFAEF;
+  color: #006450;
 }
 .game-play-box {
-  /* background-color: #FFFAEF; */
+  background-color: #FFFAEF;
   color: #00C08A;
   display: flex;
   flex-direction: column;
@@ -41,38 +41,71 @@ main {
   flex-wrap: wrap-reverse;
   justify-content: center;
   align-items: center;
-  height: 500px;
-  width: 500px;
-  /* background-color: #006450; */
+  height: 450px;
+  width: 450px;
+  background-color: #006450;
 }
 
 .game-board-square {
  border: solid;
- /* background-image: url('https://media.giphy.com/media/26ufaKwBoqwQItgic/source.gif') */
  border-color: #00C08A;
- height: 150px;
- width: 150px;
- font-size: 1px;
+ height: 29%;
+ width: 29%;
+ margin: 1%;
+ font-size: 50px;
+}
+
+.new-game {
+  background: #00C08A;
+  border-radius: 2% 50%;
+  height: 100px;
+  width: 150px;
+  font-family: "JannonWeb","Times","Times New Roman",serif;
+  font-size: 30px;
+  transition: all 2s;
+  transition-timing: ease-in-out;
+}
+
+.new-game:hover {
+   transform: rotate(360deg);
 }
 
 /* space theme */
 .player-sidebar-space {
-  background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif');
+  /* space */
+  /* background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif'); */
 }
 
 .game-play-box-space {
-  background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif');
-  /* background-image: url('https://media.giphy.com/media/nQmpFuGsaalUr2CT9X/source.gif'); */
+  /* space */
+  /* background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif'); */
+/* asteroid */
+/* background-image: url('https://media.giphy.com/media/nQmpFuGsaalUr2CT9X/source.gif'); */
 };
 
 .gameboard {
 background-image: url('https://cdn.pixabay.com/photo/2020/02/28/10/11/texture-4887061_1280.jpg');
 };
 
+/* can't get background image in these squares, or hover */
 .game-board-square: hover {
-  background-color: #000000;
+  /* background-color: #000000; */
   /* background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif') */
 };
 
 
-g
+/* medieval styles */
+
+.player-sidebar-medieval {
+  /* background-image: url('https://media.giphy.com/media/H4Pxd80TD17KolOfL1/source.gif');
+  background-position: center; */
+  /* background-color: #E9D7B4; */
+}
+
+.game-play-box-medieval {
+  /* medieval skeleton */
+  /* background-image: url('https://media.giphy.com/media/xT0xelf5NTuwuKNb0Y/source.gif'); */
+  /* beige background */
+  /* background-color: #E9D7B4;
+  background-size: 100%; */
+};
