@@ -13,7 +13,9 @@ main {
   display: flex;
   height: 100%;
   width: 100%;
-  font-family: fantasy;
+  font-family: "JannonWeb","Times","Times New Roman",serif;
+  letter-spacing: 0.025em;
+  font-size: 20px;
 }
 .player-sidebar {
   display: flex;
@@ -21,11 +23,12 @@ main {
   align-items: center;
   height: 100%;
   width: 25%;
-  background-color: #B78049;
-  color: #ffffff;
+  background-color: #006450;
+  color: #FFFAEF;
 }
 .game-play-box {
-  background-color: #F7EBCF;
+  background-color: #FFFAEF;
+  color: #00C08A;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -38,14 +41,14 @@ main {
   flex-wrap: wrap-reverse;
   justify-content: center;
   align-items: center;
-  height: 300px;
-  width: 300px;
-  background-color: #2D4693;
+  height: 500px;
+  width: 500px;
+  background-color: #006450;
 }
 
 .game-board-square {
  border: solid;
- border-color: #ffffff;
- height: 95px;
- width: 95px;
+ border-color: #00C08A;
+ height: 150px;
+ width: 150px;
 }
