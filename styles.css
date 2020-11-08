@@ -53,6 +53,9 @@ main {
  width: 29%;
  margin: 1%;
  font-size: 50px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 
 .playerOneColor:hover {
