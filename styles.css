@@ -23,12 +23,10 @@ main {
   align-items: center;
   height: 100%;
   width: 25%;
-  background-color: #FFFAEF;
   color: #006450;
 }
 .game-play-box {
-  background-color: #FFFAEF;
-  color: #00C08A;
+  color: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,18 +70,45 @@ main {
   background-color: #FF9334;
 }
 
+.welcome {
+  color: #84174e;
+  text-align: center;
+  text-shadow: 0 0 3px #af5686;
+  font-size: 3rem;
+  padding: 8%;
+  border-bottom: double 20px #ff9334;
+}
+
+.welcome-instructions {
+  color: #194679;
+  font-size: 1.5rem;
+}
+
 .get-started {
-  background: #00C08A;
+  /* background: #ffb997; */
   border-radius: 50% 50% 50% 50%;
   height: 250px;
   width: 400px;
-  animation-name: blinkingbackground infinite;
-  animation-duration: 2s;
+  font: 2.5rem 'Fira Sans', sans-serif;
+  font-weight: bolder;
+  font-style: oblique;
+  color: #ff9334;
+  border: 0px;
 }
-@keyframes fadeInOut{
-  0%		{ background-color: #006450;}
-  40%		{ background-color: #00C08A;}
-  90%	{ background-color: #006450;}
+
+@keyframes glowing {
+  0% {
+    background-image: linear-gradient(#d30472,#af5686);
+    box-shadow: 0 0 10px #ffb997;
+  }
+  100% {
+    background-image: linear-gradient(#af5686,#d30472);
+    box-shadow: 0 0 20px #ff9334;
+  }
+}
+
+.get-started {
+animation: glowing 1s infinite;
 }
 
 .new-game {
@@ -131,15 +156,64 @@ main {
 		90%	{ background-color: #006450;}
 	}
 
+  .game-customization-form {
+    background-color: #0B032D;
+    width: 600px;
+  }
+
+  fieldset {
+    font: 1.5rem 'Fira Sans', sans-serif;
+    color: #FFB997;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10%;
+    background-color: #843B62;
+    width: 450px;
+
+  }
+
+  .input-box {
+    display: flex;
+    justify-content: flex-start;
+    margin: 5%;
+  }
+
+  label {
+    font-size: 1rem;
+    margin-left: 5%;
+  }
+
+  legend {
+    background-color: #FFB997;;
+    color: #0B032D;
+    padding: 4px 8px;
+}
+
+.submit-customizations {
+  background-color: #F67E7D;
+  height: 100px;
+  width: 100px;
+  border-radius: 10%;
+  color: #0B032D;
+  align-self:
+}
+
+
+/* WELCOME */
+.welcome-peach {
+  background-image: linear-gradient(#f67e7d, #d84747);
+}
+
+/* FRUIT BASKET */
+.fruit-basket-beige {
+  background-color: #FFFAEF;
+}
 
 
 
 
-
-
-
-
-/* space theme */
+/* WORMHOLE */
 
 .player-sidebar-space {
   /* space */
