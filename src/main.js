@@ -42,6 +42,7 @@ function createGame() {
   game.assignPlayers(playerOne, playerTwo);
   game.playerOne.saveWinsToStorage();
   game.playerTwo.saveWinsToStorage();
+  game.saveCurrentGameToStorage();
 };
 
 function openGameBoard() {
