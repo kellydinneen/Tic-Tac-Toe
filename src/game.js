@@ -26,6 +26,7 @@ updateGameBoard(event, board, squares) {
       board[`${squares[i]}`] = this.turn.token;
     }
    }
+   this.updateLocallyStoredGame();
  };
 
   toggleTurn() {
@@ -102,7 +103,7 @@ updateGameBoard(event, board, squares) {
     var stringifiedGame = JSON.stringify(this);
     var storedGame = localStorage.setItem(`currentGame`, stringifiedGame);
   }
-  
+
   updateLocallyStoredGame() {
       localStorage.removeItem(`currentGame`);
       this.saveGameToStorage();
