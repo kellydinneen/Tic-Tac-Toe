@@ -7,12 +7,13 @@
   </head>
   <body>
     <main>
-      <section class='player-sidebar' hidden>
-        <h1 class="player-token">🍎</h1>
-        <h2 id='player-one-wins' >Wins: 0</h2>
-      </section>
-      <section class='game-play-box'>
-        <h1 id='game-commentary' class='game-commentary'>Welcome to tic-tac-toe! First to three-in-a-row wins. Otherwise, be prepared feed the cat 😽</h1>
+      <section class='player-sidebar welcome-peach'>
+        <h1 class="player-token" hidden>🍎</h1>
+        <h2 id='player-one-wins' hidden>Wins: 0</h2>
+      </section class="show-or-hide">
+      <section class='game-play-box welcome-peach'>
+        <h1 id="welcome" class='welcome'>Welcome to Tic Tacs & Nic Nacs!<h1>
+        <h1 id="welcome-instructions" class='welcome-instructions'>Click on the button below to choose your game.</h1>
         <h1 id='game-commentary' class='game-commentary'></h1>
         <div class="hide-box" hidden>
           <h1 id='game-commentary' class='game-commentary'></h1>
@@ -40,32 +41,48 @@
         <button type='button' id='new-game' class='new-game' hidden>New Game</button>
         <button type='button' id='get-started' class='get-started'>Get Started</button>
       </section>
-      <section class='player-sidebar' hidden>
-        <h1 class="player-token">🍊</h1>
-        <h2 id='player-two-wins'>Wins: 0</h2>
+      <section class='player-sidebar welcome-peach'>
+        <h1 class="player-token" hidden>🍊</h1>
+        <h2 id='player-two-wins' hidden>Wins: 0</h2>
       </section>
       <dialog id="game-customization-form" class="game-customization-form">
         <fieldset class="game-type">
           <legend>Choose Your Game</legend>
-          <input type='radio' name='Classic'></input>
-          <label for='Classic'>Classic Tic-Tac-Toe</label>
-          <input type='radio' name='Misere'></input>
-          <label for='Classic'>Misere (aka Toe-Tac-Tic)</label>
-          <input type='radio' name='Notakto'></input>
-          <label for='Classic'>Notakto (this game doesn't care who's who)</label>
-          <input type='radio' name="Morris"></input>
-          <label for='Classic'>Three Men's Morris 🕺🕺🕺🏻</label>
+          <div class="input-box">
+            <input type='radio' name='game' id="classic" value="classic"></input>
+            <label for='classic'>Classic Tic-Tac-Toe</label>
+          </div>
+          <div class="input-box">
+            <input type='radio' name='game' id="misere" value="misere"></input>
+            <label for='misere'>Misere (aka Toe-Tac-Tic)</label>
+          </div>
+          <div class="input-box">
+            <input type='radio' name='game' id="notakto" value="notakto"></input>
+            <label for='notakto'>Notakto (this game doesn't care who's who)</label>
+          </div>
+          <div class="input-box">
+            <input type='radio' name="game" id="morris" value="morris"></input>
+            <label for='morris'>Three Men's Morris 🕺🕺🕺🏻</label>
+          </div>
         </fieldset>
         <fieldset class="themes">
           <legend>Choose Your Theme</legend>
-          <input type='radio' name='fruit-basket'></input>
-          <label for='Classic'>Fruit Basket</label>
-          <input type='radio' name='outerspace'></input>
-          <label for='Classic'>Wormhole</label>
-          <input type='radio' name='medieval-manuscript'></input>
-          <label for='Classic'>Book of Kells</label>
-          <input type='radio' name='custom'></input>
-          <label for='Classic'>Custom</label>
+          <div class="input-box">
+            <input type='radio' name='fruit-basket'></input>
+            <label for='Classic'>Fruit Basket</label>
+          </div>
+          <div class="input-box">
+            <input type='radio' name='outerspace'></input>
+            <label for='Classic'>Wormhole</label>
+          </div>
+          <div class="input-box">
+            <input type='radio' name='medieval-manuscript'></input>
+            <label for='Classic'>Book of Kells</label>
+          </div>
+          <div class="input-box">
+            <input type='radio' name='custom'></input>
+            <label for='Classic'>Custom</label>
+          </div>
         </fieldset>
         <button type='button' class='submit-customizations'>Let's Go!</button>
       </dialog>
