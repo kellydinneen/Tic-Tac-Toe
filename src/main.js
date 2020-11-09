@@ -75,6 +75,7 @@ function checkGameOutcome(board, squares) {
   game.checkForWinner(board);
   if (game.winner != undefined) {
     game.saveWin();
+    game.winner.updateLocallyStoredPlayer();
     announceWinner(game.winner.token);
   } else if (game.checkForCatsGame(board, squares)) {
     announceWinner("The CAT");

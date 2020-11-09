@@ -98,4 +98,14 @@ updateGameBoard(event, board, squares) {
     this.gameOver = false;
   };
 
+  saveCurrentGameToStorage() {
+    var stringifiedGame = JSON.stringify(this);
+    var storedGame = localStorage.setItem(`currentGame`, stringifiedGame);
+  }
+  
+  updateLocallyStoredGame() {
+      localStorage.removeItem(`currentGame`);
+      this.saveGameToStorage();
+  }
+
 };
