@@ -1,9 +1,11 @@
 class Game {
   constructor() {
+    this.rules = 'classic';
     this.playerOne = {};
     this.playerTwo = {};
     this.turn = {};
     this.nextPlayer = {};
+    this.playerWithThreeInARow = 'none';
     this.winner = undefined;
     this.gameOver = false;
     this.gameBoard = {
@@ -46,6 +48,7 @@ updateGameBoard(event, board, squares) {
       [g.A1, g.B2, g.C3], [g.A3, g.B2, g.C1]
     ]
     this.checkAllWinningScenarios(winningScenarios);
+    this.assignWinner();
   };
 
   checkAllWinningScenarios(winningScenarios) {
@@ -59,13 +62,23 @@ updateGameBoard(event, board, squares) {
       var one = this.playerOne.token;
       var two = this.playerTwo.token;
       if (squareOne === one && squareTwo === one && squareThree === one) {
-        this.winner = this.playerOne;
+        this.playerWithThreeInARow = this.playerOne;
         this.gameOver = true;
       } else if (squareOne === two && squareTwo === two && squareThree === two) {
-        this.winner = this.playerTwo;
+        this.playerWithThreeInARow = this.playerTwo;
         this.gameOver = true;
       }
     };
+
+  assignWinner() {
+    if (this.rules === 'classic') {
+      this.winner = this.playerWithThreeInARow;
+      this.gameOver = true;
+    } else if (this.rules === 'misere' && this.playerWithThreeInARow != 'none') {
+      this.winner = this.playerWithThreeInARow === this.playerTwo? this.playerOne : this.playerTwo;
+      this.gameOver = true;
+    }
+  };
 
   checkForCatsGame(board, squares) {
     if (this.checkForGameOver(board, squares)) {
