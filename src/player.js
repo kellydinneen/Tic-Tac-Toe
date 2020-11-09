@@ -1,15 +1,19 @@
 class Player {
-  constructor(token, name) {
-    //this.id = id;
+  constructor(token, id) {
+    this.id = id;
     this.token = token;
-    this.name = name;
     this.wins = [];
 
   }
-  saveWinsToStorage() {
-
+  savePlayerToStorage() {
+    var stringifiedWins = JSON.stringify(this);
+    var storedWins = localStorage.setItem(`${this.id}`, stringifiedPlayer);
   }
-  retrieveWinsFromStorage() {
-
+  deletePlayerFromStorage() {
+    localStorage.removeItem(`${this.id}`);
   }
-}
+  updateLocallyStoredPlayer() {
+      this.deletePlayerFromStorage();
+      this.savePlayerToStorage();
+  }
+};
