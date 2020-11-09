@@ -59,6 +59,7 @@ function startGame() {
   gameBoard.classList.add('reset-board');
   gameBoard.classList.add('spin-board');
   newGameButton.classList.toggle('spin-button');
+  debugger
   game.resetBoard();
   gameCommentary.innerText = '';
   var board = game.gameBoard;
@@ -69,7 +70,6 @@ function startGame() {
 
 
 function makeMove() {
-  newGameButton.hidden = false;
   var board = game.gameBoard;
   var squares = Object.keys(board);
   gameBoard.classList.remove('reset-board');
@@ -114,7 +114,7 @@ function toggleSquareHighlightColor() {
 function checkGameOutcome(board, squares) {
   game.checkForWinner(board);
   if (game.winner != undefined) {
-    // game.saveWin();
+    game.saveWin();
     // game.winner.updateLocallyStoredWins();
     announceWinner(game.winner.token);
   } else if (game.checkForCatsGame(board, squares)) {
@@ -126,6 +126,7 @@ function checkGameOutcome(board, squares) {
 
 function announceWinner(winner) {
   gameCommentary.innerText = (`Game Over! ${winner} has it.`);
+  console.log(game.playerOne.wins.length);
   playerOneWinsTally.innerText = `Wins: ${game.playerOne.wins.length}`;
   playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`
 
