@@ -3,7 +3,7 @@ var newGameButton = document.querySelector(`#new-game`);
 var gameCommentary = document.querySelector(`#game-commentary`);
 var playerOneWinsTally = document.querySelector(`#player-one-wins`);
 var playerTwoWinsTally = document.querySelector(`#player-two-wins`);
-var getStartedButton = document.querySelector(`#get-started`);
+var customizePlayButton = document.querySelector(`#customize-play`);
 var gameCustomizationForm = document.querySelector(`#game-customization-form`);
 var submitCustomizationsButton = document.querySelector('.submit-customizations');
 var squares = document.querySelectorAll(`.game-board-square`);
@@ -18,53 +18,48 @@ var game = {};
 //Event Listeners
 newGameButton.addEventListener('click', startGame);
 gameBoard.addEventListener('click', makeMove);
-getStartedButton.addEventListener('click', showCustomizationOptions);
-submitCustomizationsButton.addEventListener('click', startPlay);
+customizePlayButton.addEventListener('click', showCustomizationOptions);
+submitCustomizationsButton.addEventListener('click', customizePlay);
+window.addEventListener('load', startPlay);
 
 //Event Handlers
-function showCustomizationOptions() {
-  gameCustomizationForm.showModal();
-};
-
 function startPlay () {
-  gameCustomizationForm.close();
-  getStartedButton.hidden = true;
-  welcomeMessage.hidden = true;
-  welcomeInstructions.hidden = true;
-  createGame();
-  openGameBoard();
-};
-
-function createGame() {
-  game = new Game();
-  var playerOne = new Player(`🍎`, 'playerOne');
-  var playerTwo = new Player(`🍊`, 'playerTwo');
-  game.assignPlayers(playerOne, playerTwo);
-  game.playerOne.saveWinsToStorage();
-  game.playerTwo.saveWinsToStorage();
-  game.saveCurrentGameToStorage();
-};
-
-function openGameBoard() {
-  gameBox.hidden = false;
-  playerOneHeading.hidden = false;
-  playerTwoHeading.hidden = false;
-  playerOneWinsTally.hidden = false;
-  playerTwoWinsTally.hidden = false;
-  setTheme();
+  createGame('x', 'o');
   var board = game.gameBoard;
   var squares = Object.keys(board);
   displayUpdatedBoard(board, squares);
 };
 
-function setTheme() {
-
+function createGame(tokenOne, tokenTwo) {
+  game = new Game();
+  var playerOne = new Player(tokenOne, 'playerOne');
+  var playerTwo = new Player(tokenTwo, 'playerTwo');
+  game.assignPlayers(playerOne, playerTwo);
+  game.playerOne.saveWinsToStorage();
+  game.playerTwo.saveWinsToStorage();
+  game.saveCurrentGameToStorage();
 };
+function showCustomizationOptions() {
+  gameCustomizationForm.showModal();
+};
+
+function customizePlay () {
+  gameCustomizationForm.close();
+  // setGame();
+  // setTheme();
+};
+
+
+//
+// function setTheme() {
+//
+// };
 
 function startGame() {
   gameBoard.classList.add('reset-board');
   gameBoard.classList.add('spin-board');
   newGameButton.classList.toggle('spin-button');
+  debugger
   game.resetBoard();
   gameCommentary.innerText = '';
   var board = game.gameBoard;
@@ -75,7 +70,6 @@ function startGame() {
 
 
 function makeMove() {
-  newGameButton.hidden = false;
   var board = game.gameBoard;
   var squares = Object.keys(board);
   gameBoard.classList.remove('reset-board');
@@ -108,11 +102,11 @@ function displayUpdatedBoard(board, squares) {
 function toggleSquareHighlightColor() {
   for (var i = 0; i < squares.length; i++) {
     if (squares[i].innerText === "" && game.gameOver === false) {
-      squares[i].classList.add(`${game.turn.name}Color`);
-      squares[i].classList.remove(`${game.nextPlayer.name}Color`);
+      squares[i].classList.add(`${game.turn.id}DefaultColor`);
+      squares[i].classList.remove(`${game.nextPlayer.id}DefaultColor`);
     } else {
-      squares[i].classList.remove('playerOneColor');
-      squares[i].classList.remove('playerTwoColor');
+      squares[i].classList.remove('playerOneDefaultColor');
+      squares[i].classList.remove('playerTwoDefaultColor');
     }
   }
 };
@@ -121,7 +115,7 @@ function checkGameOutcome(board, squares) {
   game.checkForWinner(board);
   if (game.winner != undefined) {
     game.saveWin();
-    game.winner.updateLocallyStoredWins();
+    // game.winner.updateLocallyStoredWins();
     announceWinner(game.winner.token);
   } else if (game.checkForCatsGame(board, squares)) {
     announceWinner("The CAT");
@@ -132,6 +126,7 @@ function checkGameOutcome(board, squares) {
 
 function announceWinner(winner) {
   gameCommentary.innerText = (`Game Over! ${winner} has it.`);
+  console.log(game.playerOne.wins.length);
   playerOneWinsTally.innerText = `Wins: ${game.playerOne.wins.length}`;
   playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`
 

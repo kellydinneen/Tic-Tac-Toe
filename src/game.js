@@ -106,7 +106,7 @@ updateGameBoard(event, board, squares) {
 
   updateLocallyStoredGame() {
       localStorage.removeItem(`currentGame`);
-      this.saveGameToStorage();
+      this.saveCurrentGameToStorage();
   }
 
 };
