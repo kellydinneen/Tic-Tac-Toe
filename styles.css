@@ -70,7 +70,7 @@ main {
   background-color: #FF9334;
 }
 
-.welcome {
+/* .welcome {
   color: #84174e;
   text-align: center;
   text-shadow: 0 0 3px #af5686;
@@ -82,9 +82,9 @@ main {
 .welcome-instructions {
   color: #194679;
   font-size: 1.5rem;
-}
+} */
 
-.get-started {
+/* .get-started {
   /* background: #ffb997; */
   border-radius: 50% 50% 50% 50%;
   height: 250px;
@@ -94,7 +94,7 @@ main {
   font-style: oblique;
   color: #ff9334;
   border: 0px;
-}
+} */
 
 @keyframes glowing {
   0% {
@@ -200,13 +200,13 @@ animation: glowing 1s infinite;
 }
 
 
-/* WELCOME */
-.welcome-peach {
+/* DEFAULT */
+.default-background {
   background-image: linear-gradient(#f67e7d, #d84747);
 }
 
 /* FRUIT BASKET */
-.fruit-basket-beige {
+.fruit-basket-background {
   background-color: #FFFAEF;
 }
 
