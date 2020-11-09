@@ -24,8 +24,7 @@ submitCustomizationsButton.addEventListener('click', startPlay);
 //Event Handlers
 function showCustomizationOptions() {
   gameCustomizationForm.showModal();
-}
-
+};
 
 function startPlay () {
   gameCustomizationForm.close();
@@ -34,14 +33,16 @@ function startPlay () {
   welcomeInstructions.hidden = true;
   createGame();
   openGameBoard();
-}
+};
 
 function createGame() {
   game = new Game();
   var playerOne = new Player(`🍎`, 'playerOne');
   var playerTwo = new Player(`🍊`, 'playerTwo');
   game.assignPlayers(playerOne, playerTwo);
-}
+  game.playerOne.saveWinsToStorage();
+  game.playerTwo.saveWinsToStorage();
+};
 
 function openGameBoard() {
   gameBox.hidden = false;
@@ -53,11 +54,11 @@ function openGameBoard() {
   var board = game.gameBoard;
   var squares = Object.keys(board);
   displayUpdatedBoard(board, squares);
-}
+};
 
 function setTheme() {
 
-}
+};
 
 function startGame() {
   gameBoard.classList.add('reset-board');
@@ -119,7 +120,7 @@ function checkGameOutcome(board, squares) {
   game.checkForWinner(board);
   if (game.winner != undefined) {
     game.saveWin();
-    game.winner.updateLocallyStoredPlayer();
+    game.winner.updateLocallyStoredWins();
     announceWinner(game.winner.token);
   } else if (game.checkForCatsGame(board, squares)) {
     announceWinner("The CAT");
