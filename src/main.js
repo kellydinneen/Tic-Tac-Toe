@@ -102,11 +102,11 @@ function displayUpdatedBoard(board, squares) {
 function toggleSquareHighlightColor() {
   for (var i = 0; i < squares.length; i++) {
     if (squares[i].innerText === "" && game.gameOver === false) {
-      squares[i].classList.add(`${game.turn.name}Color`);
-      squares[i].classList.remove(`${game.nextPlayer.name}Color`);
+      squares[i].classList.add(`${game.turn.id}DefaultColor`);
+      squares[i].classList.remove(`${game.nextPlayer.id}DefaultColor`);
     } else {
-      squares[i].classList.remove('playerOneColor');
-      squares[i].classList.remove('playerTwoColor');
+      squares[i].classList.remove('playerOneDefaultColor');
+      squares[i].classList.remove('playerTwoDefaultColor');
     }
   }
 };

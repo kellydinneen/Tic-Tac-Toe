@@ -42,12 +42,10 @@ main {
   height: 450px;
   width: 450px;
   border-radius: 4%;
-  background-color: #006450;
 }
 
 .game-board-square {
  border: solid;
- border-color: #00C08A;
  height: 29%;
  width: 29%;
  margin: 1%;
@@ -58,16 +56,16 @@ main {
  justify-content: center;
 }
 
-.playerOneColor:hover {
+.playerOneDefaultColor:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
-  background-color: #EF3E3C;
+  background-color: #843b62;
 }
 
-.playerTwoColor:hover {
+.playerTwoDefaultColor:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
-  background-color: #FF9334;
+  background-color: #ffb997;
 }
 
 /* .welcome {
@@ -84,17 +82,7 @@ main {
   font-size: 1.5rem;
 } */
 
-/* .get-started {
-  /* background: #ffb997; */
-  border-radius: 50% 50% 50% 50%;
-  height: 250px;
-  width: 400px;
-  font: 2.5rem 'Fira Sans', sans-serif;
-  font-weight: bolder;
-  font-style: oblique;
-  color: #ff9334;
-  border: 0px;
-} */
+
 
 @keyframes glowing {
   0% {
@@ -107,18 +95,32 @@ main {
   }
 }
 
+.customize-play {
+  background: #ffb997;
+  height: 35px;
+  width: 100%;
+  font: 1rem 'Fira Sans', sans-serif;
+  font-weight: bolder;
+  font-style: oblique;
+  color: #ff9334;
+  border: 0px;
+  position: absolute;
+  bottom: 0px;
+  animation: glowing 1s infinite;
+}
+
 .get-started {
 animation: glowing 1s infinite;
 }
 
 .new-game {
-  background: #00C08A;
   border-radius: 2% 50%;
   height: 100px;
   width: 150px;
+  margin: 5%;
   font-family: "JannonWeb","Times","Times New Roman",serif;
-  border: 2px solid #65b37a;
-	color: #ffffff;
+  border: 2px solid #ffdbbc;
+	color: #ffdbbc;
   font-size: 30px;
 }
 
@@ -151,9 +153,9 @@ animation: glowing 1s infinite;
     animation-iteration-count: 1;
 	}
 	@keyframes fadeInOut{
-		0%		{ background-color: #006450;}
-		40%		{ background-color: #00C08A;}
-		90%	{ background-color: #006450;}
+		0%		{ background-color: #ff9334;}
+		40%		{ background-color: #F67E7D;}
+		90%	{ background-color: #ff9334;}
 	}
 
   .game-customization-form {
@@ -200,14 +202,42 @@ animation: glowing 1s infinite;
 }
 
 
-/* DEFAULT */
+/*~~~~~~~~~~~~~~~~~~~~DEFAULT THEME ~~~~~~~~~~~~~~~~~~~~~~*/
 .default-background {
   background-image: linear-gradient(#f67e7d, #d84747);
 }
 
+.default-gameboard {
+  background: transparent;
+}
+
+.default-square {
+  border-color: #ff9334;
+  shadow: 0 0 3px #af5686;
+}
+
+.default-button {
+  background-color: #100447;
+}
+
+.default-text {
+  color: #100447;
+}
+
+
+
+
 /* FRUIT BASKET */
 .fruit-basket-background {
   background-color: #FFFAEF;
+}
+
+.fruit-basket-board {
+    background-color: #006450;
+}
+
+.fruit-basket-button {
+  background: #00C08A;
 }
 
 
