@@ -4,7 +4,7 @@ var gameCommentary = document.querySelector(`#game-commentary`);
 var playerOneWinsTally = document.querySelector(`#player-one-wins`);
 var playerTwoWinsTally = document.querySelector(`#player-two-wins`);
 var customizePlayButton = document.querySelector(`#customize-play`);
-var gameCustomizationForm = document.querySelector(`#game-customization-form`);
+var gameCustomizationForm = document.querySelector(`#game-customization-window`);
 var submitCustomizationsButton = document.querySelector('.submit-customizations');
 var squares = document.querySelectorAll(`.game-board-square`);
 var gameBox = document.querySelector('.hide-box');
@@ -13,6 +13,8 @@ var welcomeInstructions = document.querySelector('.welcome-instructions');
 var gameBox = document.querySelector('.gameboard-hide-box');
 var playerOneHeading = document.querySelector('#player-one-token');
 var playerTwoHeading = document.querySelector('#player-two-token');
+var gameRulesOptions = document.getElementsByName("game");
+var gameThemeOptions = document.getElementsByName("theme");
 var game = {};
 
 //Event Listeners
@@ -25,7 +27,6 @@ window.addEventListener('load', startPlay);
 //Event Handlers
 function startPlay () {
   createGame('x', 'o');
-  game.rules = 'misere';
   var board = game.gameBoard;
   var squares = Object.keys(board);
   displayUpdatedBoard(board, squares);
@@ -46,8 +47,17 @@ function showCustomizationOptions() {
 
 function customizePlay () {
   gameCustomizationForm.close();
-  // setGame();
+  setGameRules();
   // setTheme();
+};
+
+function setGameRules() {
+  for(var i = 0; i < gameRulesOptions.length; i++) {
+    if (gameRulesOptions[i].checked == true) {
+      game.rules = gameRulesOptions[i].value;
+    }
+  console.log(game.rules);
+  }
 };
 
 
