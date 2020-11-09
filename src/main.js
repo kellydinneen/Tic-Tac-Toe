@@ -5,22 +5,58 @@ var playerOneWinsTally = document.querySelector(`#player-one-wins`);
 var playerTwoWinsTally = document.querySelector(`#player-two-wins`);
 var getStartedButton = document.querySelector(`#get-started`);
 var gameCustomizationForm = document.querySelector(`#game-customization-form`);
+var submitCustomizationsButton = document.querySelector('.submit-customizations');
 var squares = document.querySelectorAll(`.game-board-square`);
-
-
-var game = new Game();
-var playerOne = new Player(`🍎`, 'playerOne');
-var playerTwo = new Player(`🍊`, 'playerTwo');
-game.assignPlayers(playerOne, playerTwo);
+var gameBox = document.querySelector('.hide-box');
+var welcomeMessage = document.querySelector('.welcome');
+var welcomeInstructions = document.querySelector('.welcome-instructions');
+var gameBox = document.querySelector('.gameboard-hide-box');
+var playerOneHeading = document.querySelector('#player-one-token');
+var playerTwoHeading = document.querySelector('#player-two-token');
+var game = {};
 
 //Event Listeners
 newGameButton.addEventListener('click', startGame);
 gameBoard.addEventListener('click', makeMove);
-getStartedButton.addEventListener('click', customizePlay);
+getStartedButton.addEventListener('click', showCustomizationOptions);
+submitCustomizationsButton.addEventListener('click', startPlay);
 
 //Event Handlers
-function customizePlay() {
+function showCustomizationOptions() {
   gameCustomizationForm.showModal();
+}
+
+
+function startPlay () {
+  gameCustomizationForm.close();
+  getStartedButton.hidden = true;
+  welcomeMessage.hidden = true;
+  welcomeInstructions.hidden = true;
+  createGame();
+  openGameBoard();
+}
+
+function createGame() {
+  game = new Game();
+  var playerOne = new Player(`🍎`, 'playerOne');
+  var playerTwo = new Player(`🍊`, 'playerTwo');
+  game.assignPlayers(playerOne, playerTwo);
+}
+
+function openGameBoard() {
+  gameBox.hidden = false;
+  playerOneHeading.hidden = false;
+  playerTwoHeading.hidden = false;
+  playerOneWinsTally.hidden = false;
+  playerTwoWinsTally.hidden = false;
+  setTheme();
+  var board = game.gameBoard;
+  var squares = Object.keys(board);
+  displayUpdatedBoard(board, squares);
+}
+
+function setTheme() {
+
 }
 
 function startGame() {
@@ -37,6 +73,7 @@ function startGame() {
 
 
 function makeMove() {
+  newGameButton.hidden = false;
   var board = game.gameBoard;
   var squares = Object.keys(board);
   gameBoard.classList.remove('reset-board');
