@@ -25,6 +25,7 @@ window.addEventListener('load', startPlay);
 //Event Handlers
 function startPlay () {
   createGame('x', 'o');
+  game.rules = 'misere';
   var board = game.gameBoard;
   var squares = Object.keys(board);
   displayUpdatedBoard(board, squares);
@@ -59,7 +60,6 @@ function startGame() {
   gameBoard.classList.add('reset-board');
   gameBoard.classList.add('spin-board');
   newGameButton.classList.toggle('spin-button');
-  debugger
   game.resetBoard();
   gameCommentary.innerText = '';
   var board = game.gameBoard;
