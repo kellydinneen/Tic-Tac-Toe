@@ -200,38 +200,38 @@ animation: glowing 1s infinite;
 
 /* ====================T H E M E S =========================*/
 
-/*~~~~~~~DEFAULT THEME ~~~~~~~~*/
-.default-background {
+/*~~~~~~~sherbet THEME ~~~~~~~~*/
+.sherbet-background {
   background-image: linear-gradient(#f67e7d, #d84747);
 }
 
-.default-gameboard {
+.sherbet-gameboard {
   background: transparent;
 }
 
-.default-square {
+.sherbet-square {
   border-color: #ff9334;
   shadow: 0 0 3px #af5686;
   color: #ffdbbc;
 }
 
-.playerOneDefaultColor:hover {
+.sherbet-playerOne-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #d30472;
 }
 
-.playerTwoDefaultColor:hover {
+.sherbet-playerTwo-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #af5686;
 }
 
-.default-button {
+.sherbet-button {
   background-color: #100447;
 }
 
-.default-text {
+.sherbet-text {
   color: #ffdbbc;
   -webkit-text-stroke-color: #ff9334;
 }
@@ -241,27 +241,28 @@ animation: glowing 1s infinite;
 
 /*~~~~~~~~FRUIT BASKET THEME~~~~~~~~~~*/
 .fruit-background {
-  background-color: #FFFAEF;
+  background-image: linear-gradient(#00C08A, #a4f9a9);
 }
 
 .fruit-gameboard {
-    background-color: #006450;
+
 }
 
 .fruit-square {
-
+  border-color: #ffd65e;
+  shadow: 0 0 3px #af5686;
 }
 
 .fruit-playerOne-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
-  background-color: #843b62;
+  background-color: #e53737;
 }
 
 .fruit-playerTwo-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
-  background-color: #ffb997;
+  background-color: #FF8B2C;
 }
 
 .fruit-button {

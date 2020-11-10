@@ -43,7 +43,9 @@ function createGame(tokenOne, tokenTwo) {
   game.playerTwo.saveWinsToStorage();
   game.saveCurrentGameToStorage();
 };
+
 function showCustomizationOptions() {
+  toggleThemeStyling();
   gameCustomizationForm.showModal();
 };
 
@@ -136,13 +138,15 @@ function displayUpdatedBoard(board, squares) {
 };
 
 function toggleSquareHighlightColor() {
+  console.log(`${game.theme}-playerOne-turn`);
   for (var i = 0; i < squareElements.length; i++) {
     if (squareElements[i].innerText === "" && game.gameOver === false) {
-      squareElements[i].classList.add(`${game.turn.id}DefaultColor`);
-      squareElements[i].classList.remove(`${game.nextPlayer.id}DefaultColor`);
+      squareElements[i].classList.add(`${game.theme}-playerOne-turn`);
+      squareElements[i].classList.remove(`${game.theme}-playerOne-turn`);
+      squareElements[i].classList;
     } else {
-      squareElements[i].classList.remove('playerOneDefaultColor');
-      squareElements[i].classList.remove('playerTwoDefaultColor');
+      squareElements[i].classList.remove(`${game.theme}-playerOne-turn`);
+      squareElements[i].classList.remove(`${game.theme}-playerTwo-turn`);
     }
   }
 };
