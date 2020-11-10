@@ -91,9 +91,6 @@ main {
   animation: glowing 1s infinite;
 }
 
-.customize-play:hover {
-  cursor: pointer;
-}
 
 .get-started {
 animation: glowing 1s infinite;
@@ -110,10 +107,11 @@ animation: glowing 1s infinite;
   font-weight: 10;
 }
 
-.new-game:hover {
+.btn:hover {
   transition-timing: ease-in-out;
   transition: all 0.4s;
-  filter: brightness(125%);
+  filter: brightness(200%);
+  cursor: pointer;
 }
 
 .spin-button {
