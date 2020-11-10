@@ -30,12 +30,11 @@ main {
 }
 .game-play-box {
   font-size: 16px;
+  text-shadow: -0.5px 0.5px 0.5px #af5686,
+				  1px 1px 10px #af5686,
+				  1px -1px 0 #af5686,
+				  -1px -1px 0 #af5686;
   text-align: center;
-  -webkit-text-stroke-width: 1px;
-  text-shadow: -1px 1px 2px #23430C,
-				  1px 1px 2px #23430C,
-				  1px -1px 0 #23430C,
-				  -1px -1px 0 #23430C;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -204,16 +203,16 @@ animation: glowing 1s infinite;
 .slideout {
   position: fixed;
   /* transform: rotate(90deg); */
-  font: Futura 5px;
+  font-size: 10px;
   color: #ffdbbc;
   top: 300px;
   left: 0;
-  height: 250px;
-  width: 120px;
-  padding: 15px;
+  height: 150px;
+  width: 100px;
+  padding: 50px 0px 20px 10px;
   text-align: left;
   background: #100447;
-  border: 2px solid #ffdbbc;
+  border-right: 2px solid #ffdbbc;
   -webkit-transition-duration: 0.4s;
   -moz-transition-duration: 0.4s;
   -o-transition-duration: 0.4s;
@@ -290,6 +289,7 @@ animation: glowing 1s infinite;
 .sherbet-text {
   color: #ffdbbc;
   -webkit-text-stroke-color: #ff9334;
+  -webkit-text-stroke-width: 1px;
 }
 
 
@@ -364,7 +364,7 @@ animation: glowing 1s infinite;
 }
 
 .wormhole-button {
-  background: #00C08A;
+  background: #D7461B;
 }
 
 .wormhole-text {

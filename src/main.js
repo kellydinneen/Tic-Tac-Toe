@@ -94,11 +94,11 @@ function setInstructions(rules) {
     gameInstructions.innerHTML =
       "<h2>Don't worry - it's easy!</h2><p>Players take turns placing one piece on the board. The first player to line up three of their pieces in a row (horizontally, vertically, or diagonally) wins! If no spaces are left and neither player has three in a row, the game is a draw, otherwise known as a cat's game.<br><br>To place a piece on this board, just click an empty square. We'll let you know when someone has won (or if the game goes to the cat 😺... or the vegetable 🥦 or the borg 🤖 or the dragon 🐲)</p>";
   } else if (rules === 'misere') {
-    instructionsHeading.innerText = "What's this Misere game again?";
+    instructionsHeading.innerText = "What's this 'Misere' game again?";
     gameInstructions.innerHTML =
       "<h2>It's just like Tic-Tac-Toe, but backwards!</h2><p>Like in Tic-Tac-Toe, players take turns placing one piece on the board. But in this game, the first player to line up three of their pieces in a row (horizontally, vertically, or diagonally) LOSES! So you want to avoid putting your pieces in a row and try to corner your opponent into doing so. If no spaces are left and neither player has three in a row, the game is a a cat's game, just like in regular tic-tac-toe.<br><br>To place a piece on this board, just click an empty square. We'll let you know when someone has won (or if the game goes to the cat 😺... or the vegetable 🥦 or the borg 🤖 or the dragon 🐲)</p>";
   } else if (rules === 'notakto') {
-    instructionsHeading.innerText = "What's this Notakto game again?";
+    instructionsHeading.innerText = "What's this 'Notakto' game again?";
     gameInstructions.innerHTML =
       "<h2>It's like tic-tac-toe, but backwards AND the game doesn't care which pieces belong to which players!</h2><p>Like in Tic-Tac-Toe, players take turns placing one piece on the board, but in this game, the players' pieces look identical. The player who makes the move that completes a three-in-a-row of any three pieces LOSES! So you want to avoid being the one to place the last of three pieces, no matter who placed the other two. In Notakto, there is no cat 😿.</p>";
   }
