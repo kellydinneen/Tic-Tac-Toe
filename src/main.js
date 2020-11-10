@@ -6,7 +6,7 @@ var playerTwoWinsTally = document.querySelector(`#player-two-wins`);
 var customizePlayButton = document.querySelector(`#customize-play`);
 var gameCustomizationForm = document.querySelector(`#game-customization-window`);
 var submitCustomizationsButton = document.querySelector('.submit-customizations');
-var squares = document.querySelectorAll(`.game-board-square`);
+var squareElements = document.querySelectorAll(`.game-board-square`);
 var gameBox = document.querySelector('.hide-box');
 var welcomeMessage = document.querySelector('.welcome');
 var welcomeInstructions = document.querySelector('.welcome-instructions');
@@ -56,7 +56,6 @@ function setGameRules() {
     if (gameRulesOptions[i].checked == true) {
       game.rules = gameRulesOptions[i].value;
     }
-  console.log(game.rules);
   }
 };
 
@@ -88,7 +87,6 @@ function makeMove() {
     game.updateGameBoard(event, board, squares);
     checkGameOutcome(board, squares);
     displayUpdatedBoard(board, squares);
-
   }
 };
 
@@ -107,16 +105,17 @@ function displayUpdatedBoard(board, squares) {
     squareDisplay.innerText = board[`${squares[i]}`];
   }
   toggleSquareHighlightColor();
+
 };
 
 function toggleSquareHighlightColor() {
-  for (var i = 0; i < squares.length; i++) {
-    if (squares[i].innerText === "" && game.gameOver === false) {
-      squares[i].classList.add(`${game.turn.id}DefaultColor`);
-      squares[i].classList.remove(`${game.nextPlayer.id}DefaultColor`);
+  for (var i = 0; i < squareElements.length; i++) {
+    if (squareElements[i].innerText === "" && game.gameOver === false) {
+      squareElements[i].classList.add(`${game.turn.id}DefaultColor`);
+      squareElements[i].classList.remove(`${game.nextPlayer.id}DefaultColor`);
     } else {
-      squares[i].classList.remove('playerOneDefaultColor');
-      squares[i].classList.remove('playerTwoDefaultColor');
+      squareElements[i].classList.remove('playerOneDefaultColor');
+      squareElements[i].classList.remove('playerTwoDefaultColor');
     }
   }
 };
@@ -124,9 +123,9 @@ function toggleSquareHighlightColor() {
 function checkGameOutcome(board, squares) {
   game.checkForWinner(board);
   if (game.winner != undefined) {
-    game.saveWin();
     // game.winner.updateLocallyStoredWins();
     announceWinner(game.winner.token);
+    game.saveWin();
   } else if (game.checkForCatsGame(board, squares)) {
     announceWinner("The CAT");
   } else {
@@ -136,7 +135,6 @@ function checkGameOutcome(board, squares) {
 
 function announceWinner(winner) {
   gameCommentary.innerText = (`Game Over! ${winner} has it.`);
-  console.log(game.playerOne.wins.length);
   playerOneWinsTally.innerText = `Wins: ${game.playerOne.wins.length}`;
   playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`
 
