@@ -66,7 +66,7 @@ main {
 }
 
 .game-board-square:hover {
-  cursor: crosshair;
+  cursor: not-allowed;
 }
 
 
@@ -244,6 +244,7 @@ animation: glowing 1s infinite;
 }
 .slideout:hover {
   left: 250px;
+  cursor: help;
 }
 .slideout:hover .slideout_inner {
   left: 0;
@@ -271,12 +272,14 @@ animation: glowing 1s infinite;
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #d30472;
+  cursor: cell!important;
 }
 
 .sherbet-playerTwo-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #af5686;
+  cursor: cell!important;
 }
 
 .sherbet-button {
@@ -309,12 +312,14 @@ animation: glowing 1s infinite;
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #e53737;
+  cursor: cell!important;
 }
 
 .fruit-playerTwo-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #FF8B2C;
+  cursor: cell!important;
 }
 
 .fruit-button {
@@ -346,6 +351,7 @@ animation: glowing 1s infinite;
   transition: all 0.2s;
   background-image: url('https://i.imgur.com/pEnQyQT.gif');
   background-size: cover;
+  cursor: cell!important;
 }
 
 .wormhole-playerTwo-turn:hover {
@@ -353,6 +359,7 @@ animation: glowing 1s infinite;
   transition: all 0.2s;
   background-image: url('https://media.giphy.com/media/3ohhwEZqxzKbNUHzji/giphy.gif');
   background-size: cover;
+  cursor: cell!important;
 }
 
 .wormhole-button {

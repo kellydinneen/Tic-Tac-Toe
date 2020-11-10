@@ -68,7 +68,8 @@ function setGameRules() {
 function setGameTheme() {
   for(var i = 0; i < gameThemeOptions.length; i++) {
     if (gameThemeOptions[i].checked == true) {
-      game.theme = gameThemeOptions[i].value;
+      game.theme = game.themes[gameThemeOptions[i].value];
+      console.log(game.theme);
     }
   }
   game.setGameTokens();
