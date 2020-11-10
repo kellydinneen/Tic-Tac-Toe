@@ -197,6 +197,54 @@ animation: glowing 1s infinite;
   align-self:
 }
 
+#slideout {
+  position: fixed;
+  /* transform: rotate(90deg); */
+  font: Futura 5px;
+  color: #ffdbbc;
+  top: 300px;
+  left: 0;
+  height: 200px;
+  width: 100px;
+  padding: 10px;
+  text-align: left;
+  background: #100447;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-border-radius: 0 5px 5px 0;
+  -moz-border-radius: 0 5px 5px 0;
+  border-radius: 0% 50% 50% 0%;
+}
+
+#slideout_inner {
+  /* transform: rotate(-90deg); */
+  font-size: 8px;
+  font-style: normal;
+  position: fixed;
+  top: 0px;
+  left: -250px;
+  background: #100447;
+  width: 200px;
+  padding: 25px;
+  height: 100%;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  text-align: left;
+  -webkit-border-radius: 0 0 5px 0;
+  -moz-border-radius: 0 0 5px 0;
+  border-radius: 0 0 5px 0;
+}
+#slideout:hover {
+  left: 250px;
+}
+#slideout:hover #slideout_inner {
+  left: 0;
+}
+
 
 /* ====================T H E M E S =========================*/
 
@@ -281,7 +329,8 @@ animation: glowing 1s infinite;
 }
 
 .wormhole-square {
-
+  border-color: #9768EF;
+  shadow: 0 0 3px #af5686;
 }
 
 .wormhole-gameboard {
@@ -291,13 +340,15 @@ animation: glowing 1s infinite;
 .wormhole-playerOne-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
-  background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif');
+  background-image: url('https://i.imgur.com/pEnQyQT.gif');
+  background-size: cover;
 }
 
 .wormhole-playerTwo-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
-  background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif');
+  background-image: url('https://media.giphy.com/media/3ohhwEZqxzKbNUHzji/giphy.gif');
+  background-size: cover;
 }
 
 .wormhole-button {
@@ -305,7 +356,7 @@ animation: glowing 1s infinite;
 }
 
 .wormhole-text {
-
+  color: #D6EBEC;
 }
 
 
