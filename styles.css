@@ -56,33 +56,6 @@ main {
  justify-content: center;
 }
 
-.playerOneDefaultColor:hover {
-  transition-timing: ease-in-out;
-  transition: all 0.2s;
-  background-color: #843b62;
-}
-
-.playerTwoDefaultColor:hover {
-  transition-timing: ease-in-out;
-  transition: all 0.2s;
-  background-color: #ffb997;
-}
-
-/* .welcome {
-  color: #84174e;
-  text-align: center;
-  text-shadow: 0 0 3px #af5686;
-  font-size: 3rem;
-  padding: 8%;
-  border-bottom: double 20px #ff9334;
-}
-
-.welcome-instructions {
-  color: #194679;
-  font-size: 1.5rem;
-} */
-
-
 
 @keyframes glowing {
   0% {
@@ -202,7 +175,9 @@ animation: glowing 1s infinite;
 }
 
 
-/*~~~~~~~~~~~~~~~~~~~~DEFAULT THEME ~~~~~~~~~~~~~~~~~~~~~~*/
+/* ====================T H E M E S =========================*/
+
+/*~~~~~~~DEFAULT THEME ~~~~~~~~*/
 .default-background {
   background-image: linear-gradient(#f67e7d, #d84747);
 }
@@ -216,6 +191,18 @@ animation: glowing 1s infinite;
   shadow: 0 0 3px #af5686;
 }
 
+.playerOneDefaultColor:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-color: #843b62;
+}
+
+.playerTwoDefaultColor:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-color: #ffb997;
+}
+
 .default-button {
   background-color: #100447;
 }
@@ -227,7 +214,7 @@ animation: glowing 1s infinite;
 
 
 
-/* FRUIT BASKET */
+/*~~~~~~~~FRUIT BASKET THEME~~~~~~~~~~*/
 .fruit-basket-background {
   background-color: #FFFAEF;
 }
@@ -236,40 +223,67 @@ animation: glowing 1s infinite;
     background-color: #006450;
 }
 
+.fruit-basket-square {
+
+}
+
+.fruit-basket-playerOne-turn:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-color: #843b62;
+}
+
+.fruit-basket-playerTwo-turn:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-color: #ffb997;
+}
+
 .fruit-basket-button {
   background: #00C08A;
 }
 
+.fruit-basket-text {
 
-
-
-/* WORMHOLE */
-
-.player-sidebar-space {
-  /* space */
-  /* background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif'); */
 }
 
-.game-play-box-space {
-  /* space */
-  /* background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif'); */
-/* asteroid */
-/* background-image: url('https://media.giphy.com/media/nQmpFuGsaalUr2CT9X/source.gif'); */
-};
 
-.gameboard {
-background-image: url('https://cdn.pixabay.com/photo/2020/02/28/10/11/texture-4887061_1280.jpg');
-};
+/*~~~~~~~~ WORMHOLE THEME ~~~~~~~~~~*/
 
-/* can't get background image in these squares, or hover */
-.game-board-square:hover {
+.wormhole-background {
+  background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif');
+}
 
-  /* background-color: #000000; */
-  /* background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif') */
-};
+.wormhole-square {
+
+}
+
+.wormhole-board {
+
+}
+
+.wormhole-playerOne-turn:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif');
+}
+
+.wormhole-playerTwo-turn:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif');
+}
+
+.wormhole-button {
+  background: #00C08A;
+}
+
+.wormhole-text {
+  
+}
 
 
-/* medieval styles */
+/*~~~~~~~~~~~MEDIEVAL THEME~~~~~~~~~~~*/
 
 .player-sidebar-medieval {
   /* background-image: url('https://media.giphy.com/media/H4Pxd80TD17KolOfL1/source.gif');
