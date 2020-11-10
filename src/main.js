@@ -141,8 +141,8 @@ function toggleSquareHighlightColor() {
   console.log(`${game.theme}-playerOne-turn`);
   for (var i = 0; i < squareElements.length; i++) {
     if (squareElements[i].innerText === "" && game.gameOver === false) {
-      squareElements[i].classList.add(`${game.theme}-playerOne-turn`);
-      squareElements[i].classList.remove(`${game.theme}-playerOne-turn`);
+      squareElements[i].classList.add(`${game.theme}-${game.turn.id}-turn`);
+      squareElements[i].classList.remove(`${game.theme}-${game.nextPlayer.id}-turn`);
       squareElements[i].classList;
     } else {
       squareElements[i].classList.remove(`${game.theme}-playerOne-turn`);
