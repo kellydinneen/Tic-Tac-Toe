@@ -1,7 +1,12 @@
 class Game {
   constructor() {
     this.rules = 'classic';
-    //or misere or notakto
+    this.theme = 'sherbet';
+    this.themes = {
+      sherbet:['🆇','🅾', '◾️', '😹', 'Cat'],
+      fruit:['🍎','🍊', '🍍', '🥦', 'Vegetable'],
+      wormhole:['👽','👾','🌚', '🤖', 'Borg'],
+      medieval:['♞', '♘', '⚔', '🐲', 'Dragon']};
     this.playerOne = {};
     this.playerTwo = {};
     this.turn = {};
@@ -125,6 +130,19 @@ updateGameBoard(event, board, squares) {
   updateLocallyStoredGame() {
       localStorage.removeItem(`currentGame`);
       this.saveCurrentGameToStorage();
+  }
+
+  setGameTokens() {
+    var themeTokens = this.themes[`${this.theme}`];
+    this.playerOne.token = themeTokens[0];
+    this.playerTwo.token = themeTokens[1];
+    this.neutralToken = themeTokens[2];
+    this.catToken = themeTokens[3];
+    this.cat = themeTokens[4];
+    if (game.rules === 'notakto') {
+      game.playerTwo.token = game.neutralToken;
+      game.playerTwo.token = game.neutralToken;
+    }
   }
 
 };

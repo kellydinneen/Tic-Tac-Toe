@@ -1,3 +1,4 @@
+var page = document.querySelector('body');
 var gameBoard = document.querySelector('#gameboard');
 var newGameButton = document.querySelector(`#new-game`);
 var gameCommentary = document.querySelector(`#game-commentary`);
@@ -5,7 +6,6 @@ var customizePlayButton = document.querySelector(`#customize-play`);
 var gameCustomizationForm = document.querySelector(`#game-customization-window`);
 var submitCustomizationsButton = document.querySelector('.submit-customizations');
 var squareElements = document.querySelectorAll(`.game-board-square`);
-var gameBox = document.querySelector('.hide-box');
 var welcomeMessage = document.querySelector('.welcome');
 var welcomeInstructions = document.querySelector('.welcome-instructions');
 var gameBox = document.querySelector('.gameboard-hide-box');
@@ -13,6 +13,8 @@ var playerOneWinsTally = document.querySelector(`#player-one-wins`);
 var playerTwoWinsTally = document.querySelector(`#player-two-wins`);
 var playerOneHeading = document.querySelector('#player-one-token');
 var playerTwoHeading = document.querySelector('#player-two-token');
+var playerOneSidebar = document.querySelector("#player-one-sidebar");
+var playerTwoSidebar = document.querySelector("#player-two-sidebar");
 var gameRulesOptions = document.getElementsByName("game");
 var gameThemeOptions = document.getElementsByName("theme");
 var game = {};
@@ -48,7 +50,7 @@ function showCustomizationOptions() {
 function customizePlay () {
   gameCustomizationForm.close();
   setGameRules();
-  // setTheme();
+  setGameTheme();
 };
 
 function setGameRules() {
@@ -57,16 +59,35 @@ function setGameRules() {
       game.rules = gameRulesOptions[i].value;
     }
   }
-  if (game.rules === 'notakto') {
-    game.playerTwo.token = game.playerOne.token;
-  }
 };
 
 
-//
-// function setTheme() {
-//
-// };
+
+function setGameTheme() {
+  for(var i = 0; i < gameThemeOptions.length; i++) {
+    if (gameThemeOptions[i].checked == true) {
+      game.theme = gameThemeOptions[i].value;
+    }
+  }
+  game.setGameTokens();
+  playerOneHeading.innerText = game.playerOne.token;
+  playerTwoHeading.innerText = game.playerTwo.token;
+  gameCommentary.innerText = `First to three in a row wins. Otherwise, be prepared to feed the ${game.cat} ${game.catToken}`
+  toggleThemeStyling();
+};
+
+function toggleThemeStyling() {
+  page.classList.toggle(`${game.theme}-background`);
+  gameBoard.classList.toggle(`${game.theme}-board`);
+  gameCommentary.classList.toggle(`${game.theme}-text`);
+  playerOneSidebar.classList.toggle(`${game.theme}-text`);
+  playerTwoSidebar.classList.toggle(`${game.theme}-text`);
+  newGameButton.classList.toggle(`${game.theme}-button`);
+  for (var i = 0; i < squareElements.length; i++) {
+    squareElements[i].classList.toggle(`${game.theme}-square`);
+  }
+};
+
 
 function startGame() {
   gameBoard.classList.add('reset-board');
@@ -91,8 +112,8 @@ function makeMove() {
   gameBoard.classList.remove('spin-board');
   if (checkIfSquareIsAvailable(event)) {
     game.updateGameBoard(event, board, squares);
-    checkGameOutcome(board, squares);
     displayUpdatedBoard(board, squares);
+    checkGameOutcome(board, squares);
   }
 };
 
@@ -133,7 +154,10 @@ function checkGameOutcome(board, squares) {
     game.saveWin();
     announceWinner(game.winner.name);
   } else if (game.checkForCatsGame(board, squares)) {
-    announceWinner("The CAT");
+    announceWinner(`The ${game.cat}`);
+    for (var i = 0; i < squareElements.length; i++) {
+      squareElements[i].innerText = game.catToken;
+    }
   } else {
     game.toggleTurn();
   }

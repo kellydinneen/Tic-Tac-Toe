@@ -240,35 +240,35 @@ animation: glowing 1s infinite;
 
 
 /*~~~~~~~~FRUIT BASKET THEME~~~~~~~~~~*/
-.fruit-basket-background {
+.fruit-background {
   background-color: #FFFAEF;
 }
 
-.fruit-basket-board {
+.fruit-gameboard {
     background-color: #006450;
 }
 
-.fruit-basket-square {
+.fruit-square {
 
 }
 
-.fruit-basket-playerOne-turn:hover {
+.fruit-playerOne-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #843b62;
 }
 
-.fruit-basket-playerTwo-turn:hover {
+.fruit-playerTwo-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #ffb997;
 }
 
-.fruit-basket-button {
+.fruit-button {
   background: #00C08A;
 }
 
-.fruit-basket-text {
+.fruit-text {
 
 }
 
@@ -283,7 +283,7 @@ animation: glowing 1s infinite;
 
 }
 
-.wormhole-board {
+.wormhole-gameboard {
 
 }
 
