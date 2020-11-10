@@ -49,7 +49,7 @@ updateGameBoard(event, board, squares) {
       [g.A1, g.B2, g.C3], [g.A3, g.B2, g.C1]
     ]
     this.checkAllWinningScenarios(winningScenarios);
-    this.assignWinner();
+    this.assignWinnerDependingOnRules();
   };
 
   checkAllWinningScenarios(winningScenarios) {

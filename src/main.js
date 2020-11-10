@@ -34,8 +34,8 @@ function startPlay () {
 
 function createGame(tokenOne, tokenTwo) {
   game = new Game();
-  var playerOne = new Player(tokenOne, 'playerOne');
-  var playerTwo = new Player(tokenTwo, 'playerTwo');
+  var playerOne = new Player('playerOne', tokenOne, 'Player 1');
+  var playerTwo = new Player('playerTwo', tokenTwo, 'Player 2');
   game.assignPlayers(playerOne, playerTwo);
   game.playerOne.saveWinsToStorage();
   game.playerTwo.saveWinsToStorage();
@@ -57,6 +57,9 @@ function setGameRules() {
       game.rules = gameRulesOptions[i].value;
     }
   }
+  if (game.rules === 'notakto') {
+    game.playerTwo.token = game.playerOne.token;
+  }
 };
 
 
@@ -74,7 +77,6 @@ function startGame() {
   var board = game.gameBoard;
   var squares = Object.keys(board);
   displayUpdatedBoard(board, squares);
-  //toggleNewGameButton();
 };
 
 
@@ -124,7 +126,7 @@ function checkGameOutcome(board, squares) {
   game.checkForWinner(board);
   if (game.winner != undefined) {
     // game.winner.updateLocallyStoredWins();
-    announceWinner(game.winner.token);
+    announceWinner(game.winner.name);
     game.saveWin();
   } else if (game.checkForCatsGame(board, squares)) {
     announceWinner("The CAT");
@@ -138,9 +140,4 @@ function announceWinner(winner) {
   playerOneWinsTally.innerText = `Wins: ${game.playerOne.wins.length}`;
   playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`
 
-  //toggleNewGameButton();
 };
-
-// function toggleNewGameButton() {
-//   newGameButton.classList.toggle('hidden');
-// }
