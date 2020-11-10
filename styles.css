@@ -91,6 +91,11 @@ main {
   animation: glowing 1s infinite;
 }
 
+.winner {
+  animation-name: fadeFontColorInOut;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+}
 
 .get-started {
 animation: glowing 1s infinite;
@@ -135,6 +140,18 @@ animation: glowing 1s infinite;
 		0%		{ background-color: #ff9334;}
 		40%		{ background-color: #F67E7D;}
 		90%	{ background-color: #ff9334;}
+	}
+
+  @keyframes fadeFontColorInOut{
+		0%		{ color: #ffdbbc;}
+		40%		{
+            color: #ff9334;
+            font-size: 50px;
+            text-shadow: -1px 1px 2px #ffdbbc,
+                        1px 1px 2px #ffdbbc,
+                        1px -1px 0 #ffdbbc,
+                        -1px -1px 0 #ffdbbc;}
+		100%	{ color: #ffdbbc;}
 	}
 
   .game-customization-form {

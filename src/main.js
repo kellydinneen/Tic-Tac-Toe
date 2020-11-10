@@ -1,8 +1,6 @@
 var gameBoard = document.querySelector('#gameboard');
 var newGameButton = document.querySelector(`#new-game`);
 var gameCommentary = document.querySelector(`#game-commentary`);
-var playerOneWinsTally = document.querySelector(`#player-one-wins`);
-var playerTwoWinsTally = document.querySelector(`#player-two-wins`);
 var customizePlayButton = document.querySelector(`#customize-play`);
 var gameCustomizationForm = document.querySelector(`#game-customization-window`);
 var submitCustomizationsButton = document.querySelector('.submit-customizations');
@@ -11,6 +9,8 @@ var gameBox = document.querySelector('.hide-box');
 var welcomeMessage = document.querySelector('.welcome');
 var welcomeInstructions = document.querySelector('.welcome-instructions');
 var gameBox = document.querySelector('.gameboard-hide-box');
+var playerOneWinsTally = document.querySelector(`#player-one-wins`);
+var playerTwoWinsTally = document.querySelector(`#player-two-wins`);
 var playerOneHeading = document.querySelector('#player-one-token');
 var playerTwoHeading = document.querySelector('#player-two-token');
 var gameRulesOptions = document.getElementsByName("game");
@@ -72,6 +72,10 @@ function startGame() {
   gameBoard.classList.add('reset-board');
   gameBoard.classList.add('spin-board');
   newGameButton.classList.toggle('spin-button');
+  playerOneWinsTally.classList.remove('winner')
+  playerOneHeading.classList.remove('winner')
+  playerTwoWinsTally.classList.remove('winner')
+  playerTwoHeading.classList.remove('winner')
   game.resetBoard();
   gameCommentary.innerText = '';
   var board = game.gameBoard;
@@ -126,8 +130,8 @@ function checkGameOutcome(board, squares) {
   game.checkForWinner(board);
   if (game.winner != undefined) {
     // game.winner.updateLocallyStoredWins();
-    announceWinner(game.winner.name);
     game.saveWin();
+    announceWinner(game.winner.name);
   } else if (game.checkForCatsGame(board, squares)) {
     announceWinner("The CAT");
   } else {
@@ -138,6 +142,12 @@ function checkGameOutcome(board, squares) {
 function announceWinner(winner) {
   gameCommentary.innerText = (`Game Over! ${winner} has it.`);
   playerOneWinsTally.innerText = `Wins: ${game.playerOne.wins.length}`;
-  playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`
-
+  playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`;
+  if (game.winner === game.playerOne) {
+    playerOneWinsTally.classList.add('winner')
+    playerOneHeading.classList.add('winner')
+  } else if (game.winner === game.playerTwo) {
+    playerTwoWinsTally.classList.add('winner')
+    playerTwoHeading.classList.add('winner')
+  }
 };
