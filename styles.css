@@ -65,6 +65,10 @@ main {
  justify-content: center;
 }
 
+.game-board-square:hover {
+  cursor: crosshair;
+}
+
 
 @keyframes glowing {
   0% {
@@ -197,7 +201,7 @@ animation: glowing 1s infinite;
   align-self:
 }
 
-#slideout {
+.slideout {
   position: fixed;
   /* transform: rotate(90deg); */
   font: Futura 5px;
@@ -218,7 +222,7 @@ animation: glowing 1s infinite;
   border-radius: 0% 50% 50% 0%;
 }
 
-#slideout_inner {
+.slideout_inner {
   /* transform: rotate(-90deg); */
   font-size: 8px;
   font-style: normal;
@@ -238,10 +242,10 @@ animation: glowing 1s infinite;
   -moz-border-radius: 0 0 5px 0;
   border-radius: 0 0 5px 0;
 }
-#slideout:hover {
+.slideout:hover {
   left: 250px;
 }
-#slideout:hover #slideout_inner {
+.slideout:hover .slideout_inner {
   left: 0;
 }
 
