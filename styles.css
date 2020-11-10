@@ -208,15 +208,16 @@ animation: glowing 1s infinite;
   color: #ffdbbc;
   top: 300px;
   left: 0;
-  height: 200px;
-  width: 100px;
-  padding: 10px;
+  height: 250px;
+  width: 120px;
+  padding: 15px;
   text-align: left;
   background: #100447;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  border: 2px solid #ffdbbc;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
   -webkit-border-radius: 0 5px 5px 0;
   -moz-border-radius: 0 5px 5px 0;
   border-radius: 0% 50% 50% 0%;
@@ -224,26 +225,26 @@ animation: glowing 1s infinite;
 
 .slideout_inner {
   /* transform: rotate(-90deg); */
-  font-size: 8px;
+  font-size: 16px;
   font-style: normal;
   position: fixed;
   top: 0px;
-  left: -250px;
+  left: -350px;
   background: #100447;
-  width: 200px;
+  width: 300px;
   padding: 25px;
   height: 100%;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
   text-align: left;
   -webkit-border-radius: 0 0 5px 0;
   -moz-border-radius: 0 0 5px 0;
   border-radius: 0 0 5px 0;
 }
 .slideout:hover {
-  left: 250px;
+  left: 350px;
   cursor: help;
 }
 .slideout:hover .slideout_inner {
