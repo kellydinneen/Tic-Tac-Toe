@@ -30,12 +30,11 @@ main {
 }
 .game-play-box {
   font-size: 16px;
+  text-shadow: -0.5px 0.5px 0.5px #af5686,
+				  1px 1px 10px #af5686,
+				  1px -1px 0 #af5686,
+				  -1px -1px 0 #af5686;
   text-align: center;
-  -webkit-text-stroke-width: 1px;
-  text-shadow: -1px 1px 2px #23430C,
-				  1px 1px 2px #23430C,
-				  1px -1px 0 #23430C,
-				  -1px -1px 0 #23430C;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,6 +62,10 @@ main {
  display: flex;
  align-items: center;
  justify-content: center;
+}
+
+.game-board-square:hover {
+  cursor: not-allowed;
 }
 
 
@@ -197,6 +200,56 @@ animation: glowing 1s infinite;
   align-self:
 }
 
+.slideout {
+  position: fixed;
+  /* transform: rotate(90deg); */
+  font-size: 10px;
+  color: #ffdbbc;
+  top: 300px;
+  left: 0;
+  height: 150px;
+  width: 100px;
+  padding: 50px 0px 20px 10px;
+  text-align: left;
+  background: #100447;
+  border-right: 2px solid #ffdbbc;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  -webkit-border-radius: 0 5px 5px 0;
+  -moz-border-radius: 0 5px 5px 0;
+  border-radius: 0% 50% 50% 0%;
+}
+
+.slideout_inner {
+  /* transform: rotate(-90deg); */
+  font-size: 16px;
+  font-style: normal;
+  position: fixed;
+  top: 0px;
+  left: -350px;
+  background: #100447;
+  width: 300px;
+  padding: 25px;
+  height: 100%;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  text-align: left;
+  -webkit-border-radius: 0 0 5px 0;
+  -moz-border-radius: 0 0 5px 0;
+  border-radius: 0 0 5px 0;
+}
+.slideout:hover {
+  left: 350px;
+  cursor: help;
+}
+.slideout:hover .slideout_inner {
+  left: 0;
+}
+
 
 /* ====================T H E M E S =========================*/
 
@@ -219,12 +272,14 @@ animation: glowing 1s infinite;
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #d30472;
+  cursor: cell!important;
 }
 
 .sherbet-playerTwo-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #af5686;
+  cursor: cell!important;
 }
 
 .sherbet-button {
@@ -234,6 +289,7 @@ animation: glowing 1s infinite;
 .sherbet-text {
   color: #ffdbbc;
   -webkit-text-stroke-color: #ff9334;
+  -webkit-text-stroke-width: 1px;
 }
 
 
@@ -257,12 +313,14 @@ animation: glowing 1s infinite;
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #e53737;
+  cursor: cell!important;
 }
 
 .fruit-playerTwo-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #FF8B2C;
+  cursor: cell!important;
 }
 
 .fruit-button {
@@ -281,7 +339,8 @@ animation: glowing 1s infinite;
 }
 
 .wormhole-square {
-
+  border-color: #9768EF;
+  shadow: 0 0 3px #af5686;
 }
 
 .wormhole-gameboard {
@@ -291,21 +350,25 @@ animation: glowing 1s infinite;
 .wormhole-playerOne-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
-  background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif');
+  background-image: url('https://i.imgur.com/pEnQyQT.gif');
+  background-size: cover;
+  cursor: cell!important;
 }
 
 .wormhole-playerTwo-turn:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
-  background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif');
+  background-image: url('https://media.giphy.com/media/3ohhwEZqxzKbNUHzji/giphy.gif');
+  background-size: cover;
+  cursor: cell!important;
 }
 
 .wormhole-button {
-  background: #00C08A;
+  background: #D7461B;
 }
 
 .wormhole-text {
-
+  color: #D6EBEC;
 }
 
 
