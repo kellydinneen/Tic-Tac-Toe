@@ -79,7 +79,7 @@ main {
 
 .customize-play {
   background: #ffb997;
-  height: 35px;
+  height: 45px;
   width: 100%;
   font: 1rem 'Fira Sans', sans-serif;
   font-weight: bolder;
@@ -89,6 +89,10 @@ main {
   position: absolute;
   bottom: 0px;
   animation: glowing 1s infinite;
+}
+
+.customize-play:hover {
+  cursor: pointer;
 }
 
 .get-started {
