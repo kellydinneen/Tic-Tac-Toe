@@ -1,6 +1,7 @@
 class Game {
   constructor() {
     this.rules = 'classic';
+    //or misere or notakto
     this.playerOne = {};
     this.playerTwo = {};
     this.turn = {};
@@ -70,12 +71,15 @@ updateGameBoard(event, board, squares) {
       }
     };
 
-  assignWinner() {
+  assignWinnerDependingOnRules() {
     if (this.rules === 'classic' && this.playerWithThreeInARow != undefined) {
       this.winner = this.playerWithThreeInARow;
       this.gameOver = true;
     } else if (this.rules === 'misere' && this.playerWithThreeInARow != undefined) {
       this.winner = this.playerWithThreeInARow === this.playerTwo? this.playerOne : this.playerTwo;
+      this.gameOver = true;
+    } else if (this.rules === 'notakto' && this.playerWithThreeInARow != undefined) {
+      this.winner = this.nextPlayer;
       this.gameOver = true;
     }
   };
