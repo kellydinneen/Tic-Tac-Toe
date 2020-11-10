@@ -1,4 +1,8 @@
 
+* {
+  font-family: Futura, Trebuchet MS, Arial, sans-serif;
+}
+
 html {
 height: 100%;
 width: 100%;
@@ -13,7 +17,6 @@ main {
   display: flex;
   height: 100%;
   width: 100%;
-  font-family: "JannonWeb","Times","Times New Roman",serif;
   letter-spacing: 0.025em;
   font-size: 20px;
 }
@@ -26,7 +29,13 @@ main {
   color: #006450;
 }
 .game-play-box {
-  color: #FFFFFF;
+  font-size: 16px;
+  text-align: center;
+  -webkit-text-stroke-width: 1px;
+  text-shadow: -1px 1px 2px #23430C,
+				  1px 1px 2px #23430C,
+				  1px -1px 0 #23430C,
+				  -1px -1px 0 #23430C;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,8 +48,8 @@ main {
   flex-wrap: wrap-reverse;
   justify-content: center;
   align-items: center;
-  height: 450px;
-  width: 450px;
+  height: 375px;
+  width: 375px;
   border-radius: 4%;
 }
 
@@ -88,13 +97,13 @@ animation: glowing 1s infinite;
 
 .new-game {
   border-radius: 2% 50%;
-  height: 100px;
-  width: 150px;
+  height: 90px;
+  width: 120px;
   margin: 5%;
-  font-family: "JannonWeb","Times","Times New Roman",serif;
   border: 2px solid #ffdbbc;
 	color: #ffdbbc;
-  font-size: 30px;
+  font-size: 25px;
+  font-weight: 10;
 }
 
 .new-game:hover {
@@ -102,11 +111,6 @@ animation: glowing 1s infinite;
   transition: all 0.4s;
   filter: brightness(125%);
 }
-
-.new-game:disabled {
-  background-color: grey;
-}
-
 
 .spin-button {
   transition-timing-function: ease-in;
@@ -189,18 +193,19 @@ animation: glowing 1s infinite;
 .default-square {
   border-color: #ff9334;
   shadow: 0 0 3px #af5686;
+  color: #ffdbbc;
 }
 
 .playerOneDefaultColor:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
-  background-color: #843b62;
+  background-color: #d30472;
 }
 
 .playerTwoDefaultColor:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
-  background-color: #ffb997;
+  background-color: #af5686;
 }
 
 .default-button {
@@ -208,7 +213,8 @@ animation: glowing 1s infinite;
 }
 
 .default-text {
-  color: #100447;
+  color: #ffdbbc;
+  -webkit-text-stroke-color: #ff9334;
 }
 
 
@@ -279,7 +285,7 @@ animation: glowing 1s infinite;
 }
 
 .wormhole-text {
-  
+
 }
 
 

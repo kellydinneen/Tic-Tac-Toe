@@ -26,7 +26,7 @@ window.addEventListener('load', startPlay);
 
 //Event Handlers
 function startPlay () {
-  createGame('x', 'o');
+  createGame('🆇', '🅾');
   var board = game.gameBoard;
   var squares = Object.keys(board);
   displayUpdatedBoard(board, squares);
