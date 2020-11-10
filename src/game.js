@@ -1,11 +1,12 @@
 class Game {
   constructor() {
     this.rules = 'classic';
+    //or misere or notakto
     this.playerOne = {};
     this.playerTwo = {};
     this.turn = {};
     this.nextPlayer = {};
-    this.playerWithThreeInARow = 'none';
+    this.playerWithThreeInARow = undefined;
     this.winner = undefined;
     this.gameOver = false;
     this.gameBoard = {
@@ -28,7 +29,7 @@ updateGameBoard(event, board, squares) {
       board[`${squares[i]}`] = this.turn.token;
     }
    }
-   this.updateLocallyStoredGame();
+   this.saveCurrentGameToStorage();
  };
 
   toggleTurn() {
@@ -48,7 +49,7 @@ updateGameBoard(event, board, squares) {
       [g.A1, g.B2, g.C3], [g.A3, g.B2, g.C1]
     ]
     this.checkAllWinningScenarios(winningScenarios);
-    this.assignWinner();
+    this.assignWinnerDependingOnRules();
   };
 
   checkAllWinningScenarios(winningScenarios) {
@@ -70,12 +71,15 @@ updateGameBoard(event, board, squares) {
       }
     };
 
-  assignWinner() {
-    if (this.rules === 'classic') {
+  assignWinnerDependingOnRules() {
+    if (this.rules === 'classic' && this.playerWithThreeInARow != undefined) {
       this.winner = this.playerWithThreeInARow;
       this.gameOver = true;
-    } else if (this.rules === 'misere' && this.playerWithThreeInARow != 'none') {
+    } else if (this.rules === 'misere' && this.playerWithThreeInARow != undefined) {
       this.winner = this.playerWithThreeInARow === this.playerTwo? this.playerOne : this.playerTwo;
+      this.gameOver = true;
+    } else if (this.rules === 'notakto' && this.playerWithThreeInARow != undefined) {
+      this.winner = this.nextPlayer;
       this.gameOver = true;
     }
   };
@@ -99,7 +103,7 @@ updateGameBoard(event, board, squares) {
   };
 
   saveWin() {
-    this.winner.wins.push(this);
+    this.winner.wins.push(this.gameboard);
   };
 
   resetBoard() {
@@ -109,6 +113,7 @@ updateGameBoard(event, board, squares) {
       C1: '', C2: '', C3: ''
     };
     this.winner = undefined;
+    this.playerWithThreeInARow = undefined;
     this.gameOver = false;
   };
 
