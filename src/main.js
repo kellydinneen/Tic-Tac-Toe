@@ -1,18 +1,20 @@
+var page = document.querySelector('body');
 var gameBoard = document.querySelector('#gameboard');
 var newGameButton = document.querySelector(`#new-game`);
 var gameCommentary = document.querySelector(`#game-commentary`);
-var playerOneWinsTally = document.querySelector(`#player-one-wins`);
-var playerTwoWinsTally = document.querySelector(`#player-two-wins`);
 var customizePlayButton = document.querySelector(`#customize-play`);
 var gameCustomizationForm = document.querySelector(`#game-customization-window`);
 var submitCustomizationsButton = document.querySelector('.submit-customizations');
 var squareElements = document.querySelectorAll(`.game-board-square`);
-var gameBox = document.querySelector('.hide-box');
 var welcomeMessage = document.querySelector('.welcome');
 var welcomeInstructions = document.querySelector('.welcome-instructions');
 var gameBox = document.querySelector('.gameboard-hide-box');
+var playerOneWinsTally = document.querySelector(`#player-one-wins`);
+var playerTwoWinsTally = document.querySelector(`#player-two-wins`);
 var playerOneHeading = document.querySelector('#player-one-token');
 var playerTwoHeading = document.querySelector('#player-two-token');
+var playerOneSidebar = document.querySelector("#player-one-sidebar");
+var playerTwoSidebar = document.querySelector("#player-two-sidebar");
 var gameRulesOptions = document.getElementsByName("game");
 var gameThemeOptions = document.getElementsByName("theme");
 var game = {};
@@ -26,7 +28,7 @@ window.addEventListener('load', startPlay);
 
 //Event Handlers
 function startPlay () {
-  createGame('x', 'o');
+  createGame('🆇', '🅾');
   var board = game.gameBoard;
   var squares = Object.keys(board);
   displayUpdatedBoard(board, squares);
@@ -41,14 +43,16 @@ function createGame(tokenOne, tokenTwo) {
   game.playerTwo.saveWinsToStorage();
   game.saveCurrentGameToStorage();
 };
+
 function showCustomizationOptions() {
+  toggleThemeStyling();
   gameCustomizationForm.showModal();
 };
 
 function customizePlay () {
   gameCustomizationForm.close();
   setGameRules();
-  // setTheme();
+  setGameTheme();
 };
 
 function setGameRules() {
@@ -57,21 +61,44 @@ function setGameRules() {
       game.rules = gameRulesOptions[i].value;
     }
   }
-  if (game.rules === 'notakto') {
-    game.playerTwo.token = game.playerOne.token;
-  }
 };
 
 
-//
-// function setTheme() {
-//
-// };
+
+function setGameTheme() {
+  for(var i = 0; i < gameThemeOptions.length; i++) {
+    if (gameThemeOptions[i].checked == true) {
+      game.theme = gameThemeOptions[i].value;
+    }
+  }
+  game.setGameTokens();
+  playerOneHeading.innerText = game.playerOne.token;
+  playerTwoHeading.innerText = game.playerTwo.token;
+  gameCommentary.innerText = `First to three in a row wins. Otherwise, be prepared to feed the ${game.cat} ${game.catToken}`
+  toggleThemeStyling();
+};
+
+function toggleThemeStyling() {
+  page.classList.toggle(`${game.theme}-background`);
+  gameBoard.classList.toggle(`${game.theme}-board`);
+  gameCommentary.classList.toggle(`${game.theme}-text`);
+  playerOneSidebar.classList.toggle(`${game.theme}-text`);
+  playerTwoSidebar.classList.toggle(`${game.theme}-text`);
+  newGameButton.classList.toggle(`${game.theme}-button`);
+  for (var i = 0; i < squareElements.length; i++) {
+    squareElements[i].classList.toggle(`${game.theme}-square`);
+  }
+};
+
 
 function startGame() {
   gameBoard.classList.add('reset-board');
   gameBoard.classList.add('spin-board');
   newGameButton.classList.toggle('spin-button');
+  playerOneWinsTally.classList.remove('winner')
+  playerOneHeading.classList.remove('winner')
+  playerTwoWinsTally.classList.remove('winner')
+  playerTwoHeading.classList.remove('winner')
   game.resetBoard();
   gameCommentary.innerText = '';
   var board = game.gameBoard;
@@ -87,8 +114,8 @@ function makeMove() {
   gameBoard.classList.remove('spin-board');
   if (checkIfSquareIsAvailable(event)) {
     game.updateGameBoard(event, board, squares);
-    checkGameOutcome(board, squares);
     displayUpdatedBoard(board, squares);
+    checkGameOutcome(board, squares);
   }
 };
 
@@ -111,13 +138,15 @@ function displayUpdatedBoard(board, squares) {
 };
 
 function toggleSquareHighlightColor() {
+  console.log(`${game.theme}-playerOne-turn`);
   for (var i = 0; i < squareElements.length; i++) {
     if (squareElements[i].innerText === "" && game.gameOver === false) {
-      squareElements[i].classList.add(`${game.turn.id}DefaultColor`);
-      squareElements[i].classList.remove(`${game.nextPlayer.id}DefaultColor`);
+      squareElements[i].classList.add(`${game.theme}-${game.turn.id}-turn`);
+      squareElements[i].classList.remove(`${game.theme}-${game.nextPlayer.id}-turn`);
+      squareElements[i].classList;
     } else {
-      squareElements[i].classList.remove('playerOneDefaultColor');
-      squareElements[i].classList.remove('playerTwoDefaultColor');
+      squareElements[i].classList.remove(`${game.theme}-playerOne-turn`);
+      squareElements[i].classList.remove(`${game.theme}-playerTwo-turn`);
     }
   }
 };
@@ -126,10 +155,13 @@ function checkGameOutcome(board, squares) {
   game.checkForWinner(board);
   if (game.winner != undefined) {
     // game.winner.updateLocallyStoredWins();
-    announceWinner(game.winner.name);
     game.saveWin();
+    announceWinner(game.winner.name);
   } else if (game.checkForCatsGame(board, squares)) {
-    announceWinner("The CAT");
+    announceWinner(`The ${game.cat}`);
+    for (var i = 0; i < squareElements.length; i++) {
+      squareElements[i].innerText = game.catToken;
+    }
   } else {
     game.toggleTurn();
   }
@@ -138,6 +170,12 @@ function checkGameOutcome(board, squares) {
 function announceWinner(winner) {
   gameCommentary.innerText = (`Game Over! ${winner} has it.`);
   playerOneWinsTally.innerText = `Wins: ${game.playerOne.wins.length}`;
-  playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`
-
+  playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`;
+  if (game.winner === game.playerOne) {
+    playerOneWinsTally.classList.add('winner')
+    playerOneHeading.classList.add('winner')
+  } else if (game.winner === game.playerTwo) {
+    playerTwoWinsTally.classList.add('winner')
+    playerTwoHeading.classList.add('winner')
+  }
 };

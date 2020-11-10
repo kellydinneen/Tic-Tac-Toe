@@ -1,4 +1,8 @@
 
+* {
+  font-family: Futura, Trebuchet MS, Arial, sans-serif;
+}
+
 html {
 height: 100%;
 width: 100%;
@@ -13,7 +17,6 @@ main {
   display: flex;
   height: 100%;
   width: 100%;
-  font-family: "JannonWeb","Times","Times New Roman",serif;
   letter-spacing: 0.025em;
   font-size: 20px;
 }
@@ -26,7 +29,13 @@ main {
   color: #006450;
 }
 .game-play-box {
-  color: #FFFFFF;
+  font-size: 16px;
+  text-align: center;
+  -webkit-text-stroke-width: 1px;
+  text-shadow: -1px 1px 2px #23430C,
+				  1px 1px 2px #23430C,
+				  1px -1px 0 #23430C,
+				  -1px -1px 0 #23430C;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,8 +48,8 @@ main {
   flex-wrap: wrap-reverse;
   justify-content: center;
   align-items: center;
-  height: 450px;
-  width: 450px;
+  height: 375px;
+  width: 375px;
   border-radius: 4%;
 }
 
@@ -56,33 +65,6 @@ main {
  justify-content: center;
 }
 
-.playerOneDefaultColor:hover {
-  transition-timing: ease-in-out;
-  transition: all 0.2s;
-  background-color: #843b62;
-}
-
-.playerTwoDefaultColor:hover {
-  transition-timing: ease-in-out;
-  transition: all 0.2s;
-  background-color: #ffb997;
-}
-
-/* .welcome {
-  color: #84174e;
-  text-align: center;
-  text-shadow: 0 0 3px #af5686;
-  font-size: 3rem;
-  padding: 8%;
-  border-bottom: double 20px #ff9334;
-}
-
-.welcome-instructions {
-  color: #194679;
-  font-size: 1.5rem;
-} */
-
-
 
 @keyframes glowing {
   0% {
@@ -97,7 +79,7 @@ main {
 
 .customize-play {
   background: #ffb997;
-  height: 35px;
+  height: 45px;
   width: 100%;
   font: 1rem 'Fira Sans', sans-serif;
   font-weight: bolder;
@@ -109,31 +91,33 @@ main {
   animation: glowing 1s infinite;
 }
 
+.winner {
+  animation-name: fadeFontColorInOut;
+  animation-duration: 3s;
+  animation-iteration-count: 1;
+}
+
 .get-started {
 animation: glowing 1s infinite;
 }
 
 .new-game {
   border-radius: 2% 50%;
-  height: 100px;
-  width: 150px;
+  height: 90px;
+  width: 120px;
   margin: 5%;
-  font-family: "JannonWeb","Times","Times New Roman",serif;
   border: 2px solid #ffdbbc;
 	color: #ffdbbc;
-  font-size: 30px;
+  font-size: 25px;
+  font-weight: 10;
 }
 
-.new-game:hover {
+.btn:hover {
   transition-timing: ease-in-out;
   transition: all 0.4s;
-  filter: brightness(125%);
+  filter: brightness(200%);
+  cursor: pointer;
 }
-
-.new-game:disabled {
-  background-color: grey;
-}
-
 
 .spin-button {
   transition-timing-function: ease-in;
@@ -156,6 +140,18 @@ animation: glowing 1s infinite;
 		0%		{ background-color: #ff9334;}
 		40%		{ background-color: #F67E7D;}
 		90%	{ background-color: #ff9334;}
+	}
+
+  @keyframes fadeFontColorInOut{
+		0%		{ color: #ffdbbc;}
+		40%		{
+            color: #ff9334;
+            font-size: 50px;
+            text-shadow: -1px 1px 2px #ffdbbc,
+                        1px 1px 2px #ffdbbc,
+                        1px -1px 0 #ffdbbc,
+                        -1px -1px 0 #ffdbbc;}
+		100%	{ color: #ffdbbc;}
 	}
 
   .game-customization-form {
@@ -202,74 +198,118 @@ animation: glowing 1s infinite;
 }
 
 
-/*~~~~~~~~~~~~~~~~~~~~DEFAULT THEME ~~~~~~~~~~~~~~~~~~~~~~*/
-.default-background {
+/* ====================T H E M E S =========================*/
+
+/*~~~~~~~sherbet THEME ~~~~~~~~*/
+.sherbet-background {
   background-image: linear-gradient(#f67e7d, #d84747);
 }
 
-.default-gameboard {
+.sherbet-gameboard {
   background: transparent;
 }
 
-.default-square {
+.sherbet-square {
   border-color: #ff9334;
   shadow: 0 0 3px #af5686;
+  color: #ffdbbc;
 }
 
-.default-button {
+.sherbet-playerOne-turn:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-color: #d30472;
+}
+
+.sherbet-playerTwo-turn:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-color: #af5686;
+}
+
+.sherbet-button {
   background-color: #100447;
 }
 
-.default-text {
-  color: #100447;
+.sherbet-text {
+  color: #ffdbbc;
+  -webkit-text-stroke-color: #ff9334;
 }
 
 
 
 
-/* FRUIT BASKET */
-.fruit-basket-background {
-  background-color: #FFFAEF;
+/*~~~~~~~~FRUIT BASKET THEME~~~~~~~~~~*/
+.fruit-background {
+  background-image: linear-gradient(#00C08A, #a4f9a9);
 }
 
-.fruit-basket-board {
-    background-color: #006450;
+.fruit-gameboard {
+
 }
 
-.fruit-basket-button {
+.fruit-square {
+  border-color: #ffd65e;
+  shadow: 0 0 3px #af5686;
+}
+
+.fruit-playerOne-turn:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-color: #e53737;
+}
+
+.fruit-playerTwo-turn:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-color: #FF8B2C;
+}
+
+.fruit-button {
   background: #00C08A;
 }
 
+.fruit-text {
 
-
-
-/* WORMHOLE */
-
-.player-sidebar-space {
-  /* space */
-  /* background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif'); */
 }
 
-.game-play-box-space {
-  /* space */
-  /* background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif'); */
-/* asteroid */
-/* background-image: url('https://media.giphy.com/media/nQmpFuGsaalUr2CT9X/source.gif'); */
-};
 
-.gameboard {
-background-image: url('https://cdn.pixabay.com/photo/2020/02/28/10/11/texture-4887061_1280.jpg');
-};
+/*~~~~~~~~ WORMHOLE THEME ~~~~~~~~~~*/
 
-/* can't get background image in these squares, or hover */
-.game-board-square:hover {
+.wormhole-background {
+  background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif');
+}
 
-  /* background-color: #000000; */
-  /* background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif') */
-};
+.wormhole-square {
+
+}
+
+.wormhole-gameboard {
+
+}
+
+.wormhole-playerOne-turn:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif');
+}
+
+.wormhole-playerTwo-turn:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-image: url('https://media.giphy.com/media/3og0IFrHkIglEOg8Ba/source.gif');
+}
+
+.wormhole-button {
+  background: #00C08A;
+}
+
+.wormhole-text {
+
+}
 
 
-/* medieval styles */
+/*~~~~~~~~~~~MEDIEVAL THEME~~~~~~~~~~~*/
 
 .player-sidebar-medieval {
   /* background-image: url('https://media.giphy.com/media/H4Pxd80TD17KolOfL1/source.gif');
