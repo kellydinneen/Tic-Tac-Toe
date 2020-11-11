@@ -343,9 +343,9 @@ animation: glowing 1s infinite;
   shadow: 0 0 3px #af5686;
 }
 
-.wormhole-gameboard {
+/* .wormhole-gameboard {
 
-}
+} */
 
 .wormhole-playerOne-turn:hover {
   transition-timing: ease-in-out;
@@ -373,22 +373,55 @@ animation: glowing 1s infinite;
 
 
 /*~~~~~~~~~~~MEDIEVAL THEME~~~~~~~~~~~*/
-
-.player-sidebar-medieval {
-  /* background-image: url('https://media.giphy.com/media/H4Pxd80TD17KolOfL1/source.gif');
-  background-position: center; */
-  background-color: #E9D7B4;
+.medieval-background {
+  background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(https://ychef.files.bbci.co.uk/976x549/p03s45gp.jpg);
+  background-size: cover;
 }
 
-.game-board-square-medieval {
-  border-color: #194679;
-};
+.medieval-square {
+  border-image: url(https://w1.pngwing.com/pngs/401/5/png-transparent-black-and-white-frame-borders-and-frames-frames-film-frame-illuminated-manuscript-text-flora-line.png) 30px;
+}
+
+.medieval-playerOne-turn:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-image: url(https://media3.giphy.com/media/xUOxf9V99mKYBO7gyY/source.gif);
+  background-size: cover;
+  cursor: cell!important;
+}
+
+.medieval-playerTwo-turn:hover {
+  transition-timing: ease-in-out;
+  transition: all 0.2s;
+  background-image: url(https://media1.giphy.com/media/xT0xelf5NTuwuKNb0Y/giphy.gif);
+  background-size: cover;
+  cursor: cell!important;
+}
+
+.medieval-board {
+  background-image: url(https://images.freeimages.com/images/large-previews/3ca/parchment-1425941.jpg);
+  background-position: center;
+}
+
+.medieval-button {
+  background-color: #30001F;
+}
+
+.medieval-text {
+  color: #B7483D;
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
+  -webkit-text-stroke-color: #30001F;
+  -webkit-text-stroke-width: 1px;
+}
 
 
-.game-play-box-medieval {
+
+
+
+/* .game-play-box-medieval {
   /* medieval skeleton */
-  background-image: url('https://media.giphy.com/media/xT0xelf5NTuwuKNb0Y/source.gif');
-  background-size: 100%;
+  /* background-image: url('https://media.giphy.com/media/xT0xelf5NTuwuKNb0Y/source.gif');
+  background-size: 100%; */
   /* beige background */
   /* background-color: #E9D7B4;*/
-};
+/* }; */
