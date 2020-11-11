@@ -168,7 +168,7 @@ function displayUpdatedBoard(board, squares) {
 
 function toggleSquareHighlightColor() {
   for (var i = 0; i < squareElements.length; i++) {
-    if (squareElements[i].innerText === "" && game.gameOver === false) {
+    if (squareElements[i].innerText === "" && !squareElements[i].classList.contains(`${game.theme}-${game.turn.id}-turn`) && game.gameOver === false) {
       squareElements[i].classList.add(`${game.theme}-${game.turn.id}-turn`);
       squareElements[i].classList.remove(`${game.theme}-${game.nextPlayer.id}-turn`);
     } else {
