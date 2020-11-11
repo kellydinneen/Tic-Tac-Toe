@@ -36,14 +36,14 @@ updateGameBoard(event, board, squares) {
       board[`${squares[i]}`] = this.turn.token;
     }
    }
-   this.saveCurrentGameToStorage();
  };
 
   toggleTurn() {
-    if (this.turn === this.playerOne) {
+
+    if (this.turn == this.playerOne) {
       this.turn = this.playerTwo;
       this.nextPlayer = this.playerOne;
-    } else if (this.turn === this.playerTwo) {
+    } else if (this.turn == this.playerTwo) {
       this.turn = this.playerOne;
       this.nextPlayer = this.playerTwo;
     }
@@ -110,7 +110,7 @@ updateGameBoard(event, board, squares) {
   };
 
   saveWin() {
-    this.winner.wins.push(this.gameboard);
+    this.winner.wins.push(this.gameBoard);
   };
 
   resetBoard() {
@@ -124,17 +124,7 @@ updateGameBoard(event, board, squares) {
     this.gameOver = false;
   };
 
-  saveCurrentGameToStorage() {
-    var stringifiedGame = JSON.stringify(this);
-    var storedGame = localStorage.setItem(`currentGame`, stringifiedGame);
-  }
-
-  updateLocallyStoredGame() {
-      localStorage.removeItem(`currentGame`);
-      this.saveCurrentGameToStorage();
-  }
-
-  setGameTokens() {
+  setTokens() {
     var themeTokens = this.themes[`${this.theme}`];
     this.playerOne.token = themeTokens[0];
     this.playerTwo.token = themeTokens[1];

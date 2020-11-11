@@ -1,4 +1,6 @@
-//QUERY SELECTORS & GLOBAL VARIABLES
+
+// ************ QUERY SELECTORS & GLOBAL VARIABLES ************
+
 var page = document.querySelector('body');
 
 var gameCommentary = document.querySelector(`#game-commentary`);
@@ -26,32 +28,44 @@ var game = {};
 
 
 
-//EVENT LISTENERS
-window.addEventListener('load', startPlay);
+//************ EVENT LISTENERS ************
+
+window.addEventListener('load', setUpGamePlay);
 gameBoard.addEventListener('click', makeMove);
-newGameButton.addEventListener('click', startGame);
+newGameButton.addEventListener('click', startNewGame);
 customizePlayButton.addEventListener('click', showCustomizationOptions);
 submitCustomizationsButton.addEventListener('click', customizePlay);
 
 
 
 
-//EVENT HANDLERS AND HELPERS
-function startPlay () {
+//************ EVENT HANDLERS ************
+
+function setUpGamePlay () {
   createGame('🆇', '🅾');
+  updateWinsFromStorage();
+  displayWins();
   var board = game.gameBoard;
-  var squares = Object.keys(board);
-  displayUpdatedBoard(board, squares);
+  displayUpdatedBoard(board, Object.keys(board));
 };
 
-function createGame(tokenOne, tokenTwo) {
-  game = new Game();
-  var playerOne = new Player('playerOne', tokenOne, 'Player 1');
-  var playerTwo = new Player('playerTwo', tokenTwo, 'Player 2');
-  game.assignPlayers(playerOne, playerTwo);
-  game.playerOne.saveWinsToStorage();
-  game.playerTwo.saveWinsToStorage();
-  game.saveCurrentGameToStorage();
+function makeMove() {
+  clearStartOfGameStyling();
+  var board = game.gameBoard;
+  var squares = Object.keys(board);
+  if (checkIfSquareIsAvailable(event)) {
+    game.updateGameBoard(event, board, squares);
+    displayUpdatedBoard(board, squares);
+    checkGameOutcome(board, squares);
+  }
+};
+
+function startNewGame() {
+  styleStartOfGame();
+  game.resetBoard();
+  gameCommentary.innerText = '';
+  var board = game.gameBoard;
+  displayUpdatedBoard(board, Object.keys(board));
 };
 
 function showCustomizationOptions() {
@@ -64,6 +78,133 @@ function customizePlay () {
   setGameRules();
   setGameTheme();
 };
+
+
+
+
+//************ HELPER FUNCTIONS ************
+
+function createGame(tokenOne, tokenTwo) {
+  game = new Game();
+  var playerOne = new Player('playerOne', tokenOne, 'Player 1');
+  var playerTwo = new Player('playerTwo', tokenTwo, 'Player 2');
+  game.assignPlayers(playerOne, playerTwo);
+};
+
+function updateWinsFromStorage() {
+  if (Object.keys(localStorage).includes(`playerOneWins` && `playerTwoWins`)) {
+    var storedPlayerOneWins = localStorage.getItem('playerOneWins');
+    game.playerOne.wins = JSON.parse(storedPlayerOneWins);
+    var storedPlayerTwoWins = localStorage.getItem('playerTwoWins');
+    game.playerTwo.wins = JSON.parse(storedPlayerTwoWins);;
+  }
+  game.playerOne.saveWinsToStorage();
+  game.playerTwo.saveWinsToStorage();
+};
+
+function displayWins() {
+  playerOneWinsTally.innerText = `Wins: ${game.playerOne.wins.length}`;
+  playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`;
+};
+
+
+
+function displayUpdatedBoard(board, squares) {
+  for (var i = 0; i < squares.length; i++) {
+    var squareDisplay = document.querySelector(`#${squares[i]}`);
+    squareDisplay.innerText = board[`${squares[i]}`];
+  }
+  toggleSquareHighlightColor();
+};
+
+function toggleSquareHighlightColor() {
+  for (var i = 0; i < squareElements.length; i++) {
+    if (squareElements[i].innerText === "" && !squareElements[i].classList.contains(`game-box_gameboard-square--${game.turn.id}-${game.theme}-theme`) && game.gameOver === false) {
+      squareElements[i].classList.add(`game-box_gameboard-square--${game.turn.id}-${game.theme}-theme`);
+      squareElements[i].classList.remove(`game-box_gameboard-square--${game.nextPlayer.id}-${game.theme}-theme`);
+    } else {
+      squareElements[i].classList.remove(`game-box_gameboard-square--playerOne-${game.theme}-theme`);
+      squareElements[i].classList.remove(`game-box_gameboard-square--playerTwo-${game.theme}-theme`);
+    }
+  }
+};
+
+
+
+function clearStartOfGameStyling() {
+  gameBoard.classList.remove('game-box_gameboard--reset');
+  gameBoard.classList.remove('game-box_gameboard--spin');
+};
+
+function checkIfSquareIsAvailable(event) {
+  if (event.target.innerText === '' && game.gameOver === false) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+function checkGameOutcome(board, squares) {
+  game.checkForWinner(board);
+  if (game.winner != undefined) {
+    game.saveWin();
+    game.winner.updateLocallyStoredWins();
+    announceWinner(game.winner.name);
+  } else if (game.checkForCatsGame(board, squares)) {
+    announceWinner(`The ${game.cat}`);
+    for (var i = 0; i < squareElements.length; i++) {
+      squareElements[i].innerText = game.catToken;
+    }
+  } else {
+    game.toggleTurn();
+  }
+};
+
+function announceWinner(winner) {
+  gameCommentary.innerText = (`Game Over! ${winner} has it.`);
+  displayWins();
+  if (game.winner === game.playerOne) {
+    playerOneSidebar.classList.add('sidebar--winner');
+  } else if (game.winner === game.playerTwo) {
+    playerTwoSidebar.classList.add('sidebar--winner');
+  }
+};
+
+
+
+function styleStartOfGame() {
+  gameBoard.classList.add('game-box_gameboard--reset');
+  gameBoard.classList.add('game-box_gameboard--spin');
+  newGameButton.classList.toggle('btn_new-game--spin');
+  playerOneSidebar.classList.remove('sidebar--winner');
+  playerTwoSidebar.classList.remove('sidebar--winner');
+};
+
+
+
+function toggleThemeStyling() {
+  togglePageStyling();
+  toggleSquareStyling();
+};
+
+function togglePageStyling() {
+  page.classList.toggle(`page--${game.theme}-theme`);
+  gameBoard.classList.toggle(`game-box_gameboard-square--${game.theme}-theme`);
+  gameCommentary.classList.toggle(`game-box_commentary--${game.theme}-theme`);
+  playerOneSidebar.classList.toggle(`sidebar--${game.theme}-theme`);
+  playerTwoSidebar.classList.toggle(`sidebar--${game.theme}-theme`);
+  newGameButton.classList.toggle(`btn_new-game--${game.theme}-theme`);
+};
+
+function toggleSquareStyling() {
+  for (var i = 0; i < squareElements.length; i++) {
+    squareElements[i].classList.toggle(`game-box_gameboard-square--${game.theme}-theme`);
+    squareElements[i].classList.remove(`game-box_gameboard-square--playerOne-${game.theme}-theme`);
+    squareElements[i].classList.remove(`game-box_gameboard-square--playerTwo-${game.theme}-theme`);
+  }
+};
+
+
 
 function setGameRules() {
   for(var i = 0; i < gameRulesCustomizations.length; i++) {
@@ -90,13 +231,15 @@ function setInstructions(rules) {
   }
 };
 
+
+
 function setGameTheme() {
   for(var i = 0; i < gameThemeCustomizations.length; i++) {
     if (gameThemeCustomizations[i].checked == true) {
       game.theme = gameThemeCustomizations[i].value;
     }
   }
-  game.setGameTokens();
+  game.setTokens();
   setThemeText();
   toggleThemeStyling();
 };
@@ -105,110 +248,4 @@ function setThemeText() {
   playerOneHeading.innerText = game.playerOne.token;
   playerTwoHeading.innerText = game.playerTwo.token;
   gameCommentary.innerText = `First to three in a row wins. Otherwise, be prepared to feed the ${game.cat} ${game.catToken}`
-};
-
-function toggleThemeStyling() {
-  page.classList.toggle(`page--${game.theme}-theme`);
-  gameBoard.classList.toggle(`game-box_gameboard-square--${game.theme}-theme`);
-  gameCommentary.classList.toggle(`game-box_commentary--${game.theme}-theme`);
-  playerOneSidebar.classList.toggle(`sidebar--${game.theme}-theme`);
-  playerTwoSidebar.classList.toggle(`sidebar--${game.theme}-theme`);
-  newGameButton.classList.toggle(`btn_new-game--${game.theme}-theme`);
-  console.log(page.classList.toggle);
-  for (var i = 0; i < squareElements.length; i++) {
-    squareElements[i].classList.toggle(`game-box_gameboard-square--${game.theme}-theme`);
-    squareElements[i].classList.remove(`game-box_gameboard-square--playerOne-${game.theme}-theme`);
-    squareElements[i].classList.remove(`game-box_gameboard-square--playerTwo-${game.theme}-theme`);
-  }
-};
-
-
-function startGame() {
-  styleStartOfGame();
-  game.resetBoard();
-  gameCommentary.innerText = '';
-  var board = game.gameBoard;
-  var squares = Object.keys(board);
-  displayUpdatedBoard(board, squares);
-};
-
-function styleStartOfGame() {
-  gameBoard.classList.add('game-box_gameboard--reset');
-  gameBoard.classList.add('game-box_gameboard--spin');
-  newGameButton.classList.toggle('btn_new-game--spin');
-  playerOneSidebar.classList.remove('sidebar--winner');
-  playerTwoSidebar.classList.remove('sidebar--winner');
-}
-
-
-function makeMove() {
-  clearStartOfGameStyling();
-  var board = game.gameBoard;
-  var squares = Object.keys(board);
-  if (checkIfSquareIsAvailable(event)) {
-    game.updateGameBoard(event, board, squares);
-    displayUpdatedBoard(board, squares);
-    checkGameOutcome(board, squares);
-  }
-};
-
-function clearStartOfGameStyling() {
-  gameBoard.classList.remove('game-box_gameboard--reset');
-  gameBoard.classList.remove('game-box_gameboard--spin');
-};
-
-function checkIfSquareIsAvailable(event) {
-  if (event.target.innerText === '' && game.gameOver === false) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-function displayUpdatedBoard(board, squares) {
-  for (var i = 0; i < squares.length; i++) {
-    var squareDisplay = document.querySelector(`#${squares[i]}`);
-    squareDisplay.innerText = board[`${squares[i]}`];
-  }
-  toggleSquareHighlightColor();
-};
-
-function toggleSquareHighlightColor() {
-  for (var i = 0; i < squareElements.length; i++) {
-    if (squareElements[i].innerText === "" && !squareElements[i].classList.contains(`game-box_gameboard-square--${game.turn.id}-${game.theme}-theme`) && game.gameOver === false) {
-      squareElements[i].classList.add(`game-box_gameboard-square--${game.turn.id}-${game.theme}-theme`);
-      squareElements[i].classList.remove(`game-box_gameboard-square--${game.nextPlayer.id}-${game.theme}-theme`);
-    } else {
-      squareElements[i].classList.remove(`game-box_gameboard-square--playerOne-${game.theme}-theme`);
-      squareElements[i].classList.remove(`game-box_gameboard-square--playerTwo-${game.theme}-theme`);
-    }
-  }
-};
-
-
-function checkGameOutcome(board, squares) {
-  game.checkForWinner(board);
-  if (game.winner != undefined) {
-    // game.winner.updateLocallyStoredWins();
-    game.saveWin();
-    announceWinner(game.winner.name);
-  } else if (game.checkForCatsGame(board, squares)) {
-    announceWinner(`The ${game.cat}`);
-    for (var i = 0; i < squareElements.length; i++) {
-      squareElements[i].innerText = game.catToken;
-    }
-  } else {
-    game.toggleTurn();
-  }
-};
-
-function announceWinner(winner) {
-  gameCommentary.innerText = (`Game Over! ${winner} has it.`);
-  playerOneWinsTally.innerText = `Wins: ${game.playerOne.wins.length}`;
-  playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`;
-  if (game.winner === game.playerOne) {
-    playerOneSidebar.classList.add('sidebar--winner');
-  } else if (game.winner === game.playerTwo) {
-    playerTwoSidebar.classList.add('sidebar--winner');
-  }
 };
