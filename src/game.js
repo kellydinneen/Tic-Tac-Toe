@@ -36,14 +36,14 @@ updateGameBoard(event, board, squares) {
       board[`${squares[i]}`] = this.turn.token;
     }
    }
-   this.saveCurrentGameToStorage();
  };
 
   toggleTurn() {
-    if (this.turn === this.playerOne) {
+
+    if (this.turn == this.playerOne) {
       this.turn = this.playerTwo;
       this.nextPlayer = this.playerOne;
-    } else if (this.turn === this.playerTwo) {
+    } else if (this.turn == this.playerTwo) {
       this.turn = this.playerOne;
       this.nextPlayer = this.playerTwo;
     }
@@ -123,38 +123,6 @@ updateGameBoard(event, board, squares) {
     this.playerWithThreeInARow = undefined;
     this.gameOver = false;
   };
-
-  saveCurrentGameToStorage() {
-    var stringifiedGame = JSON.stringify(this);
-    var storedGame = localStorage.setItem(`currentGame`, stringifiedGame);
-  }
-
-  updateLocallyStoredGame() {
-      localStorage.removeItem(`currentGame`);
-      this.saveCurrentGameToStorage();
-  }
-
-  updateFromLocalStorage() {
-    for (var i = 0; i < localStorage.length; i++) {
-      var keyName = localStorage.key(i);
-      if(keyName === `currentGame`) {
-        var retrievedGame = localStorage.getItem(keyName);
-        var parsedGame = JSON.parse(retrievedGame);
-        this.rules = parsedGame.rules;
-        this.theme = parsedGame.theme;
-        this.catToken = parsedGame.catToken;
-        this.cat = parsedGame.cat;
-        this.playerOne = parsedGame.playerOne;
-        this.playerTwo = parsedGame.playerTwo;
-        this.turn = parsedGame.turn;
-        this.nextPlayer = parsedGame.nextPlayer;
-        this.playerWithThreeInARow = parsedGame.playerWithThreeInARow;
-        this.winner = parsedGame.winner;
-        this.gameOver = parsedGame.gameOver;
-        this.gameBoard = parsedGame.gameBoard;
-      }
-    }
-  }
 
   setGameTokens() {
     var themeTokens = this.themes[`${this.theme}`];

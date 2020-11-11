@@ -43,16 +43,16 @@ submitCustomizationsButton.addEventListener('click', customizePlay);
 
 function setUpGamePlay () {
   createGame('🆇', '🅾');
-  game.updateFromLocalStorage();
+  updateWinsFromStorage();
   var board = game.gameBoard;
-  var squares = Object.keys(board);
-  displayUpdatedBoard(board, squares);
+  displayUpdatedBoard(board, Object.keys(board));
 };
 
 function makeMove() {
   clearStartOfGameStyling();
   var board = game.gameBoard;
   var squares = Object.keys(board);
+  console.log(game.turn);
   if (checkIfSquareIsAvailable(event)) {
     game.updateGameBoard(event, board, squares);
     displayUpdatedBoard(board, squares);
@@ -65,8 +65,7 @@ function startNewGame() {
   game.resetBoard();
   gameCommentary.innerText = '';
   var board = game.gameBoard;
-  var squares = Object.keys(board);
-  displayUpdatedBoard(board, squares);
+  displayUpdatedBoard(board, Object.keys(board));
 };
 
 function showCustomizationOptions() {
@@ -92,7 +91,6 @@ function createGame(tokenOne, tokenTwo) {
   game.assignPlayers(playerOne, playerTwo);
   game.playerOne.saveWinsToStorage();
   game.playerTwo.saveWinsToStorage();
-  game.saveCurrentGameToStorage();
 };
 
 

@@ -150,7 +150,7 @@ main {
 		0%		{ color: #ffdbbc;}
 		40%		{
             color: #ff9334;
-            font-size: 50px;
+            font-size: 40px;
             text-shadow: -1px 1px 2px #ffdbbc,
                         1px 1px 2px #ffdbbc,
                         1px -1px 0 #ffdbbc,
