@@ -43,8 +43,6 @@ submitCustomizationsButton.addEventListener('click', customizePlay);
 
 function setUpGamePlay () {
   createGame('🆇', '🅾');
-  updateWinsFromStorage();
-  displayWins();
   var board = game.gameBoard;
   displayUpdatedBoard(board, Object.keys(board));
 };
@@ -81,7 +79,6 @@ function customizePlay () {
 
 
 
-
 //************ HELPER FUNCTIONS ************
 
 function createGame(tokenOne, tokenTwo) {
@@ -90,24 +87,6 @@ function createGame(tokenOne, tokenTwo) {
   var playerTwo = new Player('playerTwo', tokenTwo, 'Player 2');
   game.assignPlayers(playerOne, playerTwo);
 };
-
-function updateWinsFromStorage() {
-  if (Object.keys(localStorage).includes(`playerOneWins` && `playerTwoWins`)) {
-    var storedPlayerOneWins = localStorage.getItem('playerOneWins');
-    game.playerOne.wins = JSON.parse(storedPlayerOneWins);
-    var storedPlayerTwoWins = localStorage.getItem('playerTwoWins');
-    game.playerTwo.wins = JSON.parse(storedPlayerTwoWins);;
-  }
-  game.playerOne.saveWinsToStorage();
-  game.playerTwo.saveWinsToStorage();
-};
-
-function displayWins() {
-  playerOneWinsTally.innerText = `Wins: ${game.playerOne.wins.length}`;
-  playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`;
-};
-
-
 
 function displayUpdatedBoard(board, squares) {
   for (var i = 0; i < squares.length; i++) {
@@ -168,6 +147,11 @@ function announceWinner(winner) {
   } else if (game.winner === game.playerTwo) {
     playerTwoSidebar.classList.add('sidebar--winner');
   }
+};
+
+function displayWins() {
+  playerOneWinsTally.innerText = `Wins: ${game.playerOne.wins.length}`;
+  playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`;
 };
 
 
