@@ -20,7 +20,7 @@ main {
   letter-spacing: 0.025em;
   font-size: 20px;
 }
-.player-sidebar {
+.sidebar {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +28,7 @@ main {
   width: 25%;
   color: #006450;
 }
-.game-play-box {
+.game-box {
   font-size: 16px;
   text-shadow: -0.5px 0.5px 0.5px #af5686,
 				  1px 1px 10px #af5686,
@@ -42,7 +42,7 @@ main {
   height: 100%;
   width: 50%
 }
-.gameboard {
+.game-box_gameboard {
   display: flex;
   flex-wrap: wrap-reverse;
   justify-content: center;
@@ -52,7 +52,7 @@ main {
   border-radius: 4%;
 }
 
-.game-board-square {
+.game-box_gameboard-square {
  border: solid;
  height: 29%;
  width: 29%;
@@ -64,7 +64,7 @@ main {
  justify-content: center;
 }
 
-.game-board-square:hover {
+.game-box_gameboard-square:hover {
   cursor: not-allowed;
 }
 
@@ -80,7 +80,7 @@ main {
   }
 }
 
-.customize-play {
+.btn_customize-play {
   background: #ffb997;
   height: 45px;
   width: 100%;
@@ -94,17 +94,13 @@ main {
   animation: glowing 1s infinite;
 }
 
-.winner {
+.sidebar--winner {
   animation-name: fadeFontColorInOut;
   animation-duration: 3s;
   animation-iteration-count: 1;
 }
 
-.get-started {
-animation: glowing 1s infinite;
-}
-
-.new-game {
+.btn_new-game {
   border-radius: 2% 50%;
   height: 90px;
   width: 120px;
@@ -122,19 +118,19 @@ animation: glowing 1s infinite;
   cursor: pointer;
 }
 
-.spin-button {
+.btn_new-game-spin {
   transition-timing-function: ease-in;
   transition-duration: 2s;
   transform: rotate(720deg);
 }
 
-.spin-board {
+.game-box_gameboard--spin {
   transition-timing-function: linear;
   transition-duration: 1s;
   transform: rotate(360deg);
 }
 
-.reset-board {
+.game-box_gameboard--reset {
 		animation-name: fadeInOut;
     animation-duration: 2s;
     animation-iteration-count: 1;
@@ -157,9 +153,11 @@ animation: glowing 1s infinite;
 		100%	{ color: #ffdbbc;}
 	}
 
-  .game-customization-form {
+  .customization-window {
     background-color: #0B032D;
     width: 600px;
+    backdrop-filter: blur(2px);
+    backdrop-filter: brightness(5%);
   }
 
   fieldset {
@@ -174,7 +172,7 @@ animation: glowing 1s infinite;
 
   }
 
-  .input-box {
+  .customization-window_input-box {
     display: flex;
     justify-content: flex-start;
     margin: 5%;
@@ -191,7 +189,7 @@ animation: glowing 1s infinite;
     padding: 4px 8px;
 }
 
-.submit-customizations {
+.btn_submit-customizations {
   background-color: #F67E7D;
   height: 100px;
   width: 100px;
@@ -200,7 +198,7 @@ animation: glowing 1s infinite;
   align-self:
 }
 
-.slideout {
+.slideout-instructions {
   position: fixed;
   /* transform: rotate(90deg); */
   font-size: 10px;
@@ -222,7 +220,7 @@ animation: glowing 1s infinite;
   border-radius: 0% 50% 50% 0%;
 }
 
-.slideout_inner {
+.slideout-instructions_inner {
   /* transform: rotate(-90deg); */
   font-size: 16px;
   font-style: normal;
@@ -242,11 +240,11 @@ animation: glowing 1s infinite;
   -moz-border-radius: 0 0 5px 0;
   border-radius: 0 0 5px 0;
 }
-.slideout:hover {
+.slideout-instructions:hover {
   left: 350px;
   cursor: help;
 }
-.slideout:hover .slideout_inner {
+.slideout-instructions:hover .slideout-instructions_inner {
   left: 0;
 }
 
@@ -254,39 +252,41 @@ animation: glowing 1s infinite;
 /* ====================T H E M E S =========================*/
 
 /*~~~~~~~sherbet THEME ~~~~~~~~*/
-.sherbet-background {
+.page--sherbet-theme {
   background-image: linear-gradient(#f67e7d, #d84747);
 }
 
-.sherbet-gameboard {
+/* .game-box_gameboard--sherbet-theme {
   background: transparent;
-}
+} */
 
-.sherbet-square {
+.game-box_gameboard-square--sherbet-theme {
   border-color: #ff9334;
   shadow: 0 0 3px #af5686;
   color: #ffdbbc;
 }
 
-.sherbet-playerOne-turn:hover {
+.game-box_gameboard-square--playerOne-sherbet-theme:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #d30472;
   cursor: cell!important;
 }
 
-.sherbet-playerTwo-turn:hover {
+.game-box_gameboard-square--playerTwo-sherbet-theme:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #af5686;
   cursor: cell!important;
 }
 
-.sherbet-button {
+.btn_new-game--sherbet-theme {
   background-color: #100447;
 }
 
-.sherbet-text {
+
+.game-box_commentary--sherbet-theme,
+.sidebar--sherbet-theme {
   color: #ffdbbc;
   -webkit-text-stroke-color: #ff9334;
   -webkit-text-stroke-width: 1px;
@@ -296,49 +296,50 @@ animation: glowing 1s infinite;
 
 
 /*~~~~~~~~FRUIT BASKET THEME~~~~~~~~~~*/
-.fruit-background {
+.page--fruit-theme {
   background-image: linear-gradient(#00C08A, #a4f9a9);
 }
 
-.fruit-gameboard {
+/* .fruit-gameboard {
 
-}
+} */
 
-.fruit-square {
+.game-box_gameboard-square--fruit-theme {
   border-color: #ffd65e;
   shadow: 0 0 3px #af5686;
 }
 
-.fruit-playerOne-turn:hover {
+.game-box_gameboard-square--playerOne-fruit-theme:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #e53737;
   cursor: cell!important;
 }
 
-.fruit-playerTwo-turn:hover {
+.game-box_gameboard-square--playerTwo-fruit-theme:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-color: #FF8B2C;
   cursor: cell!important;
 }
 
-.fruit-button {
+.btn_new-game--fruit-theme {
   background: #00C08A;
 }
 
-.fruit-text {
-
+.game-box_commentary--fruit-theme,
+.sidebar--fruit-theme {
+  color: #ffd65e;
 }
 
 
 /*~~~~~~~~ WORMHOLE THEME ~~~~~~~~~~*/
 
-.wormhole-background {
+.page--wormhole-theme {
   background-image: url('https://media.giphy.com/media/TxVVB6PfWMjE4/source.gif');
 }
 
-.wormhole-square {
+.game-box_gameboard-square--wormhole-theme {
   border-color: #9768EF;
   shadow: 0 0 3px #af5686;
 }
@@ -347,7 +348,7 @@ animation: glowing 1s infinite;
 
 } */
 
-.wormhole-playerOne-turn:hover {
+.game-box_gameboard-square--playerOne-wormhole-theme:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-image: url('https://i.imgur.com/pEnQyQT.gif');
@@ -355,7 +356,7 @@ animation: glowing 1s infinite;
   cursor: cell!important;
 }
 
-.wormhole-playerTwo-turn:hover {
+.game-box_gameboard-square--playerTwo-wormhole-theme:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-image: url('https://media.giphy.com/media/3ohhwEZqxzKbNUHzji/giphy.gif');
@@ -363,26 +364,32 @@ animation: glowing 1s infinite;
   cursor: cell!important;
 }
 
-.wormhole-button {
+.btn_new-game--wormhole-theme {
   background: #D7461B;
 }
 
-.wormhole-text {
+.game-box_commentary--fruit-theme,
+.sidebar--fruit-theme {
   color: #D6EBEC;
 }
 
 
 /*~~~~~~~~~~~MEDIEVAL THEME~~~~~~~~~~~*/
-.medieval-background {
+.page--medieval-theme {
   background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url(https://ychef.files.bbci.co.uk/976x549/p03s45gp.jpg);
   background-size: cover;
 }
 
-.medieval-square {
+.game-box_gameboard--medieval-theme {
+  background-image: url(https://images.freeimages.com/images/large-previews/3ca/parchment-1425941.jpg);
+  background-position: center;
+}
+
+.game-box_gameboard-square--medieval-theme {
   border-image: url(https://w1.pngwing.com/pngs/401/5/png-transparent-black-and-white-frame-borders-and-frames-frames-film-frame-illuminated-manuscript-text-flora-line.png) 30px;
 }
 
-.medieval-playerOne-turn:hover {
+.game-box_gameboard-square--playerOne-medieval-theme:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-image: url(https://media3.giphy.com/media/xUOxf9V99mKYBO7gyY/source.gif);
@@ -390,7 +397,7 @@ animation: glowing 1s infinite;
   cursor: cell!important;
 }
 
-.medieval-playerTwo-turn:hover {
+.game-box_gameboard-square--playerTwo-medieval-theme:hover {
   transition-timing: ease-in-out;
   transition: all 0.2s;
   background-image: url(https://media1.giphy.com/media/xT0xelf5NTuwuKNb0Y/giphy.gif);
@@ -398,30 +405,14 @@ animation: glowing 1s infinite;
   cursor: cell!important;
 }
 
-.medieval-board {
-  background-image: url(https://images.freeimages.com/images/large-previews/3ca/parchment-1425941.jpg);
-  background-position: center;
-}
-
-.medieval-button {
+.btn_new-game--medieval-theme {
   background-color: #30001F;
 }
 
-.medieval-text {
+.game-box_commentary--fruit-theme,
+.sidebar--fruit-theme {
   color: #B7483D;
   font-family: Copperplate, Copperplate Gothic Light, fantasy;
   -webkit-text-stroke-color: #30001F;
   -webkit-text-stroke-width: 1px;
 }
-
-
-
-
-
-/* .game-play-box-medieval {
-  /* medieval skeleton */
-  /* background-image: url('https://media.giphy.com/media/xT0xelf5NTuwuKNb0Y/source.gif');
-  background-size: 100%; */
-  /* beige background */
-  /* background-color: #E9D7B4;*/
-/* }; */

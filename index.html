@@ -5,7 +5,7 @@
     <link href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap' rel='stylesheet'>
     <link rel='stylesheet' type='text/css' href='./styles.css'>
   </head>
-  <body class='body body--sherbet-background'>
+  <body class='page page--sherbet-theme'>
     <main>
       <section class='sidebar sidebar--sherbet-theme'>
         <h1 id='player-one-token' class="sidebar_token">🆇</h1>
@@ -33,8 +33,8 @@
           <section id='A3' class='game-box_gameboard-square game-box_gameboard-square--sherbet-theme'>
           </section>
         </article>
-        <button type='button' id='new-game' class='btn btn--new-game btn--sherbet-theme'>New Game</button>
-        <button type='button' id='customize-play' class='btn btn--customize-play'>Customize Play</button>
+        <button type='button' id='new-game' class='btn btn_new-game btn_new-game--sherbet-theme'>New Game</button>
+        <button type='button' id='customize-play' class='btn btn_customize-play'>Customize Play</button>
       </section>
       <section class='sidebar sidebar--sherbet-theme'>
         <h1 id='player-two-token' class="sidebar_token">🅾</h1>
@@ -48,22 +48,22 @@
         </article>
       </div>
       <dialog id="game-customization-window" class="customization-window">
-        <fieldset class="customization-window_game-type-selection">
+        <fieldset class="customization-window_rules-selection">
           <legend>Choose Your Game</legend>
           <div class="customization-window_input-box">
-            <input type='radio' name='game' id="classic" value="classic"></input>
+            <input type='radio' name='rules' id="classic" value="classic"></input>
             <label for='classic'>Classic Tic-Tac-Toe</label>
           </div>
           <div class="customization-window_input-box">
-            <input type='radio' name='game' id="misere" value="misere"></input>
+            <input type='radio' name='rules' id="misere" value="misere"></input>
             <label for='misere'>Misere (aka Toe-Tac-Tic)</label>
           </div>
           <div class="customization-window_input-box">
-            <input type='radio' name='game' id="notakto" value="notakto"></input>
+            <input type='radio' name='rules' id="notakto" value="notakto"></input>
             <label for='notakto'>Notakto (this game doesn't care who's who)</label>
           </div>
         </fieldset>
-        <fieldset class="themes">
+        <fieldset class="customization-window_theme-selection">
           <legend>Choose Your Theme</legend>
           <div class="customization-window_input-box">
             <input type='radio' name='theme' id='sherbet' value='sherbet'></input>
@@ -82,7 +82,7 @@
             <label for='medieval'>Book of Kells</label>
           </div>
         </fieldset>
-        <button type='button' class='btn btn--submit-customizations'>Let's Go!</button>
+        <button type='button' class='btn btn_submit-customizations'>Let's Go!</button>
       </dialog>
     </main>
   </body>
