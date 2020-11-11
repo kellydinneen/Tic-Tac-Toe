@@ -132,21 +132,18 @@ function startGame() {
 };
 
 function styleStartOfGame() {
-  gameBoard.classList.add('reset-board');
-  gameBoard.classList.add('spin-board');
-  newGameButton.classList.toggle('spin-button');
-  playerOneWinsTally.classList.remove('winner')
-  playerOneHeading.classList.remove('winner')
-  playerTwoWinsTally.classList.remove('winner')
-  playerTwoHeading.classList.remove('winner')
+  gameBoard.classList.add('game-box_gameboard--reset');
+  gameBoard.classList.add('game-box_gameboard--spin');
+  newGameButton.classList.toggle('btn_new-game--spin');
+  playerOneSidebar.classList.remove('sidebar--winner');
+  playerTwoSidebar.classList.remove('sidebar--winner');
 }
 
 
 function makeMove() {
+  clearStartOfGameStyling();
   var board = game.gameBoard;
   var squares = Object.keys(board);
-  gameBoard.classList.remove('reset-board');
-  gameBoard.classList.remove('spin-board');
   if (checkIfSquareIsAvailable(event)) {
     game.updateGameBoard(event, board, squares);
     displayUpdatedBoard(board, squares);
@@ -154,32 +151,35 @@ function makeMove() {
   }
 };
 
+function clearStartOfGameStyling() {
+  gameBoard.classList.remove('game-box_gameboard--reset');
+  gameBoard.classList.remove('game-box_gameboard--spin');
+};
+
 function checkIfSquareIsAvailable(event) {
-  if (event.target.innerText === '') {
+  if (event.target.innerText === '' && game.gameOver === false) {
     return true;
   } else {
     return false;
   }
-}''
+};
 
-//helpers that update DOM
 function displayUpdatedBoard(board, squares) {
   for (var i = 0; i < squares.length; i++) {
     var squareDisplay = document.querySelector(`#${squares[i]}`);
     squareDisplay.innerText = board[`${squares[i]}`];
   }
   toggleSquareHighlightColor();
-
 };
 
 function toggleSquareHighlightColor() {
   for (var i = 0; i < squareElements.length; i++) {
-    if (squareElements[i].innerText === "" && !squareElements[i].classList.contains(`${game.theme}-${game.turn.id}-turn`) && game.gameOver === false) {
-      squareElements[i].classList.add(`${game.theme}-${game.turn.id}-turn`);
-      squareElements[i].classList.remove(`${game.theme}-${game.nextPlayer.id}-turn`);
+    if (squareElements[i].innerText === "" && !squareElements[i].classList.contains(`game-box_gameboard-square--${game.turn.id}-${game.theme}-theme`) && game.gameOver === false) {
+      squareElements[i].classList.add(`game-box_gameboard-square--${game.turn.id}-${game.theme}-theme`);
+      squareElements[i].classList.remove(`game-box_gameboard-square--${game.nextPlayer.id}-${game.theme}-theme`);
     } else {
-      squareElements[i].classList.remove(`${game.theme}-playerOne-turn`);
-      squareElements[i].classList.remove(`${game.theme}-playerTwo-turn`);
+      squareElements[i].classList.remove(`game-box_gameboard-square--playerOne-${game.theme}-theme`);
+      squareElements[i].classList.remove(`game-box_gameboard-square--playerTwo-${game.theme}-theme`);
     }
   }
 };
@@ -206,10 +206,8 @@ function announceWinner(winner) {
   playerOneWinsTally.innerText = `Wins: ${game.playerOne.wins.length}`;
   playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`;
   if (game.winner === game.playerOne) {
-    playerOneWinsTally.classList.add('winner')
-    playerOneHeading.classList.add('winner')
+    playerOneSidebar.classList.add('sidebar--winner');
   } else if (game.winner === game.playerTwo) {
-    playerTwoWinsTally.classList.add('winner')
-    playerTwoHeading.classList.add('winner')
+    playerTwoSidebar.classList.add('sidebar--winner');
   }
 };
