@@ -1,36 +1,37 @@
+//QUERY SELECTORS
 var page = document.querySelector('body');
-var gameBoard = document.querySelector('#gameboard');
-var newGameButton = document.querySelector(`#new-game`);
+
 var gameCommentary = document.querySelector(`#game-commentary`);
-var customizePlayButton = document.querySelector(`#customize-play`);
-var gameCustomizationForm = document.querySelector(`#game-customization-window`);
-var submitCustomizationsButton = document.querySelector('.submit-customizations');
-var squareElements = document.querySelectorAll(`.game-board-square`);
-var welcomeMessage = document.querySelector('.welcome');
-var welcomeInstructions = document.querySelector('.welcome-instructions');
-var gameBox = document.querySelector('.gameboard-hide-box');
+var gameBoard = document.querySelector('#gameboard');
+var squareElements = document.querySelectorAll(`.js-square`);
+var newGameButton = document.querySelector(`#new-game`);
+
 var playerOneWinsTally = document.querySelector(`#player-one-wins`);
 var playerTwoWinsTally = document.querySelector(`#player-two-wins`);
 var playerOneHeading = document.querySelector('#player-one-token');
 var playerTwoHeading = document.querySelector('#player-two-token');
 var playerOneSidebar = document.querySelector("#player-one-sidebar");
 var playerTwoSidebar = document.querySelector("#player-two-sidebar");
+
+var customizePlayButton = document.querySelector(`#customize-play`);
+var gameCustomizationForm = document.querySelector(`dialog`);
+var gameRulesCustomizations = document.getElementsByName("rules");
+var gameThemeCustomizations = document.getElementsByName("theme");
+var submitCustomizationsButton = document.querySelector('#submit-customizations');
+
 var instructionsHeading = document.querySelector('#instructions-heading');
 var gameInstructions = document.querySelector('#game-instructions');
 
-
-var gameRulesOptions = document.getElementsByName("game");
-var gameThemeOptions = document.getElementsByName("theme");
 var game = {};
 
-//Event Listeners
+//EVENT LISTENERS
 newGameButton.addEventListener('click', startGame);
 gameBoard.addEventListener('click', makeMove);
 customizePlayButton.addEventListener('click', showCustomizationOptions);
 submitCustomizationsButton.addEventListener('click', customizePlay);
 window.addEventListener('load', startPlay);
 
-//Event Handlers
+//EVENT HANDLERS AND HELPERS
 function startPlay () {
   createGame('🆇', '🅾');
   var board = game.gameBoard;
@@ -102,7 +103,7 @@ function setThemeText() {
 };
 
 function toggleThemeStyling() {
-  page.classList.toggle(`${game.theme}-background`);
+  page.classList.toggle(`body--${game.theme}-background`);
   gameBoard.classList.toggle(`${game.theme}-board`);
   gameCommentary.classList.toggle(`${game.theme}-text`);
   playerOneSidebar.classList.toggle(`${game.theme}-text`);
