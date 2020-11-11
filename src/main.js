@@ -1,4 +1,4 @@
-//QUERY SELECTORS
+//QUERY SELECTORS & GLOBAL VARIABLES
 var page = document.querySelector('body');
 
 var gameCommentary = document.querySelector(`#game-commentary`);
@@ -24,12 +24,17 @@ var gameInstructions = document.querySelector('#game-instructions');
 
 var game = {};
 
+
+
 //EVENT LISTENERS
-newGameButton.addEventListener('click', startGame);
+window.addEventListener('load', startPlay);
 gameBoard.addEventListener('click', makeMove);
+newGameButton.addEventListener('click', startGame);
 customizePlayButton.addEventListener('click', showCustomizationOptions);
 submitCustomizationsButton.addEventListener('click', customizePlay);
-window.addEventListener('load', startPlay);
+
+
+
 
 //EVENT HANDLERS AND HELPERS
 function startPlay () {
@@ -103,16 +108,16 @@ function setThemeText() {
 };
 
 function toggleThemeStyling() {
-  page.classList.toggle(`body--${game.theme}-background`);
-  gameBoard.classList.toggle(`${game.theme}-board`);
-  gameCommentary.classList.toggle(`${game.theme}-text`);
-  playerOneSidebar.classList.toggle(`${game.theme}-text`);
-  playerTwoSidebar.classList.toggle(`${game.theme}-text`);
-  newGameButton.classList.toggle(`${game.theme}-button`);
+  page.classList.toggle(`page--${game.theme}-theme`);
+  gameBoard.classList.toggle(`game-box_gameboard-square--${game.theme}-theme`);
+  gameCommentary.classList.toggle(`game-box_commentary--${game.theme}-theme`);
+  playerOneSidebar.classList.toggle(`sidebar--${game.theme}-theme`);
+  playerTwoSidebar.classList.toggle(`sidebar--${game.theme}-theme`);
+  newGameButton.classList.toggle(`btn_new-game--${game.theme}-theme`);
   for (var i = 0; i < squareElements.length; i++) {
-    squareElements[i].classList.toggle(`${game.theme}-square`);
-    squareElements[i].classList.remove(`${game.theme}-playerOne-turn`);
-    squareElements[i].classList.remove(`${game.theme}-playerTwo-turn`);
+    squareElements[i].classList.toggle(`game-box_gameboard-square--${game.theme}-theme`);
+    squareElements[i].classList.remove(`game-box_gameboard-square--playerOne-${game.theme}-theme`);
+    squareElements[i].classList.remove(`game-box_gameboard-square--playerTwo-${game.theme}-theme`);
   }
 };
 
