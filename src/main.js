@@ -66,9 +66,9 @@ function customizePlay () {
 };
 
 function setGameRules() {
-  for(var i = 0; i < gameRulesOptions.length; i++) {
-    if (gameRulesOptions[i].checked == true) {
-      game.rules = gameRulesOptions[i].value;
+  for(var i = 0; i < gameRulesCustomizations.length; i++) {
+    if (gameRulesCustomizations[i].checked == true) {
+      game.rules = gameRulesCustomizations[i].value;
     }
   }
   setInstructions(game.rules);
@@ -91,9 +91,9 @@ function setInstructions(rules) {
 };
 
 function setGameTheme() {
-  for(var i = 0; i < gameThemeOptions.length; i++) {
-    if (gameThemeOptions[i].checked == true) {
-      game.theme = gameThemeOptions[i].value;
+  for(var i = 0; i < gameThemeCustomizations.length; i++) {
+    if (gameThemeCustomizations[i].checked == true) {
+      game.theme = gameThemeCustomizations[i].value;
     }
   }
   game.setGameTokens();
@@ -114,6 +114,7 @@ function toggleThemeStyling() {
   playerOneSidebar.classList.toggle(`sidebar--${game.theme}-theme`);
   playerTwoSidebar.classList.toggle(`sidebar--${game.theme}-theme`);
   newGameButton.classList.toggle(`btn_new-game--${game.theme}-theme`);
+  console.log(page.classList.toggle);
   for (var i = 0; i < squareElements.length; i++) {
     squareElements[i].classList.toggle(`game-box_gameboard-square--${game.theme}-theme`);
     squareElements[i].classList.remove(`game-box_gameboard-square--playerOne-${game.theme}-theme`);

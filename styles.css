@@ -28,6 +28,11 @@ main {
   width: 25%;
   color: #006450;
 }
+
+.sidebar_token {
+  font-size: 30px;
+}
+
 .game-box {
   font-size: 16px;
   text-shadow: -0.5px 0.5px 0.5px #af5686,
@@ -368,8 +373,8 @@ main {
   background: #D7461B;
 }
 
-.game-box_commentary--fruit-theme,
-.sidebar--fruit-theme {
+.game-box_commentary--wormhole-theme,
+.sidebar--wormhole-theme {
   color: #D6EBEC;
 }
 
@@ -409,8 +414,8 @@ main {
   background-color: #30001F;
 }
 
-.game-box_commentary--fruit-theme,
-.sidebar--fruit-theme {
+.game-box_commentary--medieval-theme,
+.sidebar--medieval-theme {
   color: #B7483D;
   font-family: Copperplate, Copperplate Gothic Light, fantasy;
   -webkit-text-stroke-color: #30001F;
