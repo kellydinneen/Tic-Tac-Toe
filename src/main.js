@@ -68,26 +68,6 @@ function setGameRules() {
   setInstructions(game.rules);
 };
 
-
-
-function setGameTheme() {
-  for(var i = 0; i < gameThemeOptions.length; i++) {
-    if (gameThemeOptions[i].checked == true) {
-      game.theme = gameThemeOptions[i].value;
-    }
-  }
-  console.log(game.theme);
-  game.setGameTokens();
-  setThemeText();
-  toggleThemeStyling();
-};
-
-function setThemeText() {
-  playerOneHeading.innerText = game.playerOne.token;
-  playerTwoHeading.innerText = game.playerTwo.token;
-  gameCommentary.innerText = `First to three in a row wins. Otherwise, be prepared to feed the ${game.cat} ${game.catToken}`
-}
-
 function setInstructions(rules) {
   if (rules === 'classic') {
     instructionsHeading.innerText = 'Remind me how to play';
@@ -102,6 +82,23 @@ function setInstructions(rules) {
     gameInstructions.innerHTML =
       "<h2>It's like tic-tac-toe, but backwards AND the game doesn't care which pieces belong to which players!</h2><p>Like in Tic-Tac-Toe, players take turns placing one piece on the board, but in this game, the players' pieces look identical. The player who makes the move that completes a three-in-a-row of any three pieces LOSES! So you want to avoid being the one to place the last of three pieces, no matter who placed the other two. In Notakto, there is no cat 😿.</p>";
   }
+};
+
+function setGameTheme() {
+  for(var i = 0; i < gameThemeOptions.length; i++) {
+    if (gameThemeOptions[i].checked == true) {
+      game.theme = gameThemeOptions[i].value;
+    }
+  }
+  game.setGameTokens();
+  setThemeText();
+  toggleThemeStyling();
+};
+
+function setThemeText() {
+  playerOneHeading.innerText = game.playerOne.token;
+  playerTwoHeading.innerText = game.playerTwo.token;
+  gameCommentary.innerText = `First to three in a row wins. Otherwise, be prepared to feed the ${game.cat} ${game.catToken}`
 };
 
 function toggleThemeStyling() {

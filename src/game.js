@@ -142,7 +142,7 @@ updateGameBoard(event, board, squares) {
     this.catToken = themeTokens[3];
     this.cat = themeTokens[4];
     if (game.rules === 'notakto') {
-      game.playerTwo.token = this.neutralToken;
+      game.playerOne.token = this.neutralToken;
       game.playerTwo.token = this.neutralToken;
     }
   }
