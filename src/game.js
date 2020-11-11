@@ -110,7 +110,7 @@ updateGameBoard(event, board, squares) {
   };
 
   saveWin() {
-    this.winner.wins.push(this.gameboard);
+    this.winner.wins.push(this.gameBoard);
   };
 
   resetBoard() {
@@ -124,7 +124,7 @@ updateGameBoard(event, board, squares) {
     this.gameOver = false;
   };
 
-  setGameTokens() {
+  setTokens() {
     var themeTokens = this.themes[`${this.theme}`];
     this.playerOne.token = themeTokens[0];
     this.playerTwo.token = themeTokens[1];
