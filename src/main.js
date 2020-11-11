@@ -110,11 +110,22 @@ function toggleThemeStyling() {
   newGameButton.classList.toggle(`${game.theme}-button`);
   for (var i = 0; i < squareElements.length; i++) {
     squareElements[i].classList.toggle(`${game.theme}-square`);
+    squareElements[i].classList.remove(`${game.theme}-playerOne-turn`);
+    squareElements[i].classList.remove(`${game.theme}-playerTwo-turn`);
   }
 };
 
 
 function startGame() {
+  styleStartOfGame();
+  game.resetBoard();
+  gameCommentary.innerText = '';
+  var board = game.gameBoard;
+  var squares = Object.keys(board);
+  displayUpdatedBoard(board, squares);
+};
+
+function styleStartOfGame() {
   gameBoard.classList.add('reset-board');
   gameBoard.classList.add('spin-board');
   newGameButton.classList.toggle('spin-button');
@@ -122,12 +133,7 @@ function startGame() {
   playerOneHeading.classList.remove('winner')
   playerTwoWinsTally.classList.remove('winner')
   playerTwoHeading.classList.remove('winner')
-  game.resetBoard();
-  gameCommentary.innerText = '';
-  var board = game.gameBoard;
-  var squares = Object.keys(board);
-  displayUpdatedBoard(board, squares);
-};
+}
 
 
 function makeMove() {
@@ -161,18 +167,17 @@ function displayUpdatedBoard(board, squares) {
 };
 
 function toggleSquareHighlightColor() {
-  console.log(`${game.theme}-playerOne-turn`);
   for (var i = 0; i < squareElements.length; i++) {
-    if (squareElements[i].innerText === "" && game.gameOver === false) {
+    if (squareElements[i].innerText === "" && !squareElements[i].classList.contains(`${game.theme}-${game.turn.id}-turn`) && game.gameOver === false) {
       squareElements[i].classList.add(`${game.theme}-${game.turn.id}-turn`);
       squareElements[i].classList.remove(`${game.theme}-${game.nextPlayer.id}-turn`);
-      squareElements[i].classList;
     } else {
       squareElements[i].classList.remove(`${game.theme}-playerOne-turn`);
       squareElements[i].classList.remove(`${game.theme}-playerTwo-turn`);
     }
   }
 };
+
 
 function checkGameOutcome(board, squares) {
   game.checkForWinner(board);
