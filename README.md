@@ -16,5 +16,12 @@ Project Instructions: https://frontend.turing.io/projects/module-1/tic-tac-toe-s
 ### toggle design themes
 ### toggle game rules
 
+## Notes on Code
+- HTML Naming Conventions
+
+### HTML naming conventions
+
+Elements are named using [BEM](http://getbem.com/naming/) conventions.
+
 
 
