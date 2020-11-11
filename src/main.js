@@ -1,4 +1,6 @@
-//QUERY SELECTORS & GLOBAL VARIABLES
+
+// ************ QUERY SELECTORS & GLOBAL VARIABLES ************
+
 var page = document.querySelector('body');
 
 var gameCommentary = document.querySelector(`#game-commentary`);
@@ -26,32 +28,45 @@ var game = {};
 
 
 
-//EVENT LISTENERS
-window.addEventListener('load', startPlay);
+//************ EVENT LISTENERS ************
+
+window.addEventListener('load', setUpGamePlay);
 gameBoard.addEventListener('click', makeMove);
-newGameButton.addEventListener('click', startGame);
+newGameButton.addEventListener('click', startNewGame);
 customizePlayButton.addEventListener('click', showCustomizationOptions);
 submitCustomizationsButton.addEventListener('click', customizePlay);
 
 
 
 
-//EVENT HANDLERS AND HELPERS
-function startPlay () {
+//************ EVENT HANDLERS ************
+
+function setUpGamePlay () {
   createGame('🆇', '🅾');
+  game.updateFromLocalStorage();
   var board = game.gameBoard;
   var squares = Object.keys(board);
   displayUpdatedBoard(board, squares);
 };
 
-function createGame(tokenOne, tokenTwo) {
-  game = new Game();
-  var playerOne = new Player('playerOne', tokenOne, 'Player 1');
-  var playerTwo = new Player('playerTwo', tokenTwo, 'Player 2');
-  game.assignPlayers(playerOne, playerTwo);
-  game.playerOne.saveWinsToStorage();
-  game.playerTwo.saveWinsToStorage();
-  game.saveCurrentGameToStorage();
+function makeMove() {
+  clearStartOfGameStyling();
+  var board = game.gameBoard;
+  var squares = Object.keys(board);
+  if (checkIfSquareIsAvailable(event)) {
+    game.updateGameBoard(event, board, squares);
+    displayUpdatedBoard(board, squares);
+    checkGameOutcome(board, squares);
+  }
+};
+
+function startNewGame() {
+  styleStartOfGame();
+  game.resetBoard();
+  gameCommentary.innerText = '';
+  var board = game.gameBoard;
+  var squares = Object.keys(board);
+  displayUpdatedBoard(board, squares);
 };
 
 function showCustomizationOptions() {
@@ -64,6 +79,23 @@ function customizePlay () {
   setGameRules();
   setGameTheme();
 };
+
+
+
+
+//************ HELPER FUNCTIONS ************
+
+function createGame(tokenOne, tokenTwo) {
+  game = new Game();
+  var playerOne = new Player('playerOne', tokenOne, 'Player 1');
+  var playerTwo = new Player('playerTwo', tokenTwo, 'Player 2');
+  game.assignPlayers(playerOne, playerTwo);
+  game.playerOne.saveWinsToStorage();
+  game.playerTwo.saveWinsToStorage();
+  game.saveCurrentGameToStorage();
+};
+
+
 
 function setGameRules() {
   for(var i = 0; i < gameRulesCustomizations.length; i++) {
@@ -123,15 +155,6 @@ function toggleThemeStyling() {
 };
 
 
-function startGame() {
-  styleStartOfGame();
-  game.resetBoard();
-  gameCommentary.innerText = '';
-  var board = game.gameBoard;
-  var squares = Object.keys(board);
-  displayUpdatedBoard(board, squares);
-};
-
 function styleStartOfGame() {
   gameBoard.classList.add('game-box_gameboard--reset');
   gameBoard.classList.add('game-box_gameboard--spin');
@@ -140,17 +163,6 @@ function styleStartOfGame() {
   playerTwoSidebar.classList.remove('sidebar--winner');
 }
 
-
-function makeMove() {
-  clearStartOfGameStyling();
-  var board = game.gameBoard;
-  var squares = Object.keys(board);
-  if (checkIfSquareIsAvailable(event)) {
-    game.updateGameBoard(event, board, squares);
-    displayUpdatedBoard(board, squares);
-    checkGameOutcome(board, squares);
-  }
-};
 
 function clearStartOfGameStyling() {
   gameBoard.classList.remove('game-box_gameboard--reset');

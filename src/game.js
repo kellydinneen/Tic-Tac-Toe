@@ -134,6 +134,28 @@ updateGameBoard(event, board, squares) {
       this.saveCurrentGameToStorage();
   }
 
+  updateFromLocalStorage() {
+    for (var i = 0; i < localStorage.length; i++) {
+      var keyName = localStorage.key(i);
+      if(keyName === `currentGame`) {
+        var retrievedGame = localStorage.getItem(keyName);
+        var parsedGame = JSON.parse(retrievedGame);
+        this.rules = parsedGame.rules;
+        this.theme = parsedGame.theme;
+        this.catToken = parsedGame.catToken;
+        this.cat = parsedGame.cat;
+        this.playerOne = parsedGame.playerOne;
+        this.playerTwo = parsedGame.playerTwo;
+        this.turn = parsedGame.turn;
+        this.nextPlayer = parsedGame.nextPlayer;
+        this.playerWithThreeInARow = parsedGame.playerWithThreeInARow;
+        this.winner = parsedGame.winner;
+        this.gameOver = parsedGame.gameOver;
+        this.gameBoard = parsedGame.gameBoard;
+      }
+    }
+  }
+
   setGameTokens() {
     var themeTokens = this.themes[`${this.theme}`];
     this.playerOne.token = themeTokens[0];
