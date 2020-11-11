@@ -11,18 +11,18 @@ width: 100%;
 }
 
 main {
+  display: flex;
   height: 100%;
   width: 100%;
-  display: flex;
   letter-spacing: 0.025em;
   font-size: 20px;
 }
 .sidebar {
-  height: 100%;
-  width: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  width: 25%;
   color: #006450;
 }
 
@@ -31,12 +31,12 @@ main {
 }
 
 .game-box {
-  height: 100%;
-  width: 50%
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  width: 50%
   font-size: 16px;
   text-shadow: -0.5px 0.5px 0.5px #af5686,
 				  1px 1px 10px #af5686,
@@ -45,34 +45,36 @@ main {
   text-align: center;
 }
 .game-box_gameboard {
-  height: 375px;
-  width: 375px;
   display: flex;
   flex-wrap: wrap-reverse;
   justify-content: center;
   align-items: center;
+  height: 375px;
+  width: 375px;
   border-radius: 4%;
 }
 
 .game-box_gameboard-square {
- height: 29%;
- width: 29%;
- display: flex;
- align-items: center;
- justify-content: center;
- margin: 1%;
- border: solid;
- border-radius: 4%;
- font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 29%;
+  width: 29%;
+  margin: 1%;
+  border: solid;
+  border-radius: 4%;
+  font-size: 50px;
 }
 
 .btn_customize-play {
   position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
   height: 45px;
   width: 100%;
   background: #ffb997;
   border: 0px;
-  bottom: 0px;
   font: 1rem 'Fira Sans', sans-serif;
   font-weight: bolder;
   font-style: oblique;
@@ -117,49 +119,52 @@ main {
 }
 
 .game-box_gameboard--reset {
-		animation-name: fadeInOut;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
+	animation-name: fadeInOut;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
 	}
 
-  .customization-window {
-    width: 600px;
-    background-color: #0B032D;
-    backdrop-filter: blur(2px);
-    backdrop-filter: brightness(5%);
-  }
+.customization-window {
+  width: 600px;
+  background-color: #0B032D;
+}
 
-  fieldset {
-    width: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    background-color: #843B62;
-    margin: 10%;
-    font: 1.5rem 'Fira Sans', sans-serif;
-    color: #FFB997;
-  }
+.customization-window::backdrop {
+  background-color: #F67E7D;
+}
 
-  label {
-    margin-left: 5%;
-    font-size: 1rem;
+fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 450px;
+  height: 200px
+  background-color: #843B62;
+  margin: 10%;
+  font: 1.5rem 'Fira Sans', sans-serif;
+  color: #FFB997;
   }
+label {
+  margin-left: 5%;
+  font-size: 1rem;
+}
 
-  legend {
-    background-color: #FFB997;
-    padding: 4px 8px;
-    color: #0B032D;
-  }
+legend {
+  background-color: #FFB997;
+  padding: 4px 8px;
+  color: #0B032D;
+}
 
-  .customization-window_input-box {
-    display: flex;
-    justify-content: flex-start;
-    margin: 5%;
-  }
+.customization-window_input-box {
+  display: flex;
+  justify-content: flex-start;
+  margin: 5%;
+}
 
 .btn_submit-customizations {
   height: 100px;
   width: 100px;
+  margin: 0% 40% 0% 40%;
   background-color: #F67E7D;
   border-radius: 10%;
   color: #0B032D;
@@ -173,8 +178,8 @@ main {
   width: 100px;
   padding: 50px 0px 20px 10px;
   background: #100447;
-  border-right: 2px solid #ffdbbc;
   border-radius: 0% 50% 50% 0%;
+  border-right: 2px solid #ffdbbc;
   text-align: left;
   font-size: 10px;
   color: #ffdbbc;
@@ -186,32 +191,32 @@ main {
   -moz-border-radius: 0 5px 5px 0;
 }
 
-.slideout-instructions_inner {
-  position: fixed;
-  top: 0px;
-  left: -350px;
-  height: 100%;
-  width: 300px;
-  background: #100447;
-  padding: 25px;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-transition-duration: 0.4s;
-  -moz-transition-duration: 0.4s;
-  -o-transition-duration: 0.4s;
-  transition-duration: 0.4s;
-  text-align: left;
-  -webkit-border-radius: 0 0 5px 0;
-  -moz-border-radius: 0 0 5px 0;
-  border-radius: 0 0 5px 0;
-}
-.slideout-instructions:hover {
-  left: 350px;
-  cursor: help;
-}
-.slideout-instructions:hover .slideout-instructions_inner {
-  left: 0;
-}
+  .slideout-instructions_inner {
+    position: fixed;
+    top: 0px;
+    left: -350px;
+    height: 100%;
+    width: 300px;
+    background: #100447;
+    padding: 25px;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    text-align: left;
+    -webkit-border-radius: 0 0 5px 0;
+    -moz-border-radius: 0 0 5px 0;
+    border-radius: 0 0 5px 0;
+  }
+  .slideout-instructions:hover {
+    left: 350px;
+    cursor: help;
+  }
+  .slideout-instructions:hover .slideout-instructions_inner {
+    left: 0;
+  }
 
 /* ================ ANIMATIONS ===============*/
 
