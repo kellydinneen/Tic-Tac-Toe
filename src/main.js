@@ -93,6 +93,24 @@ function createGame(tokenOne, tokenTwo) {
   game.playerTwo.saveWinsToStorage();
 };
 
+function updateWinsFromStorage() {
+  if (Object.keys(localStorage).includes(`playerOneWins` && `playerTwoWins`)) {
+    var storedPlayerOneWins = localStorage.getItem('playerOneWins');
+    game.playerOne.wins = JSON.parse(storedPlayerOneWins);
+    var storedPlayerTwoWins = localStorage.getItem('playerTwoWins');
+    game.playerTwo.wins = JSON.parse(storedPlayerTwoWins);;
+  }
+  playerOneWinsTally.innerText = `Wins: ${game.playerOne.wins.length}`;
+  playerTwoWinsTally.innerText = `Wins: ${game.playerTwo.wins.length}`;
+};
+
+function displayUpdatedBoard(board, squares) {
+  for (var i = 0; i < squares.length; i++) {
+    var squareDisplay = document.querySelector(`#${squares[i]}`);
+    squareDisplay.innerText = board[`${squares[i]}`];
+  }
+  toggleSquareHighlightColor();
+};
 
 
 function setGameRules() {
@@ -173,14 +191,6 @@ function checkIfSquareIsAvailable(event) {
   } else {
     return false;
   }
-};
-
-function displayUpdatedBoard(board, squares) {
-  for (var i = 0; i < squares.length; i++) {
-    var squareDisplay = document.querySelector(`#${squares[i]}`);
-    squareDisplay.innerText = board[`${squares[i]}`];
-  }
-  toggleSquareHighlightColor();
 };
 
 function toggleSquareHighlightColor() {
